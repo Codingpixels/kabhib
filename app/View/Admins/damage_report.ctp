@@ -9,7 +9,7 @@
 					$branch = array('Ahemdabad'=>'Ahemdabad','Baroda'=>'Baroda','Surat'=>'Surat','Jamnagar'=>'Jamnagar',
 									'Bharuch'=>'Bharuch','Morbi'=>'Morbi');
 
-					echo $this->Form->create();
+					echo $this->Form->create('EmployeeDetail');
 					echo $this->Form->input('branch',array('label'=>'Select Branch:','type'=>'select','options'=>$branch));
 					echo $this->Form->input('month',array('label'=>'Select Month:','type'=>'select','options'=>$month));
 					echo "<input type='submit' value='SHOW' class='btn-success btn submitbtn btn2' style='margin-left: 8px; margin-top: 5px;'>";

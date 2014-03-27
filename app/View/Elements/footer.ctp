@@ -3,7 +3,8 @@
 		if($this->params['action']!='admin')	{
 ?>
 			<form>
-					<button formaction="/kabhee B/Admins/admin" class="footer">HOME</button>
+					<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins', 'action' => 
+										'admin')); ?>" class="footer">HOME</button>
 			</form>
 <?php
 		}

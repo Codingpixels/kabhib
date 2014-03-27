@@ -5,9 +5,9 @@
 
 				<div class="hmediv">
 					<form>
-							<button formaction="/kabhee B/EmployeeOrders/sell" class="current">Take Away</button>
-							<button formaction="/kabhee B/EmployeeOrders/special" class="current">Special Order</button>
-							<button formaction="/kabhee B/EmployeeOrders/advance" class="current">Advance Booking</button>
+							<button formaction="<?php echo $this->Html->url(array('controller' => 'EmployeeOrders', 'action' => 'sell')); ?>" class="current">Take Away</button>
+							<button formaction="<?php echo $this->Html->url(array('controller' => 'EmployeeOrders', 'action' => 'special')); ?>" class="current">Special Order</button>
+							<button formaction="<?php echo $this->Html->url(array('controller' => 'EmployeeOrders', 'action' => 'advance')); ?>" class="current">Advance Booking</button>
 					</form>
 				</div>	
 

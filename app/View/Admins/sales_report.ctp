@@ -82,7 +82,7 @@
 								       				$item_string = $item_string.$type."'s".' Chart';
 								       			?>
 								       		</table>
-								       		<a href="/kabhee B/Admins/item_chart/<?php echo $item_string; ?>" 
+								       		<a href="/kabhib/Admins/item_chart/<?php echo $item_string; ?>" 
 								       		style="margin-left: 532px">
 								       			View <?php echo $type."'s"; ?>  Chart > > >
 								       		</a> 			        
@@ -101,7 +101,7 @@
 						 $string = $string.$title;
 					 ?>
 
-					<a href="/kabhee B/Admins/view_chart/<?php echo $string; ?>" style="margin-left: 550px">
+					<a href="/kabhib/Admins/view_chart/<?php echo $string; ?>" style="margin-left: 550px">
 						View Sales Charts > > >
 					</a>
 			</div>

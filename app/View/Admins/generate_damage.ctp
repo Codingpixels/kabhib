@@ -46,7 +46,8 @@
 				</div>
 				<div style="margin-top: -27px; margin-left: 1076px;">
 					<form>
-						<a href="/kabhee B/Admins/view_chart/Total Sell/<?php echo $total;?>/Total Damage/<?php echo $tot_damage; ?>/Damage Chart">
+						<a href="<?php echo $this->Html->url(array('controller' => 'Admins','action' => 'view_chart','Total Sell',
+						$total,'Total Damage',$tot_damage,'Damage Chart')); ?>">
 							View Charts > > >
 						</a>
 					</form>

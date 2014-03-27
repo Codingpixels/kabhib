@@ -66,11 +66,11 @@
 							?>
 						</div>
 					</div>
-					<a href="/kabhee B/Admins/view_chart/<?php echo $string_dem.'Demand Chart'; ?>" 
+					<a href="/kabhib/Admins/view_chart/<?php echo $string_dem.'Demand Chart'; ?>" 
 						style="margin-left: 430px; margin-right: 20px;">
 						View Demand Charts > > >
 					</a>
-					<a href="/kabhee B/Admins/view_chart/<?php echo $string_sup.'Supply Chart'; ?>">
+					<a href="/kabhib/Admins/view_chart/<?php echo $string_sup.'Supply Chart'; ?>">
 						View Supply Charts > > >
 					</a>
 				</div>

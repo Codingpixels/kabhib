@@ -8,17 +8,29 @@
 						if($this->Session->check('eid')):
 					?>
 					<form>
-							<button formaction="/kabhee B/Admins/sales_report/current" class="current">Today's Report
+							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins', 
+									'action' => 'sales_report','current')); ?>" class="current">Today's Report
 							</button>
-							<button formaction="/kabhee B/Admins/sales_report/week" class="current">Weekly Report</button>
-							<button formaction="/kabhee B/Admins/sales_report/month" class="current">monthly Report
+							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins',
+									'action' => 'sales_report','week')); ?>" class="current">Weekly Report</button>
+							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins', 
+									'action' => 'sales_report','month')); ?>" class="current">monthly Report
 							</button>
-							<button formaction="/kabhee B/Admins/supply_demand" class="current">Supply / Demand Report
+							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins',
+									'action' => 'supply_demand')); ?>" class="current">Supply / Demand Report
 							</button>
-							<button formaction="/kabhee B/Admins/damage_report" class="current">Damage Report</button>
-							<button formaction="/kabhee B/Admins/new_arrival" class="current">Add New Arrivals</button>
-							<button formaction="/kabhee B/Admins/existing" class="current">Add Existing Items</button>
-							<button formaction="/kabhee B/EmployeeDetails/logout" class="current">Logout</button>
+							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins',
+									'action' => 'damage_report')); ?>" class="current">Damage Report
+							</button>
+							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins',
+									'action' => 'new_arrival')); ?>" class="current">Add New Arrivals
+							</button>
+							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins',
+									'action' => 'existing')); ?>" class="current">Add Existing Items
+							</button>
+							<button formaction="<?php echo $this->Html->url(array('controller' => 'EmployeeDetails',
+									'action' => 'logout')); ?>" class="current">Logout
+							</button>
 					</form>
 					<?php
     					endif;
