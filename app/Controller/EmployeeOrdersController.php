@@ -81,12 +81,10 @@
 			$o_number=$this->request->data['o_number'];
 			$category_name=$this->request->data['category_name'];
 			$db_item=$this->$o_name->find('all',array('conditions'=> array($o_name.'.category' =>$category_name)));
-			//echo '<pre>'; print_r($db_item); exit;
 			$this->set('list',$db_item);
-			$this->set('item_name',$o_name);
+			$this->set('item_type',$o_name);
 			$this->set('order_number',$o_number);
 			$this->set('category_name',$category_name);
-			
 		}
 		public function sell_category() {
 			$this->layout='ajax';
@@ -106,18 +104,17 @@
 
 		public function sell_item() {
 			$this->layout='ajax';
-			$this->set('itmname',$this->request->data['item_name']);
+			$item_type = $this->request->data['item_type'];
+			$item_name = $this->request->data['item_name'];
+			$this->set('item_name',$this->request->data['item_name']);
 			$this->set('order_no',$this->request->data['order_no']);	
-			$tabname=$this->request->data['name'];
-			$itmname=$this->request->data['item_name'];
+			$this->set('item_type',$this->request->data['item_type']);
+			$this->set('item_category',$this->request->data['item_category']);
 
-			$price=$this->$tabname->find('first',array('conditions'=>array($tabname.'.item_name'=>$itmname),
-														'field'=>array($tabname.'.price')));
-			$total_price=$price[$tabname]['price']*1;
-			$this->set('price',$total_price);
-			$this->set('name',$tabname);
-			$this->set('itmname',$itmname);
-			$this->set('type',$tabname);
+			$price= $this->$item_type->find('first',array('conditions'=>array($item_type.'.item_name' =>$item_name)));
+			$total_price=$price[$item_type]['price']*1;
+			$this->set('total_price',$total_price);
+			//echo '<pre>'; print_r($total_price); exit;
 		}
 
 		public function sellprice() {

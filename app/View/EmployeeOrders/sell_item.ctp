@@ -1,21 +1,21 @@
 <tr class='clr'>
-		<input type="hidden" readonly value="<?php echo $order_no; ?>" name="<?php echo $order_no.'orderno';  ?>" class="noborder" />
-		<td>
-      <?php echo $itmname; ?>
-			<input type="hidden" value="<?php echo $itmname; ?>" name="<?php echo $order_no.'itemname';  ?>" class="noborder" />
-		</td>
-		<td class="qty"  Iid="<?php echo $order_no.'price'; ?>" qid="<?php echo $order_no.'qty';  ?>" id="<?php echo $order_no.'qty';  ?>" ordername="<?php echo $name; ?>"      itemname="<?php echo $itmname; ?>" itmprice="<?php echo $price;  ?>">
-			<input  type="text" value="<?php echo "1";  ?>" name="<?php echo $order_no.'quantity';  ?>" class="qty_size" />
-		</td>
-		<td id="<?php echo $order_no.'price';  ?>" class="order_amount">
-      			&nbsp;&nbsp;&nbsp;&nbsp;<input readonly type="text" value="<?php echo $price; ?>" id="<?php echo $order_no.'amount'; ?>"
+    <input type="hidden" readonly value="<?php echo $order_no; ?>" name="<?php echo $order_no.'orderno';  ?>" class="noborder" />
+    <td>
+      <?php echo $item_name; ?>
+      <input type="hidden" value="<?php echo $item_name; ?>" name="<?php echo $order_no.'item_name';  ?>" class="noborder" />
+    </td>
+    <td class="qty"  Iid="<?php echo $order_no.'total_price'; ?>" qid="<?php echo $order_no.'qty';  ?>" id="<?php echo $order_no.'qty';  ?>" ordername="<?php echo $item_type; ?>"      itemname="<?php echo $item_name; ?>" itmprice="<?php echo $total_price;  ?>">
+      <input  type="text" value="<?php echo "1";  ?>" name="<?php echo $order_no.'quantity';  ?>" class="qty_size" />
+    </td>
+    <td id="<?php echo $order_no.'total_price';  ?>" class="order_amount">
+            &nbsp;&nbsp;&nbsp;&nbsp;<input readonly type="text" value="<?php echo $total_price; ?>" id="<?php echo $order_no.'amount'; ?>"
             name="<?php echo $order_no.'price';  ?>" class="noborder om qty_size" />
-		</td>
-		<input type="hidden" value="<?php  echo $type; ?>" name="<?php echo $order_no.'type'?>" /> 
+    </td>
+    <input type="hidden" value="<?php  echo $type; ?>" name="<?php echo $order_no.'type'?>" /> 
     <td><button class="delete-button"><img src="../img/delete.jpg"></button></td>
-	</tr>	
-<input type="hidden" value="<?php echo $name; ?>"  id="order_name"/>
-<input type="hidden" value="<?php echo $itmname; ?>"  id="order_itm"/>
+  </tr> 
+<input type="hidden" value="<?php echo $order_type; ?>"  id="order_name"/>
+<input type="hidden" value="<?php echo $itemname; ?>"  id="order_itm"/>
 <input type="hidden" value="<?php echo $order_no; ?>"  id="order_no"/>
 <input type="hidden" value="" id="total_amt" />
 <script type="text/javascript">
