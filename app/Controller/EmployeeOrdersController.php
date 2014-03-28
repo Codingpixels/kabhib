@@ -77,19 +77,31 @@
 
 		public function sellajax() {
 			$this->layout='ajax';
+			$o_name=$this->request->data['o_name'];
+			$o_number=$this->request->data['o_number'];
+			$category_name=$this->request->data['category_name'];
+			$db_item=$this->$o_name->find('all',array('conditions'=> array($o_name.'.category' =>$category_name)));
+			//echo '<pre>'; print_r($db_item); exit;
+			$this->set('list',$db_item);
+			$this->set('item_name',$o_name);
+			$this->set('order_number',$o_number);
+			$this->set('category_name',$category_name);
+			
+		}
+		public function sell_category() {
+			$this->layout='ajax';
+
 			$item_name=$this->request->data['item_name'];
 			$category = array();
 			$find_category =$this->Category->find('all',array('conditions' => array('Category.item_type' =>$item_name)));
 			foreach ($find_category as $key => $value) {
 				$category[$key] = $value['Category']['category'];
 			}
-			echo '<pre>'; print_r($category); exit;
-			$finditem=$this->$item_name->find('all');
-			
-			$this->set('list',$finditem);
+			$this->set('list_category',$category);
 			$this->set('item_name',$item_name);
 			$this->set('order_no',$this->request->data['order_number']);
-			
+
+
 		}
 
 		public function sell_item() {
