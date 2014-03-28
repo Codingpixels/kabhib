@@ -19,6 +19,9 @@
 					?>
 				</div>
 
+				<div class="order-category" style="margin-top:122px;">
+					<p style="margin-left: 18px;"><label>CATEGORIES:</label></p>
+				</div>
 				<div class="order-form" style="margin-top:44px;">
 					<p style="margin-left: 18px;"><label>ITEMS:</label></p>
 				</div>
@@ -80,12 +83,14 @@ $(".brd").click(function (event) {
 	        $('.brd').prop('disabled', false);
 	        $(this).prop('disabled', true);
 	    });
+
 $('.order-item').click(function(){
+		$('.order-category').empty();
 		$('.order-form').empty();
  		item_name = $(this).val();
  		order_number = $('#order_number').val();
  		data = "item_name="+item_name+"&order_number="+order_number;
- 		url='sellajax';
+ 		url='sell_category';
  		$.ajax({
  			url:url,
  			data:data,
@@ -93,8 +98,7 @@ $('.order-item').click(function(){
  			type:'post',
  			success:function(response){
  				order_number++;
- 				$('#order_number').val(order_number);
- 				$('.order-form').append(response);
+ 				$('.order-category').append(response);
  			},
  			error:function(response){}
  		});
