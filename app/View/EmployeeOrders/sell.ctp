@@ -1,16 +1,19 @@
+<?php
+	$item_array=array('Bread'=>'Bread','Cake'=>'Cake','Khari'=>'Khari','Pastry'=>'Pastry','Chocolate'=>'Chocolate',
+						'Pudding'=>'Pudding','Extra'=>'Extra','NewArrival'=>'New Arrival');
+?>
 <div class="main_content">
 	<div class="inner_content sel">
 		<fieldset class='stockorder'>
 			<div class='subinner'>
 				<div class="menubtn">
-					<button name="bread" value="Bread" class="order-item orderitem btn-primary brd" id="brd">Bread </button>
-					<button name="cake" value="Cake" class="order-item orderitem btn-primary brd" id="brd">Cake </button>
-					<button name="khari" value="Khari" class="order-item orderitem btn-primary brd" id="brd">Khari </button>
-					<button name="pastry" value="Pastry" class="order-item orderitem btn-primary brd" id="brd">Pastry </button>
-					<button name="extra" value="Extra" class="order-item orderitem btn-primary brd" id="brd">Chocolates</button>
-					<button name="extra" value="Extra" class="order-item orderitem btn-primary brd" id="brd">Puddings</button>
-					<button name="extra" value="Extra" class="order-item orderitem btn-primary brd" id="brd">Extra</button>
-					<button name="new_arrivals" value="NewArrival" class="order-item orderitem btn-primary brd" id="brd">New Arrival </button>
+					<?php
+
+						foreach ($item_array as $key => $value) { ?>
+							<button name="<?php echo $key; ?>" value="<?php echo $key; ?>" class="order-item orderitem btn-primary brd" id="brd"> <?php echo $value;  ?> </button>
+						<?php	
+						}
+					?>
 				</div>
 
 				<div class="order-form" style="margin-top:44px;">

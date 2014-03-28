@@ -3,7 +3,8 @@
 	class EmployeeOrdersController extends AppController {
 		public $name='EmployeeOrders';
 		public $uses=array('EmployeeOrder','Eorderdetail','DeliveryMaster','DeliveryDetail','Bread','Cake',
-							'NewArrival','EmployeeReturn','Pastry','Khari','New_arrival','Extra','CustomerOrderDetail','Customer');
+							'NewArrival','EmployeeReturn','Pastry','Khari','New_arrival','Extra','CustomerOrderDetail','Customer',
+							'Chocolate','Pudding');
 		public $helper=array('Html','Form');
 
 		public function sell() {
