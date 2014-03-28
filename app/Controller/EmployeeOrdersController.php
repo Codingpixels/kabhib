@@ -4,7 +4,7 @@
 		public $name='EmployeeOrders';
 		public $uses=array('EmployeeOrder','Eorderdetail','DeliveryMaster','DeliveryDetail','Bread','Cake',
 							'NewArrival','EmployeeReturn','Pastry','Khari','New_arrival','Extra','CustomerOrderDetail','Customer',
-							'Chocolate','Pudding');
+							'Chocolate','Pudding','Category');
 		public $helper=array('Html','Form');
 
 		public function sell() {
@@ -78,8 +78,13 @@
 		public function sellajax() {
 			$this->layout='ajax';
 			$item_name=$this->request->data['item_name'];
-			
-				$finditem=$this->$item_name->find('all');
+			$category = array();
+			$find_category =$this->Category->find('all',array('conditions' => array('Category.item_type' =>$item_name)));
+			foreach ($find_category as $key => $value) {
+				$category[$key] = $value['Category']['category'];
+			}
+			echo '<pre>'; print_r($category); exit;
+			$finditem=$this->$item_name->find('all');
 			
 			$this->set('list',$finditem);
 			$this->set('item_name',$item_name);
