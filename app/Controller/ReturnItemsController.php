@@ -20,6 +20,7 @@
 		            $data['CustomerReturn']['item_quantity']=$value['qty']; 
 		            $data['CustomerReturn']['return_date_time']=date('Y-m-d');;
 		            $data['CustomerReturn']['note']=$value['note'];
+		            $data['CustomerReturn']['remark']=$value['remark'];
 		            if($this->CustomerReturn->save($data)) {
 		            	if($value['note'] == 'Reuse') {
 			                if($value['v3'] == 'Bread') {
@@ -72,6 +73,7 @@
 			if($this->request->is('post')) {
 				$data = $this->request->data['stock_return'];
 				foreach ($data as $key => $value) {
+							//echo "<pre>"; print_r($value); exit;
 					if(!empty($lastinsertid)) {
 				       $this->EmployeeReturn->id = $lastinsertid;
 				    }
