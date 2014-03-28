@@ -13,11 +13,11 @@
                   <label style="margin-left:6px;">Return Type:</label>
                   <?php echo $this->Form->input('type', array('type' => 'select', 'options' => $type,'label'=>false, 'class' => 'required','id'=>'type'));?>
                   <div id='error' style="display:none;"> required</div>
-                  <input readonly id="btn" value="Order" class='submitbtn btn4 btn-success btn2' type="button"> 
+                  <input readonly id="btn" value="Order" class='submitbtn btn4 btn-success btn2' type="button" style="margin-top: 104px;"> 
                   
                   <?php echo $this->Form->end();?>
                   <div id='error'></div>
-                  <div id='ajaxDiv'>Your result will display here</div>
+                  <div id='ajaxDiv' style="margin-top:100px;">Your result will display here</div>
             </div>
             </div>
             
@@ -55,7 +55,7 @@ $('#btn').click(function(e){
 #error{
   display: block; 
   margin-bottom: -24px; 
-  margin-top: 34px; 
+  margin-top: -82px; 
   margin-left: 14px;
   color: #800000;
 }

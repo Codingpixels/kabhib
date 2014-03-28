@@ -5,16 +5,18 @@
 				<div class="menubtn">
 					<button name="bread" value="Bread" class="order-item orderitem btn-primary brd" id="brd">Bread </button>
 					<button name="cake" value="Cake" class="order-item orderitem btn-primary brd" id="brd">Cake </button>
-					<button name="extra" value="Extra" class="order-item orderitem btn-primary brd" id="brd">Extra</button>
 					<button id="brd" class="order-item orderitem btn-primary brd" value="Khari" name="khari">Khari </button>
 					<button id="brd" class="order-item orderitem btn-primary brd" value="Pastry" name="pastry">Pastry </button>
+					<button name="extra" value="Extra" class="order-item orderitem btn-primary brd" id="brd">Chocolates</button>
+					<button name="extra" value="Extra" class="order-item orderitem btn-primary brd" id="brd">Puddings</button>
+					<button name="extra" value="Extra" class="order-item orderitem btn-primary brd" id="brd">Extra</button>
 					<button id="brd" class="order-item orderitem btn-primary brd" value="NewArrival" name="NewArrivals">
 						New Arrival 
 					</button>
 
 				</div>
 
-				<div class="order-form">
+				<div class="order-form" style="margin-top:44px;">
 					<p style="margin-left: 18px;"><label>ITEMS:</label></p>
 				</div>
 				<input type="hidden" value="1" id="order_number">
