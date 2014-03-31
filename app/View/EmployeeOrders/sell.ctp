@@ -1,14 +1,12 @@
 <?php
 	$item_array=array('Bread'=>'Bread','Cake'=>'Cake','Khari'=>'Khari','Pastry'=>'Pastry','Chocolate'=>'Chocolate',
-						'Pudding'=>'Pudding','Extra'=>'Extra','NewArrival'=>'New Arrival','Khakhra'=>'Khakhra',
-						'CupCake'=>'CupCake','DryCake'=>'DryCake','Cookie'=>'Cookie','Puff'=>'Puff','Savories'=>'Savories',
-						'CreamRoll'=>'CreamRoll');
+						'Pudding'=>'Pudding','Khakhra'=>'Khakhra','CupCake'=>'CupCake','DryCake'=>'DryCake','Cookie'=>'Cookie','Puff'=>'Puff','Savories'=>'Savories','CreamRoll'=>'CreamRoll','NewArrival'=>'New Arrival','Extra'=>'Extra');
 
 ?>
 <div class="main_content">
 	<div class="inner_content sel">
-		<fieldset class='stockorder'>
-			<div class='subinner'>
+		<fieldset class='stockorder' style="margin-left: 22px; height: 360px;">
+			<div class='subinner'>     
 				<div class="menubtn">
 					<?php
 
@@ -19,11 +17,9 @@
 					?>
 				</div>
 
-				<div class="order-category" style="margin-top:122px;">
-					<p style="margin-left: 18px;"><label>CATEGORIES:</label></p>
+				<div class="order-category" >
 				</div>
 				<div class="order-form" style="margin-top:44px;">
-					<p style="margin-left: 18px;"><label>ITEMS:</label></p>
 				</div>
 				<input type="hidden" value="1" id="order_number">
 
@@ -47,7 +43,7 @@
 							</table>	
 						</div> 
 						<input value="Bill" type='submit' class='btn-success btn submitbtn btn2' 
-						style='margin-left: 306px; margin-top: 0px; width: 82px; height: 50px;'>
+						style='margin-left: 306px; margin-top: 70px; width: 82px; height: 50px;'>
 						<?php
 						echo $this->Form->end();
 						?>

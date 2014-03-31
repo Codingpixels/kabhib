@@ -11,12 +11,12 @@
             &nbsp;&nbsp;&nbsp;&nbsp;<input readonly type="text" value="<?php echo $total_price; ?>" id="<?php echo $order_no.'amount'; ?>"
             name="<?php echo $order_no.'price';  ?>" class="noborder om qty_size" />
     </td>
-    <input type="hidden" value="<?php  echo $type; ?>" name="<?php echo $order_no.'type'?>" /> 
+    <input type="hidden" value="<?php  echo $item_type; ?>" name="<?php echo $order_no.'type'?>" /> 
     <td><button class="delete-button"><img src="../img/delete.jpg"></button></td>
   </tr> 
 <input type="hidden" value="<?php echo $order_type; ?>"  id="order_name"/>
 <input type="hidden" value="<?php echo $itemname; ?>"  id="order_itm"/>
-<input type="hidden" value="<?php echo $order_no; ?>"  id="order_no"/>
+<input type="hidden" value="<?php echo $order_no; ?>"  id="order_number"/>
 <input type="hidden" value="" id="total_amt" />
 <script type="text/javascript">
 $(document).ready(function(){
@@ -34,9 +34,9 @@ $('#totamt').html(totamt);
 
  $('.qty').each(function (){
   $(this).bind('change',function(){
-       i=$(this).attr('Iid');
-       n=$(this).attr('qid');
-       a=$('#'+n+' input').val();
+        i=$(this).attr('Iid');
+        n=$(this).attr('qid');
+        a=$('#'+n+' input').val();
         item_qty = a;
         name = $(this).attr('ordername');
         itm=$(this).attr('itemname');
@@ -51,11 +51,10 @@ $('#totamt').html(totamt);
          success:function(response){
             $('#'+i+' input').attr('value',response);
              total = 0;
-          $('.order_amount').each(function(){
-           var value = $(this).find('input').val()
-           total += parseInt(value);
-           totamt=total+ parseInt(total*0.15);
-
+            $('.order_amount').each(function(){
+            var value = $(this).find('input').val()
+            total += parseInt(value);
+            totamt=total+ parseInt(total*0.15);
           });
           $('#amt').html(total);
           $('#totamt').html(totamt);

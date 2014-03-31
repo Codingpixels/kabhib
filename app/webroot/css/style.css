@@ -324,3 +324,15 @@ td div{
 textarea {
 	width: 50%;
 }
+/* category button*/
+.item.category {
+    height: 54px !important;
+    width: 116px !important;
+}
+.subitem.btn-info menu {
+	margin-left: 12px;
+}
+.order-category {
+	margin-top: 7px;
+	width:832px !important;
+}

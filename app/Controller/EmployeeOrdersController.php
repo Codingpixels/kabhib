@@ -2,7 +2,7 @@
 	
 	class EmployeeOrdersController extends AppController {
 		public $name='EmployeeOrders';
-		public $uses=array('EmployeeOrder','Eorderdetail','DeliveryMaster','DeliveryDetail','Bread','Cake',
+		public $uses=array('EmployeeOrder','Eorderdetail','DeliveryMaster','DeliveryDetail','Bread','Cake','Puff',
 							'NewArrival','EmployeeReturn','Pastry','Khari','New_arrival','Extra','CustomerOrderDetail','Customer',
 							'Chocolate','Pudding','Category');
 		public $helper=array('Html','Form');
@@ -79,39 +79,46 @@
 			$this->layout='ajax';
 			$o_name=$this->request->data['o_name'];
 			$o_number=$this->request->data['o_number'];
-			$category_name=$this->request->data['category_name'];
-			$db_item=$this->$o_name->find('all',array('conditions'=> array($o_name.'.category' =>$category_name)));
+			$category_id=$this->request->data['category_id'];
+			$db_item=$this->$o_name->find('all',array('conditions'=> array($o_name.'.category_id' =>$category_id)));
 			$this->set('list',$db_item);
 			$this->set('item_type',$o_name);
 			$this->set('order_number',$o_number);
-			$this->set('category_name',$category_name);
+			$this->set('category_id',$category_id);
 		}
 		public function sell_category() {
 			$this->layout='ajax';
-
 			$item_name=$this->request->data['item_name'];
 			$category = array();
 			$find_category =$this->Category->find('all',array('conditions' => array('Category.item_type' =>$item_name)));
-			foreach ($find_category as $key => $value) {
-				$category[$key] = $value['Category']['category'];
+			// if($find_category)
+			
+			if(empty($find_category)) {
+				$this->set('no_category_id', '0');
+			}  else {
+				foreach ($find_category as $key => $value) {
+					$category[$value['Category']['id']] = $value['Category']['category'];
+					$this->set('no_category_id', $value['Category']['id']);
+				}
 			}
 			$this->set('list_category',$category);
 			$this->set('item_name',$item_name);
 			$this->set('order_no',$this->request->data['order_number']);
-
-
 		}
 
 		public function sell_item() {
 			$this->layout='ajax';
 			$item_type = $this->request->data['item_type'];
-			$item_name = $this->request->data['item_name'];
+			$item_name = $this->request->data['order_name'];
+			$item_id = $this->request->data['item_id'];
+			$this->set('item_id',$this->request->data['item_id']);
 			$this->set('item_name',$this->request->data['item_name']);
 			$this->set('order_no',$this->request->data['order_no']);	
 			$this->set('item_type',$this->request->data['item_type']);
-			$this->set('item_category',$this->request->data['item_category']);
+			$this->set('category_id',$this->request->data['category_id']);
 
-			$price= $this->$item_type->find('first',array('conditions'=>array($item_type.'.item_name' =>$item_name)));
+			$price= $this->$item_type->find('first',array('conditions'=>array($item_type.'.item_id' =>$item_id)));
+			echo '<pre>'; print_r($price); exit;
 			$total_price=$price[$item_type]['price']*1;
 			$this->set('total_price',$total_price);
 			//echo '<pre>'; print_r($total_price); exit;
