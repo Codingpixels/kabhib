@@ -7,7 +7,7 @@
 		 	</button>
 			<input type="hidden" value="<?php echo $order_number; ?>"  id="order_no"/>
 			<input type="hidden" value="<?php echo $item_type; ?>"  id="item_type"/>
-			<input type="hidden" value="<?php echo $category_name; ?>"  id="item_category"/>
+			<input type="hidden" value="<?php echo $category_id; ?>"  id="item_category"/>
 		</div>
 	<?php } ?>
 
@@ -16,8 +16,8 @@ $('.item').click(function(){
  		item_name = $('#item_name').val();
  		order_no=$('#order_no').val();
  		item_type= $('#item_type').val();
- 		item_category= $('#category_name');
- 		data = "item_name="+item_name+'&item_type='+item_type+'&order_no='+order_no+'&item_category='+item_category;
+ 		item_category= $('#item_category');
+ 		data = "item_name="+item_name+'&item_type='+item_type+'&order_no='+order_no+'&category_id='+item_category;
  		url='sell_item';
  		$.ajax({
  			url:url,
@@ -25,9 +25,8 @@ $('.item').click(function(){
  			dataType:"html",
  			type:'post',
  			success:function(response){
- 				//orderno++;
- 				/*$('#order_number').val(orderno);
- 				$('#order_no').val(orderno);*/
+ 				order_number++;
+ 				$('#order_no').val(order_number);
  				$('.indata table').append(response);
  			},
  			error:function(response){}
