@@ -17,14 +17,13 @@ $item_array=array('Bread'=>'Bread','Cake'=>'Cake','Khari'=>'Khari','Pastry'=>'Pa
 						<?php	
 						}
 					?>
-
 				</div>
-
+				<div class="order-category" >
+				</div>
 				<div class="order-form" style="margin-top:44px;">
 					<p style="margin-left: 18px;"><label>ITEMS:</label></p>
 				</div>
 				<input type="hidden" value="1" id="order_number">
-
 				<div class="invoice">
 					<p style="margin-left: 7px; margin-bottom: -5px;">Invoice:</p>
 
@@ -44,11 +43,9 @@ $item_array=array('Bread'=>'Bread','Cake'=>'Cake','Khari'=>'Khari','Pastry'=>'Pa
 												));
 						echo $this->Form->input('disc',array('label'=>'Disc. Cup:','class'=>'form-control inp'));
 						?>
-						
 						<div class="indata">
 							<table class="table table-hover">
 								<tr class="info">
-									<!-- <th style="width: 55px;"><label>Item</label></th> -->
 									<th><label>Particulars</label></th>
 									<th><label>Quantity</label></th>
 									<th><label>Amt</label></th>
@@ -62,22 +59,21 @@ $item_array=array('Bread'=>'Bread','Cake'=>'Cake','Khari'=>'Khari','Pastry'=>'Pa
 							echo $this->Form->end();
 						?>
 				</div>
-				
 				<div class="total_amt">
-						<table>
-							<tr>
-								<td><b>Amount:</b></td>
-								<td id="amt"></td>
-							</tr>
-							<tr>
-								<td><b>VAT:</b></td>
-								<td>15%</td>
-							</tr>
-							<tr>
-								<td><b>Total:</b></td>
-								<td id="totamt"></td>
-							</tr>
-						</table>
+					<table>
+						<tr>
+							<td><b>Amount:</b></td>
+							<td id="amt"></td>
+						</tr>
+						<tr>
+							<td><b>VAT:</b></td>
+							<td>15%</td>
+						</tr>
+						<tr>
+							<td><b>Total:</b></td>
+							<td id="totamt"></td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</fieldset>
@@ -93,11 +89,12 @@ $('.reset').click(function(){
 	$('.clr').empty();
 })
 $('.order-item').click(function(){
+		$('.order-category').empty();
 		$('.order-form').empty();
  		item_name = $(this).val();
  		order_number = $('#order_number').val();
  		data = "item_name="+item_name+"&order_number="+order_number;
- 		url='sellajax';
+ 		url='sell_category';
  		$.ajax({
  			url:url,
  			data:data,
@@ -106,7 +103,7 @@ $('.order-item').click(function(){
  			success:function(response){
  				order_number++;
  				$('#order_number').val(order_number);
- 				$('.order-form').append(response);
+ 				$('.order-category').append(response);
  			},
  			error:function(response){}
  		});

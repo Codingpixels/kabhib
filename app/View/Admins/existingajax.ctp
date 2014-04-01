@@ -1,8 +1,18 @@
 <?php echo $this->Form->create('Item',array('url' => array('controller' => 'Admins',
 					   																	'action' => 'existing'))); ?>
 	<div class="special-form">
+		<label>Enter Item Code:</label>
+		<?php echo $this->Form->input('name',array('label' => false,'class' => 'form-control inp','id'=>'item_name','data-validation' => 'required','name'=> 'item_code')); ?>
+
+	</div>
+	<div class="special-form">
 		<label>Enter Item Name:</label>
 		<?php echo $this->Form->input('name',array('label' => false,'class' => 'form-control inp','id'=>'item_name','data-validation' => 'required','name'=> 'item_name')); ?>
+
+	</div>
+	<div class="special-form">
+		<label>Select Category:</label>
+			<?php echo $this->Form->input('item_category',array('options'=>$category_array,'label' => false,'class' => 'form-control inp','id'=>'item_code','data-validation' => 'required', 'name'=> 'item_category')); ?>
 
 	</div>
 	<div class="special-form">
@@ -14,11 +24,6 @@
 	<div class="special-form">
 		<label>Enter Price(Rs.):</label>
 			<?php echo $this->Form->input('weight',array('label' => false,'class' => 'form-control inp','id'=>'price','data-validation' => 'number', 'name'=> 'price')); ?>
-
-	</div>
-	<div class="special-form">
-		<label>Enter Item Code:</label>
-			<?php echo $this->Form->input('item_code',array('label' => false,'class' => 'form-control inp','id'=>'item_code','data-validation' => 'required', 'name'=> 'item_code')); ?>
 
 	</div>
 	<div class="special-form">

@@ -24,10 +24,9 @@ $(document).ready(function(){
  total=0;
  var total_amount = 0;
  $('.order_amount').each(function(i){
-  
-          var value = $(this).find('input').val()
-           total += parseInt(value);
-           totamt=total+ parseInt(total*0.15);
+  var value = $(this).find('input').val()
+  total += parseInt(value);
+  totamt=total+ parseInt(total*0.15);
  });
 $('#amt').html(total);
 $('#totamt').html(totamt);

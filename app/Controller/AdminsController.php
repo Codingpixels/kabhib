@@ -4,14 +4,14 @@
 
 		public $name = 'Admins';
 		public $uses = array('EmployeeOrder','CustomerOrderDetail','CustomerReturn','DeliveryDetail','DeliveryMaster','Eorderdetail',
-							'Cake','Bread','Extra','Khari','NewArrival','Pastry');
+							'Cake','Bread','Extra','Khari','NewArrival','Pastry','Category');
 		public $components = array('Email', 'Cookie');
 		public $helpers= array('Html' , 'Form');
 
 		public function admin() {
 		}
 
-		public function sales_report(){
+		public function sales_report() {
 			$date = date('Y-m-d');
 			$date=date_create($date);
 			if($this->request->params['pass']['0'] == 'week') {
@@ -404,6 +404,7 @@
 				$data[$tab_name]['item_code']=$this->request->data['item_code'];
 				$data[$tab_name]['shelf_life']=$this->request->data['shelf_life'];
 				$data[$tab_name]['unit']=$this->request->data['unit'];
+				$data[$tab_name]['category_id']=$this->request->data['item_category'];
 				$this->$tab_name->save($data);
 				$lastInsert = $this->$tab_name->getLastInsertId();
 				if($this->$tab_name->save($data)) {
@@ -417,6 +418,10 @@
 			$this->layout="ajax";
 			$item_name=$this->request->data['item_name'];
 			$this->set('item_name',$item_name);
+
+			$category_list = $this->Category->find('list',array('conditions'=>array('Category.item_type'=>$item_name),
+																'fields'=>array('Category.id','Category.category')));
+			$this->set('category_array',$category_list);
 		}
 
 	}
