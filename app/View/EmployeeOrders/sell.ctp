@@ -71,8 +71,10 @@
 
 <script type="text/javascript">
 $().ready(function() {
-      $("#CustomerSellForm").validate({
-      });
+	$('.submitbtn').click(function(){
+	    $('#CustomerSellForm').submit();
+	});
+    $("#CustomerSellForm").validate();
   });
 $(".brd").click(function (event) { 
 	        event.preventDefault();

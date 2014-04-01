@@ -1,23 +1,23 @@
 <?php
 	foreach ($list as $key => $value) { ?>		
-		<div class="item" style="width: 140px; height: 178px; display: -moz-stack;">
-			<button class="subitem btn-info menu" value="<?php echo $value[$item_type]['item_name']?>" id="item_name">
+		<div class="item" id="<?php echo $value[$item_type]['item_id']; ?>"style="width: 140px; height: 178px; display: -moz-stack;">
+			<button class="subitem btn-info menu" id="<?php echo $value[$item_type]['item_id']; ?>" value="<?php echo $value[$item_type]['item_id']?>" id="item_name">
 				<?php echo $value[$item_type]['item_name']; echo "(".$value[$item_type]['quantity'].")";?>
 		 		<img src="<?php echo '../'.$value[$item_type]['path']; ?>" alt="Image" height="90" width="117" class=".subitem" style="margin-top:9px;">
 		 	</button>
 			<input type="hidden" value="<?php echo $order_number; ?>"  id="order_no"/>
-			<input type="hidden" value="<?php echo $item_type; ?>"  id="item_type"/>
-			<input type="hidden" value="<?php echo $category_id; ?>"  id="item_category"/>
+			<input type="hidden" value="<?php echo $item_type; ?>"  id="<?php echo $value[$item_type]['item_id']; ?>item_type"/>
+			<input type="hidden" value="<?php echo $category_id; ?>"  id="<?php echo $value[$item_type]['item_id']; ?>item_category"/>
 		</div>
 	<?php } ?>
 
 <script type="text/javascript">
 $('.item').click(function(){
- 		item_name = $('#item_name').val();
- 		order_no=$('#order_no').val();
- 		item_type= $('#item_type').val();
- 		item_category= $('#item_category');
- 		data = "item_name="+item_name+'&item_type='+item_type+'&order_no='+order_no+'&category_id='+item_category;
+		item_id = $(this).attr('id');
+		order_no=$('#order_no').val();
+ 		item_type= $('#'+item_id+'item_type').val();
+ 		item_category= $('#'+item_id+'item_category');
+ 		data = "item_id="+item_id+'&item_type='+item_type+'&order_no='+order_no+'&category_id='+item_category;
  		url='sell_item';
  		$.ajax({
  			url:url,

@@ -37,10 +37,10 @@
 					if($i==substr($this->request->data[$i.'orderno'],0)) {
 			      		$item_array = array($i => array('Customer' => 
 														            array(
-														              'orderno' => $this->request->data[$i.'orderno'],
-														              'itemname' => $this->request->data[$i.'itemname'],
+														              'order_id' => $order_id,
+														              'item_name' => $this->request->data[$i.'item_name'],
 														              'quantity' => $this->request->data[$i.'quantity'],
-														              'price' => $this->request->data[$i.'price'],
+														              'total_bill' => $this->request->data[$i.'price'],
 														              'type'=> $this->request->data[$i.'type']
 														              )));
 			      		$type = $this->request->data[$i.'type'];
@@ -91,7 +91,6 @@
 			$item_name=$this->request->data['item_name'];
 			$category = array();
 			$find_category =$this->Category->find('all',array('conditions' => array('Category.item_type' =>$item_name)));
-			// if($find_category)
 			
 			if(empty($find_category)) {
 				$this->set('no_category_id', '0');
@@ -109,19 +108,17 @@
 		public function sell_item() {
 			$this->layout='ajax';
 			$item_type = $this->request->data['item_type'];
-			$item_name = $this->request->data['order_name'];
 			$item_id = $this->request->data['item_id'];
+			$price= $this->$item_type->find('first',array('conditions'=>array($item_type.'.item_id' =>$item_id)));
+			
 			$this->set('item_id',$this->request->data['item_id']);
-			$this->set('item_name',$this->request->data['item_name']);
+			$this->set('item_name',$price[$item_type]['item_name']);
 			$this->set('order_no',$this->request->data['order_no']);	
 			$this->set('item_type',$this->request->data['item_type']);
 			$this->set('category_id',$this->request->data['category_id']);
 
-			$price= $this->$item_type->find('first',array('conditions'=>array($item_type.'.item_id' =>$item_id)));
-			echo '<pre>'; print_r($price); exit;
 			$total_price=$price[$item_type]['price']*1;
 			$this->set('total_price',$total_price);
-			//echo '<pre>'; print_r($total_price); exit;
 		}
 
 		public function sellprice() {
@@ -146,8 +143,6 @@
 
 		public function specialajax() {
 			$this->layout='ajax';
-			//echo "<pre>"; print_r($this->request->data);exit;
-
 			if($this->request->data['flavour']=="Others")
 			{
 				$flavour=$this->request->data['flavour2'];
