@@ -2,9 +2,9 @@
 	
 	class EmployeeOrdersController extends AppController {
 		public $name='EmployeeOrders';
-		public $uses=array('EmployeeOrder','Eorderdetail','DeliveryMaster','DeliveryDetail','Bread','Cake','Puff',
-							'NewArrival','EmployeeReturn','Pastry','Khari','New_arrival','Extra','CustomerOrderDetail','Customer',
-							'Chocolate','Pudding','Category');
+		public $uses=array('EmployeeOrder','Eorderdetail','DeliveryMaster','DeliveryDetail','EmployeeReturn','New_arrival','Extra','CustomerOrderDetail',
+							'Customer','Pudding','Category','Bread','Cake','Chocolate','Cookie','CreamRoll','CupCake','DryCake','Khakhra','Khari','Pastry',
+							'Puff','Pudding','Savories','NewArrival');
 		public $helper=array('Html','Form');
 
 		public function sell() {
@@ -45,7 +45,7 @@
 														              )));
 			      		$type = $this->request->data[$i.'type'];
 						$old_qty = $this->$type->find('first',array('conditions'=>array($type.'.item_name' =>
-														$item_array[$i]['Customer']['itemname']),'fields'=>
+														$item_array[$i]['Customer']['item_name']),'fields'=>
 														array($type.'.quantity',$type.'.item_id')
 														));
 						$new_qty[$type]['quantity'] = $old_qty[$type]['quantity'] - $item_array[$i]['Customer']['quantity'];
@@ -57,10 +57,10 @@
 						$order['CustomerOrderDetail']['order_id']=$order_id;
 						$order['CustomerOrderDetail']['order_date']=date('Y-m-d');
 						$order['CustomerOrderDetail']['customer_id']=$customer_id;
-						$order['CustomerOrderDetail']['item_name']=$item_array[$i]['Customer']['itemname'];
+						$order['CustomerOrderDetail']['item_name']=$item_array[$i]['Customer']['item_name'];
 						$order['CustomerOrderDetail']['item_quantity']=$item_array[$i]['Customer']['quantity'];
 						$order['CustomerOrderDetail']['employee_id']=$this->Session->read('eid');
-						$order['CustomerOrderDetail']['total_bill']=$item_array[$i]['Customer']['price'];
+						$order['CustomerOrderDetail']['total_bill']=$item_array[$i]['Customer']['total_bill'];
 						$order['CustomerOrderDetail']['type']=$item_array[$i]['Customer']['type'];
 
 						$this->CustomerOrderDetail->save($order);
@@ -235,14 +235,14 @@
 							$item_array = array($i => array('Customer' => 
 																	array(
 																		'orderno' => $this->request->data[$i.'orderno'],
-																		'itemname' => $this->request->data[$i.'itemname'],
+																		'item_name' => $this->request->data[$i.'item_name'],
 																		'quantity' => $this->request->data[$i.'quantity'],
 																		'price' => $this->request->data[$i.'price'],
 																		'type'=> $this->request->data[$i.'type']
 																	)));
 			       			$type = $this->request->data[$i.'type'];
 							$old_qty = $this->$type->find('first',array('conditions'=>array($type.'.item_name' =>
-													$item_array[$i]['Customer']['itemname']),'fields'=>
+													$item_array[$i]['Customer']['item_name']),'fields'=>
 													array($type.'.quantity',$type.'.item_id')
 													));
 							$new_qty[$type]['quantity'] = $old_qty[$type]['quantity'] - $item_array[$i]['Customer']['quantity'];
@@ -252,7 +252,7 @@
 			         			$this->CustomerOrderDetail->id = $lastinserid;
 			        		}
 			           		$data['CustomerOrderDetail']['order_id']=$order_id;
-			        		$data['CustomerOrderDetail']['item_name']=$this->request->data[$i.'itemname'];
+			        		$data['CustomerOrderDetail']['item_name']=$this->request->data[$i.'item_name'];
 					        $data['CustomerOrderDetail']['item_quantity']=$this->request->data[$i.'quantity'];         
 					        $data['CustomerOrderDetail']['type']=$this->request->data[$i.'type'];
 					        $data['CustomerOrderDetail']['total_bill']=$this->request->data[$i.'price'];

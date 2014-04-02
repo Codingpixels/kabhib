@@ -4,7 +4,8 @@
 
 		public $name = 'Admins';
 		public $uses = array('EmployeeOrder','CustomerOrderDetail','CustomerReturn','DeliveryDetail','DeliveryMaster','Eorderdetail',
-							'Cake','Bread','Extra','Khari','NewArrival','Pastry','Category');
+							'Extra','NewArrival','Category','Bread','Cake','Chocolate','Cookie','CreamRoll','CupCake','DryCake',
+							'Khakhra','Khari','Pastry','Puff','Pudding','Savouries');
 		public $components = array('Email', 'Cookie');
 		public $helpers= array('Html' , 'Form');
 
@@ -252,15 +253,21 @@
 			$damage_data = array();
 			$i = 1;
 			$total = 0;
+
 			while($i <= $j) {
-				$data = $this->CustomerReturn->find('all',array('conditions'=>array('CustomerReturn.return_date'=>$date1,
-													'CustomerReturn.note'=>'Damage','CustomerReturn.branch'=>$branch),
+				$data = $this->CustomerReturn->find('all',array('conditions'=>array(
+													'CustomerReturn.return_date >='=>date('Y-m-d', strtotime($date1)),
+													'CustomerReturn.return_date <='=>date('Y-m-d', strtotime($date2)),
+													'CustomerReturn.note'=>'Damage','CustomerReturn.branch'=>$branch,
+													),
 													'fields'=>array('CustomerReturn.item_quantity')));
 				$temp =  0;
 				foreach ($data as $key => $value) {
 					$temp = $temp + $value['CustomerReturn']['item_quantity'];
 				}
-				$sold = $this->CustomerOrderDetail->find('all',array('conditions'=>array('CustomerOrderDetail.order_date'=>$date1,
+				$sold = $this->CustomerOrderDetail->find('all',array('conditions'=>array(
+														'CustomerOrderDetail.order_date >='=>date('Y-m-d', strtotime($date1)),
+														'CustomerOrderDetail.order_date <='=>date('Y-m-d', strtotime($date2)),
 														'CustomerOrderDetail.branch'=>$branch),
 														'fields'=>array('CustomerOrderDetail.item_quantity')));
 				$temp1 = 0;
@@ -278,6 +285,7 @@
 				$date1 = date_format($date,"Y-m-d");
 				$i++;
 			}
+				
 			$this->set('total',$total);
 			$this->set('damage',$damage_data);
 			$this->set('month',$month);

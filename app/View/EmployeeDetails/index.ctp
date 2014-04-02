@@ -21,7 +21,7 @@
 				?>
 				<div id="link" style="margin-left: 51px; margin-top: -12px;">
 			<?php 
-				echo $this->Html->link('Click here to Register!', array('controller'=>'EmployeePersonals', 'action'=>'signup'));
+				echo $this->Html->link('Click here to add new user!', array('controller'=>'EmployeePersonals', 'action'=>'signup'));
  			?>
  		</div>
 		</div>

@@ -3,7 +3,9 @@
 	class DeliveriesController extends AppController {
 
 			public $name = 'Deliveries';
-			public $uses = array('Cake','Bread','Khari','Pastry','NewArrival','Extra','EmployeeOrder','DeliveryDetail','DeliveryMaster','Eorderdetail');
+			public $uses = array('NewArrival','Extra','EmployeeOrder','DeliveryDetail','DeliveryMaster','Eorderdetail',
+								'Bread','Cake','Chocolate','Cookie','CreamRoll','CupCake','DryCake','Khakhra','Khari','Pastry',
+							'Puff','Pudding','Savories');
 			public $components = array('Email', 'Cookie');
 			public $helpers= array('Html' , 'Form');
 

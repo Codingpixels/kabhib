@@ -3,7 +3,8 @@
 	class EmployeeDetailsController extends AppController {
 
 		public $name = 'EmployeeDetails';
-		public $uses = array('EmployeeDetail','Cake','Bread','Khari','Pastry','NewArrival','Extra','Pudding');
+		public $uses = array('EmployeeDetail','NewArrival','Extra','Bread','Cake','Chocolate','Cookie','CreamRoll','CupCake','DryCake','Khakhra','Khari','Pastry',
+							'Puff','Pudding','Savories');
 		public $components = array('Email', 'Cookie');
 		public $helpers= array('Html' , 'Form');
 
