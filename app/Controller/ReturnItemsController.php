@@ -3,8 +3,9 @@
 	class ReturnItemsController extends AppController {
 
 		public $name = 'ReturnItems';
-		public $uses = array('EmployeeDetails','Cake','Bread','Khari','Pastry','NewArrival','CustomerOrderDetail',
-								'EmployeeReturn','CustomerReturn','Signup','Extra','DeliveryDetail','DeliveryMaster','FreshReturn');
+		public $uses = array('EmployeeDetails','NewArrival','CustomerOrderDetail','EmployeeReturn','CustomerReturn','Signup',
+							'Extra','DeliveryDetail','DeliveryMaster','FreshReturn','Bread','Cake','Chocolate','Cookie','CreamRoll','CupCake','DryCake','Khakhra','Khari','Pastry',
+							'Puff','Pudding','Savories');
 		public $components = array('Email', 'Cookie');
 		public $helpers= array('Html' , 'Form');
 

@@ -17,7 +17,8 @@
         ]);
 
         var options = {
-          title: "<?php echo $title; ?>"
+          title: "<?php echo $title; ?>",
+          
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

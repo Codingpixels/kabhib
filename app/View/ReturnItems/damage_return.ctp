@@ -4,7 +4,7 @@
 			<div class='subinner'>
 				<div class="hmediv">
 					<?php
-						if($this->Session->check('eid')):
+						//if($this->Session->check('eid')):
 					?>
 					<form>
 						<button formaction="<?php echo $this->Html->url(array('controller' => 'ReturnItems', 
@@ -22,7 +22,7 @@
 						</button>	
 					</form>
 					<?php
-    					endif;
+    					//endif;
 					?>
 				</div>	
 			</div>

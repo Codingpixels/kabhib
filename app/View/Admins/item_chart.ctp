@@ -26,14 +26,16 @@
       						}
           				?>
                      ]],
-          options: {'title': "<?php echo $title; ?>"},
-          containerId: 'visualization'
+          options: {
+            'title': "<?php echo $title; ?>",  
+            'vAxis': {title: "No of quantities"},
+            'hAxis': {title: "Items"},
+          },
+          containerId: 'visualization',
+         
         });
         wrapper.draw();
       }
-      
-      
-
       google.setOnLoadCallback(drawVisualization);
     </script>
   </head>

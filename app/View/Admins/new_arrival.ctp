@@ -2,7 +2,9 @@
 	<div class="inner_content sel">
 		<fieldset class='stockorder'>
 			<div class='subinner'>
+				<label>Add new arrival </label>
 				<div class='invoice2' style="width: 718px;">
+
 					<?php echo $this->Form->create(); ?>
 						<div class="special-form">
 							<label>Enter Name:</label>
