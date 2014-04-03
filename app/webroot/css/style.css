@@ -336,3 +336,27 @@ textarea {
 	margin-top: 7px;
 	width:832px !important;
 }
+.subinner.sell {
+    margin-left: 0;
+}
+.stockorder {
+	margin-left:22px !important;
+	height:360px;
+}
+.invoice p {
+	margin-left:7px;
+}
+.btn-success.btn.submitbtn.btn2 {
+	margin-left: 302px;
+    margin-right: 0;
+    margin-top: 20px;
+}
+.btn-success.btn.submitbtn.btn2.return {
+	margin-top:-61px;
+	margin-left: 578px;
+}
+.order-label {
+	margin-top: 14px;
+	margin-left: 5px;
+	font-size: 14px;
+}

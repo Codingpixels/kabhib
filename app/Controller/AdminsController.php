@@ -404,6 +404,7 @@
 		public function existing() {
 
 			if(!empty($this->request->data)) {
+				//echo '<pre>'; print_r($this->request->data); exit;
 				$tab_name=$this->request->data['item_type'];
 				$data[$tab_name]['item_name']=$this->request->data['item_name'];
 				$data[$tab_name]['quantity']=$this->request->data['quantity'];
@@ -430,6 +431,10 @@
 			$category_list = $this->Category->find('list',array('conditions'=>array('Category.item_type'=>$item_name),
 																'fields'=>array('Category.id','Category.category')));
 			$this->set('category_array',$category_list);
+			if(empty($category_list)) {
+				$category_array=array(0=>'NO CATEGORY');
+				$this->set('category_array',$category_array);
+			}
 		}
 
 	}

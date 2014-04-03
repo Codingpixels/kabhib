@@ -1,16 +1,13 @@
 <?php
-	//$name=$item_name;
-	foreach ($list_category as $key => $value) {
-?>		<div class="item category" d-val="<?php echo $value;?>" style="width: 140px; height: 178px; display: -moz-stack;">
+	foreach ($list_category as $key => $value) { ?>
+		<div class="item category" d-val="<?php echo $value;?>" style="width: 140px; height: 178px; display: -moz-stack;">
 		<button class="subitem btn-info menu" value="<?php echo $key?>">
 			 <?php echo $value; ?>
 		</button>
 		<input type="hidden" value="<?php echo $item_name; ?>"  id="order_name"/>
 		<input type="hidden" value="<?php echo $order_no; ?>"  id="order_no"/>
 		</div>
-	<?php } ?>
-
-
+<?php } ?>
 
 <script type="text/javascript">
 <?php if($no_category_id == '0'){

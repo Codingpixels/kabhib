@@ -22,33 +22,16 @@
 		            $data['CustomerReturn']['return_date_time']=date('Y-m-d');;
 		            $data['CustomerReturn']['note']=$value['note'];
 		            $data['CustomerReturn']['remark']=$value['remark'];
+		            $item_tab = $value['v3'];
 		            if($this->CustomerReturn->save($data)) {
 		            	if($value['note'] == 'Reuse') {
-			                if($value['v3'] == 'Bread') {
-				                $q = $this->Bread->find('first',array('conditions' => 
-				                    array('Bread.item_name' => $value['v2']),
-				                    'fields' => array('Bread.quantity','Bread.item_id')
-				                    ));
-
-				                $total_quantity=$q['Bread']['quantity']+$value['qty'];
-				                $id=$q['Bread']['item_id'];
-				                $this->Bread->updateAll(
-				                    array('Bread.quantity' => $total_quantity),
-				                    array('Bread.item_id' => $id)
-				                );
-			                } else {
-				                $q = $this->Cake->find('first',array('conditions' => 
-				                array('Cake.item_name' => $value['v2']),
-			                      'fields' => array('Cake.quantity','Cake.item_id')
-			                      ));
-				                $total_quantity=$q['Cake']['quantity']+$value['qty'];
-				                $id=$q['Cake']['item_id'];
-				                $this->Cake->updateAll(
-				                    array('Cake.quantity' => $total_quantity),
-				                    array('Cake.item_id' => $id)
-				                );
-			                }
-			            }
+		            		$db_data = $this->$item_tab->find('first', array('conditions'=>array($item_tab.'.item_name' =>$value['v2']),
+		            													'fields'=>array($item_tab.'.quantity',$item_tab.'.item_id')));
+		            	}
+		            	$total_quantity = $db_data[$item_tab]['quantity'] + $value['qty'];
+		            	$id = $db_data[$item_tab]['item_id'];
+		            	$this->$item_tab->updateAll(array($item_tab.'.quantity' => $total_quantity),
+		            								array($item_tab.'.item_id' => $id));
 		            }
 		            $lastinserid = $this->CustomerReturn->getlastInsertId();
 		            $lastinserid++;
@@ -74,7 +57,6 @@
 			if($this->request->is('post')) {
 				$data = $this->request->data['stock_return'];
 				foreach ($data as $key => $value) {
-							//echo "<pre>"; print_r($value); exit;
 					if(!empty($lastinsertid)) {
 				       $this->EmployeeReturn->id = $lastinsertid;
 				    }

@@ -8,7 +8,7 @@
 <div class="list1">
 	<label>Particulars</label>
 	<label id="kg">Kg</label>
-	<label id="amt">Amt:</label>
+	<label id="amt">Amount:</label>
 </div>
 <div class="itmname"><?php echo $flavour; ?></div>
 <div class="weight"><?php echo $weight;  ?></div>

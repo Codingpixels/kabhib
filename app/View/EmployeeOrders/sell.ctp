@@ -5,26 +5,23 @@
 ?>
 <div class="main_content">
 	<div class="inner_content sel">
-		<fieldset class='stockorder' style="margin-left: 22px; height: 360px;">
-			<div class='subinner'>     
+		<fieldset class='stockorder'>
+			<div class='subinner sell'>     
 				<div class="menubtn">
 					<?php
-
 						foreach ($item_array as $key => $value) { ?>
 							<button name="<?php echo $key; ?>" value="<?php echo $key; ?>" class="order-item orderitem btn-primary brd" id="brd"> <?php echo $value;  ?> </button>
 						<?php	
 						}
 					?>
 				</div>
-
 				<div class="order-category" >
 				</div>
 				<div class="order-form" style="margin-top:44px;">
 				</div>
 				<input type="hidden" value="1" id="order_number">
-
 				<div class="invoice">
-					<p style="margin-left: 7px;">Invoice:</p>
+					<p>Invoice:</p>
 						<?php 
 						echo $this->Form->create('Customer',array('url' => array('controller' => 'EmployeeOrders',
 					   																	'action' => 'takeaway', 'id' => 'main'))); 
@@ -38,12 +35,12 @@
 									<th><label>Particulars</label></th>
 									<th><label>Quantity</label></th>
 									<th><label>Amount</label></th>
-									<th><labele><?php echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"; ?></label></th>
+									<th><label>Delete</label></th>
 								</tr>
 							</table>	
 						</div> 
 						<input value="Bill" type='submit' class='btn-success btn submitbtn btn2' 
-						style='margin-left: 306px; margin-top: 70px; width: 82px; height: 50px;'>
+						>
 						<?php
 						echo $this->Form->end();
 						?>
@@ -77,29 +74,29 @@ $().ready(function() {
     $("#CustomerSellForm").validate();
   });
 $(".brd").click(function (event) { 
-	        event.preventDefault();
-	        $('.brd').prop('disabled', false);
-	        $(this).prop('disabled', true);
-	    });
+    event.preventDefault();
+    $('.brd').prop('disabled', false);
+    $(this).prop('disabled', true);
+});
 
 $('.order-item').click(function(){
-		$('.order-category').empty();
-		$('.order-form').empty();
- 		item_name = $(this).val();
- 		order_number = $('#order_number').val();
- 		data = "item_name="+item_name+"&order_number="+order_number;
- 		url='sell_category';
- 		$.ajax({
- 			url:url,
- 			data:data,
- 			dataType:"html",
- 			type:'post',
- 			success:function(response){
- 				order_number++;
- 				$('.order-category').append(response);
- 			},
- 			error:function(response){}
- 		});
+	$('.order-category').empty();
+	$('.order-form').empty();
+	item_name = $(this).val();
+	order_number = $('#order_number').val();
+	data = "item_name="+item_name+"&order_number="+order_number;
+	url='sell_category';
+	$.ajax({
+		url:url,
+		data:data,
+		dataType:"html",
+		type:'post',
+		success:function(response){
+			order_number++;
+			$('.order-category').append(response);
+		},
+		error:function(response){}
+	});
  });
 </script>
 <style type="text/css">
