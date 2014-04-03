@@ -28,11 +28,11 @@
         </td>
         <td width=''>
         <?php echo $this->Form->input($i.'.qty', array('type' => 'text', 'label'=>false,
-                                                        'class'=>'required rqtyinput'));?>
+                                                        'class'=>'rqtyinput'));?>
         </td>
         <td width=''>
         <?php echo $this->Form->textarea($i.'.remark', array('type' => 'textarea', 'label'=>false,
-                                                          'class'=>'required rqtyinput txtbox',
+                                                          'class'=>'rqtyinput txtbox',
                                                           'rows' =>'1',
                                                           'cols' => '160'));?>
         </td>

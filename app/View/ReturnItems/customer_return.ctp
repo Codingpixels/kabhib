@@ -6,14 +6,14 @@
         <fieldset class='stockorder'>
             <div class='subinner'>
                 <?php echo $this->Form->create();?>
-                <label style="margin-top: 14px; margin-left: 5px;">Order ID:</label>
+                <label class='order-label'>Order ID:</label>
                 <div class='return-form'>
                     <?php echo $this->Form->input('order_id', array('type' => 'text','label'=>false,
                                                 'class' => 'required','id'=>'orderid'));?>
                 </div>
                 <?php echo $this->Form->end();?>
-                <button type="submit" class="btn-success btn submitbtn btn2" value="ok" id="submit" 
-                style="margin-left: 569px; margin-top: -65px;">SEARCH</button>
+                <button type="submit" class="btn-success btn submitbtn btn2 return" value="ok" id="submit" 
+                >SEARCH</button>
                 <div id='error'></div>
                 <div class="add_list">
 

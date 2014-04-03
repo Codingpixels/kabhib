@@ -2,7 +2,7 @@
 	
 	class EmployeeOrdersController extends AppController {
 		public $name='EmployeeOrders';
-		public $uses=array('EmployeeOrder','Eorderdetail','DeliveryMaster','DeliveryDetail','EmployeeReturn','New_arrival','Extra','CustomerOrderDetail',
+		public $uses=array('EmployeeOrder','Eorderdetail','DeliveryMaster','DeliveryDetail','EmployeeReturn','Extra','CustomerOrderDetail',
 							'Customer','Pudding','Category','Bread','Cake','Chocolate','Cookie','CreamRoll','CupCake','DryCake','Khakhra','Khari','Pastry',
 							'Puff','Pudding','Savories','NewArrival');
 		public $helper=array('Html','Form');
@@ -143,16 +143,12 @@
 
 		public function specialajax() {
 			$this->layout='ajax';
-			if($this->request->data['flavour']=="Others")
-			{
+			if($this->request->data['flavour']=="Others") {
 				$flavour=$this->request->data['flavour2'];
 			}
-			else
-			{
+			else {
 				$flavour=$this->request->data['flavour'];
-
 			}
-
 			$customer_name=$this->request->data['customer_name'];
 			$number=$this->request->data['customer_no'];
 			$weight=$this->request->data['weight'];
@@ -273,7 +269,7 @@
 	  	}
 
 		public function order() {
-   			if($this->request->is('post')) {
+   			if($this->request->is('post') && (!empty($this->request->data))) {
 			    $item_count = count($this->request->data)/4;
 			    $item_array = array();
 			    $item_final_array = array();

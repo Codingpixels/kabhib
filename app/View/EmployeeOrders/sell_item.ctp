@@ -20,76 +20,68 @@
 <input type="hidden" value="" id="total_amt" />
 <script type="text/javascript">
 $(document).ready(function(){
- var m=$('#amt').html();
- total=0;
- var total_amount = 0;
- $('.order_amount').each(function(i){
-  var value = $(this).find('input').val()
-  total += parseInt(value);
-  totamt=total+ parseInt(total*0.15);
- });
-$('#amt').html(total);
-$('#totamt').html(totamt);
+  var m=$('#amt').html();
+  total=0;
+  var total_amount = 0;
+  $('.order_amount').each(function(i){
+    var value = $(this).find('input').val()
+    total += parseInt(value);
+    totamt=total+ parseInt(total*0.15);
+  });
+  $('#amt').html(total);
+  $('#totamt').html(totamt);
 
- $('.qty').each(function (){
-  $(this).bind('change',function(){
-        i=$(this).attr('Iid');
-        n=$(this).attr('qid');
-        a=$('#'+n+' input').val();
-        item_qty = a;
-        name = $(this).attr('ordername');
-        itm=$(this).attr('itemname');
-        itemprice=$(this).attr('itmprice');
-        data = "item_qty="+item_qty+'&name='+name+'&item_name='+itm+'&price='+itemprice;
-        url='sellprice';
-        $.ajax({
-         url:url,
-         data:data,
-         dataType:'JSON',
-         type:'post',
-         success:function(response){
-            $('#'+i+' input').attr('value',response);
-             total = 0;
-            $('.order_amount').each(function(){
-            var value = $(this).find('input').val()
-            total += parseInt(value);
-            totamt=total+ parseInt(total*0.15);
-          });
-          $('#amt').html(total);
-          $('#totamt').html(totamt);
-         },
-         error:function(response){}
-         
-        });
-   });
- });
-
-      $('tr button').on('click',function(){
-            $(this).closest("tr").remove();
-            amt=$('#amt').html();
-            alert(amt);
-            tamt=0;
-
-            total = 0;
-            if(amt==0)
-            {
-                  alert("hi");
-                 $('#totamt').html(tamt);  
-            }
-            else
-            {
-            $('.order_amount').each(function(){
-                 
-                 var value = $(this).find('input').val();
-                 total += parseInt(value);
-                 totamt=total+ parseInt(total*0.15);
-            });
-              
+  $('.qty').each(function (){
+    $(this).bind('change',function(){
+      i=$(this).attr('Iid');
+      n=$(this).attr('qid');
+      a=$('#'+n+' input').val();
+      item_qty = a;
+      name = $(this).attr('ordername');
+      itm=$(this).attr('itemname');
+      itemprice=$(this).attr('itmprice');
+      data = "item_qty="+item_qty+'&name='+name+'&item_name='+itm+'&price='+itemprice;
+      url='sellprice';
+      $.ajax({
+        url:url,
+        data:data,
+        dataType:'JSON',
+        type:'post',
+        success:function(response){
+              $('#'+i+' input').attr('value',response);
+               total = 0;
+              $('.order_amount').each(function(){
+                var value = $(this).find('input').val()
+                total += parseInt(value);
+                totamt=total+ parseInt(total*0.15);
+              });
               $('#amt').html(total);
               $('#totamt').html(totamt);
-            }
+        },
+        error:function(response){}
+      });
+    });
+  });
 
-        }); 
-
+  $('tr button').on('click',function(){
+    $(this).closest("tr").remove();
+    amt=$('#amt').html();
+    alert(amt);
+    tamt=0;
+    total = 0;
+    if(amt==0) {
+      alert("hi");
+      $('#totamt').html(tamt);  
+    }
+    else {
+      $('.order_amount').each(function(){
+        var value = $(this).find('input').val();
+        total += parseInt(value);
+        totamt=total+ parseInt(total*0.15);
+      });
+      $('#amt').html(total);
+      $('#totamt').html(totamt);
+    }
+  });
 }); 
 </script>

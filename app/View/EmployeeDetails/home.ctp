@@ -1,9 +1,8 @@
 
 <div class="main_content">
-
 	<div class="inner_content">
 		<fieldset class='stockorder'>
-			<div class='subinner'>
+			<div class='subinner sell'>
 				<div class="hmediv">
 					<?php
 						if($this->Session->check('eid')):

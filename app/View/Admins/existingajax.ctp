@@ -1,5 +1,15 @@
+<script>
+  /*$().ready(function() {
+      $("#ItemExistingajaxForm").validate({
+      });
+  });*/
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
+<script type="text/javascript">
+	$.validate();
+</script>
 <?php echo $this->Form->create('Item',array('url' => array('controller' => 'Admins',
-					   																	'action' => 'existing'))); ?>
+					   										'action' => 'existing'))); ?>
 	<div class="special-form">
 		<label>Enter Item Code:</label>
 		<?php echo $this->Form->input('name',array('label' => false,'class' => 'form-control inp','id'=>'item_name','data-validation' => 'required','name'=> 'item_code')); ?>

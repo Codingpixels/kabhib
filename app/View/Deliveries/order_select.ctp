@@ -29,7 +29,6 @@
         $("#error").css("display", "none");
         return true;
      }
-    // });
   } 
 </script>
 <style type="text/css">
@@ -42,19 +41,18 @@
 }
 </style>
 <div class="main_content">
-<div class='inner_content'>
-<fieldset class='stockorder'>
-    <div class='subinner'>
-        <label><b><u>Take Delivery :</u></b></label>
-        <?php echo $this->Form->create('Ereturn',array('url'=>array('controller'=>'Deliveries',
-                                  'action'=>'order_select')));?>
-        <?php echo $this->Form->input('oid', array('type' => 'text', 'label'=>false,
-                                          'class' => 'required number','label'=>'Order ID:','value' => $lastinsertid));?>
-        <div id='error'></div>
-        <input type="submit" value="Check Order" class='submitbtn btn3 btn-success btn2' onclick="return my();" > 
-        <?php echo $this->Form->end();?>
-    </div>
-</fieldset>
-
-</div>
+  <div class='inner_content'>
+    <fieldset class='stockorder'>
+      <div class='subinner'>
+          <label><b><u>Take Delivery :</u></b></label>
+          <?php echo $this->Form->create('Ereturn',array('url'=>array('controller'=>'Deliveries',
+                                    'action'=>'order_select')));?>
+          <?php echo $this->Form->input('oid', array('type' => 'text', 'label'=>false,
+                                            'class' => 'required number','label'=>'Order ID:','value' => $lastinsertid));?>
+          <div id='error'></div>
+          <input type="submit" value="Check Order" class='submitbtn btn3 btn-success btn2' onclick="return my();" > 
+          <?php echo $this->Form->end();?>
+      </div>
+    </fieldset>
+  </div>
 </div>

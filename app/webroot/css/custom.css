@@ -16,7 +16,6 @@
 {
 	width: 1349px;
 	height: 603px;
-	/*margin-left: 59px;*/
 	box-shadow: 3px 6px 22px;
 	margin-top: 17px;
 	overflow: hidden;
@@ -29,7 +28,7 @@
 	border: 1px solid;
 	border-color: #ffcccc ;
 	height: 676px !important;
-	margin-left: -27px;
+	margin-left: 0px!important;
 	margin-top: 17px;
 	background-color: #FDF4F2;
 }
@@ -165,7 +164,7 @@
 	margin-left: 869px !important;
 	background-color: #FFFFFF;
 	width: 404px;
-	height: 570px;
+	height: 502px;
 }
 .invoice1{
 	width: 386px;

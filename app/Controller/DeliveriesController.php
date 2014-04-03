@@ -40,7 +40,7 @@
 					$order_data = $this->Eorderdetail->find('all',array('conditions'=>array('Eorderdetail.order_id'=>$oid)));
 					$this->set('order_data',$order_data);
 				}
-				if($this->request->is('post')) {
+				if($this->request->is('post')) {echo '<pre>'; print_r($this->request->data); exit;
 					$this->EmployeeOrder->id = $this->request->data['EmployeeDetail']['0']['v3'];
 					$flag['EmployeeOrder']['flag'] = '1';
 					$this->EmployeeOrder->save($flag);
@@ -63,6 +63,7 @@
 							if($this->DeliveryDetail->save($data)){
 								$new_data = $this->$type->find('first',array('conditions'=>array($type.'.item_name' => $value['v2']),
 																'fields' => array($type.'.item_id',$type.'.quantity')));
+								//echo '<pre>'; print_r($this->request->data); exit;
 								$new_qty[$type]['quantity'] = $new_data[$type]['quantity'] + $value['qty'] ;
 								$this->$type->id = $new_data[$type]['item_id'];
 								$this->$type->save($new_qty);
