@@ -1,5 +1,5 @@
 <?php
-  $note_array=array('select'=>'select','Reuse'=>'Reuse','Damage'=>'Damage');
+  $note_array=array('Reuse'=>'Reuse','Damage'=>'Damage');
 ?>
 <?php 
   echo $this->Form->create('Customer',array('url'=>array('controller'=>'ReturnItems','action'=>'customer_return')));
@@ -18,6 +18,7 @@
       $v1=$value['CustomerOrderDetail']['order_id'];
       $v2=$value['CustomerOrderDetail']['item_name'];
       $v3=$value['CustomerOrderDetail']['type'];
+      $v4=$value['CustomerOrderDetail']['item_quantity'];
       ?>
       <tr>
         <td width=''>
@@ -44,6 +45,7 @@
     <?php echo $this->Form->input($i.'.v1',array('type'=>'hidden','value'=>$v1)); ?>
     <?php echo $this->Form->input($i.'.v2',array('type'=>'hidden','value'=>$v2)); ?>
     <?php echo $this->Form->input($i.'.v3',array('type'=>'hidden','value'=>$v3)); ?>
+    <?php echo $this->Form->input($i.'.v4',array('type'=>'hidden','value'=>$v4)); ?>
 
   <?php $i++; echo "</tr>";} echo"</table>";?>
 

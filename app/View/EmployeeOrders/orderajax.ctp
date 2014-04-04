@@ -4,8 +4,8 @@
 ?>  
   <div class="item" d-val="<?php echo $value[$name]['item_name']?>" style="width: 140px; height: 178px; display: -moz-stack;">
     <button class="subitem btn-info menu" value="<?php echo $value[$name]['item_name']?>">
-     <?php echo $value[$name]['item_name']; echo "(".$value[$name]['quantity'].")";?>
-     <img src="<?php echo '../'.$value[$name]['path']; ?>" alt="Image" height="90" width="117" class=".subitem" style="margin-top:9px;"> </button>
+    <?php echo $value[$name]['item_name']; echo "(".$value[$name]['quantity'].")";?>
+    <img src="<?php echo '../'.$value[$name]['path']; ?>" alt="Image" height="90" width="117" class=".subitem" style="margin-top:9px;"> </button>
     <input type="hidden" value="<?php echo $name; ?>"  id="order_name"/>
     <input type="hidden" value="<?php echo $order_no; ?>"  id="order_no"/>
   </div>

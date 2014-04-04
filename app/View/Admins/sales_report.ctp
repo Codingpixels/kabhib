@@ -82,10 +82,27 @@
 								       				$item_string = $item_string.$type."'s".' Chart';
 								       			?>
 								       		</table>
-								       		<a href="/kabhib/Admins/item_chart/<?php echo $item_string; ?>" 
+								       		<?php 
+								       		echo $this->Form->create('item_chart', array('url' => array('controller' => 'Admins', 'action' => 'item_chart')));
+								       		$index = 0;
+								       				for($i=0;$i<$j;$i++){
+									       				if($item_type[$i] == $type){
+									       				
+									       				echo $this->Form->hidden($item_name[$i], array('value' => $item_quantity[$i]));
+								       		
+									       				}
+								       				}
+								       		//$this->Form->input("View ".$type."s Chart > > >", array('type' => 'submit'));
+								       		?>
+								       		<input type="submit" value="View">
+								       		<?php
+
+								       		echo $this->Form->end();
+								       		?>
+								       		<!-- <a href="/kabhib/Admins/item_chart/<?php echo $item_string; ?>" 
 								       		style="margin-left: 532px">
 								       			View <?php echo $type."'s"; ?>  Chart > > >
-								       		</a> 			        
+								       		</a> 	 -->		        
 								     	</div>
 								   	</div>
 							<?php

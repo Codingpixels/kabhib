@@ -162,18 +162,24 @@
 		}
 
 		public function item_chart() {
-			$i = 0;
-			$j = 0;
-			$count = (count($this->request->params['pass'])-1);
-			while ($i < $count) {
-				$x_axis[$j] = $this->request->params['pass'][$i];
-				$y_axis[$j] = $this->request->params['pass'][++$i];
-				$i++;
-				$j++;
+			if(!empty($this->request->data)){
+				$item_array = $this->request->data['item_chart'];
+				$x_axis = array();
+				$y_axis = array();
+				$i = 0;
+				foreach ($item_array as $key => $value) {
+					$x_axis[$i] = intval($value);
+					$y_axis[$i] = $key;
+					$i++;
+				}
+				$this->set('X',json_encode($x_axis));
+				$this->set('Y',json_encode($y_axis));
+				// print_r(json_encode($x_axis)) ."</br>";
+				// print_r(json_encode($y_axis));exit;
+				// $this->set('title',$this->request->data['item_chart']['item_string'][$i]);
+				
 			}
-			$this->set('X',$x_axis);
-			$this->set('Y',$y_axis);
-			$this->set('title',$this->request->params['pass'][$i]);
+
 		}
 
 		public function damage_report() {

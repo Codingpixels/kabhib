@@ -1,3 +1,4 @@
+
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
@@ -10,24 +11,28 @@
     </script>
     <script type="text/javascript">
       function drawVisualization() {
-        var wrapper = new google.visualization.ChartWrapper({
+      //  var wrapper = new google.visualization.ChartWrapper({
+      //   chartType: 'ColumnChart',
+      //   dataTable: [['Germany', 'USA', 'Brazil', 'Canada', 'France', 'RU'],
+      //               [700, 300, 400, 500, 600, 800]],
+      //   options: {'title': 'Countries'},
+      //   containerId: 'visualization'
+      // });
+       /*var wrapper = new google.visualization.ChartWrapper({
           chartType: 'ColumnChart',
-          dataTable: [['' 
-          				<?php 
-      						foreach ($X as $key => $value) {
-      						 echo ', "'.$value.'"';    						
-      						}
-          				?>
-          			 ],
-                     [ ''
-	                    <?php 
-      						foreach ($Y as $key => $value) {
-      							echo ' ,'.$value;
-      						}
-          				?>
-                     ]],
+          dataTable: [['test','DOUBLE DIP','STRAWBERRY','PINEAPPLE'] ,
+                       [0,12,5,5] ],
+          options: {},
+          containerId: 'visualization',
+      }); */
+        var wrapper = new google.visualization.ChartWrapper({
+          chartType: 'BarChart',
+          dataTable: [ 
+          				<?php echo $Y; ?>
+          			 ,
+                  <?php echo $X; ?>
+                     ],
           options: {
-            'title': "<?php echo $title; ?>",  
             'vAxis': {title: "No of quantities"},
             'hAxis': {title: "Items"},
           },
@@ -40,7 +45,7 @@
     </script>
   </head>
   <body style="font-family: Arial;border: 0 none;">
-  	 <div class="main_content">
+     <div class="main_content">
         <div class="inner_content">
             <fieldset class='stockorder'>
               <div class='subinner'>

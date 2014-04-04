@@ -22,6 +22,7 @@
 		            $data['CustomerReturn']['return_date_time']=date('Y-m-d');;
 		            $data['CustomerReturn']['note']=$value['note'];
 		            $data['CustomerReturn']['remark']=$value['remark'];
+		            $data['CustomerReturn']['item_purchase_quantity']=$value['v4'];
 		            $item_tab = $value['v3'];
 		            if($this->CustomerReturn->save($data)) {
 		            	if($value['note'] == 'Reuse') {
@@ -36,7 +37,15 @@
 		            $lastinserid = $this->CustomerReturn->getlastInsertId();
 		            $lastinserid++;
 		            endif;
-	           	} 
+
+		            $db_customer = $this->CustomerOrderDetail->find('first',array('conditions'=>
+		            														array('CustomerOrderDetail.order_id' =>$value['v1'],
+		            															   'CustomerOrderDetail.item_name' =>$value['v2'],
+		            															   'CustomerOrderDetail.item_quantity'=>$value['v4'])));
+		           	
+		            $this->CustomerOrderDetail->saveField('item_retun_quantity',$value['qty']);
+
+	           	}
 	           	$this->redirect(array('controller'=>'EmployeeDetails','action'=>'home'));
 		    } 
     	}
