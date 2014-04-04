@@ -40,7 +40,7 @@
 					$order_data = $this->Eorderdetail->find('all',array('conditions'=>array('Eorderdetail.order_id'=>$oid)));
 					$this->set('order_data',$order_data);
 				}
-				if($this->request->is('post')) {echo '<pre>'; print_r($this->request->data); exit;
+				if($this->request->is('post')) {
 					$this->EmployeeOrder->id = $this->request->data['EmployeeDetail']['0']['v3'];
 					$flag['EmployeeOrder']['flag'] = '1';
 					$this->EmployeeOrder->save($flag);

@@ -3,7 +3,7 @@
 		<input type='hidden' value=<?php echo $order_item['name'];?> name="<?php echo $order_item['order_no'].'name';  ?>"/>
 		<input type='hidden' value=<?php echo $order_item['order_no'];?> name="<?php echo $order_item['order_no'].'no';  ?>"/>
 		<?php echo $order_item['item_name'];?>
-		<input type='hidden' value=<?php echo $order_item['item_name'];?> name="<?php echo $order_item['order_no'].'itemname';  ?>" />
+		<input type='hidden' value="<?php echo $order_item['item_name'];?>" name="<?php echo $order_item['order_no'].'itemname';  ?>" />
 	</td>
 	<td>
 		<input type="text" value='1' name="<?php echo $order_item['order_no'].'quantity';  ?>" align='middle'
