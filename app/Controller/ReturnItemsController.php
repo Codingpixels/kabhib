@@ -11,18 +11,18 @@
 
 		public function customer_return() {
 		    if(!empty($this->request->data)) {
-	          	foreach ($this->request->data['Customer'] as $key => $value) {   
+	          	foreach ($this->request->data['Customer'] as $key => $value) {
 		            if(!empty($value['qty'])):
 		            if(!empty($lastinserid)) {
 		            	$this->CustomerReturn->id = $lastinserid;
 		            }
 		            $data['CustomerReturn']['order_id']=$value['v1'];
 		            $data['CustomerReturn']['item_name']=$value['v2'];
-		            $data['CustomerReturn']['item_quantity']=$value['qty']; 
-		            $data['CustomerReturn']['return_date_time']=date('Y-m-d');;
+		            $data['CustomerReturn']['item_type']=$value['v3'];
+		            $data['CustomerReturn']['item_return']=$value['qty']; 
 		            $data['CustomerReturn']['note']=$value['note'];
 		            $data['CustomerReturn']['remark']=$value['remark'];
-		            $data['CustomerReturn']['item_purchase_quantity']=$value['v4'];
+		            $data['CustomerReturn']['item_purchase_quantity']=$value['v4'];	            
 		            $item_tab = $value['v3'];
 		            if($this->CustomerReturn->save($data)) {
 		            	if($value['note'] == 'Reuse') {
@@ -54,8 +54,11 @@
 	     	$this->layout="ajax";
 	     	if(!empty($this->request->data['orderno'])){
 		      	$oid = $this->request->data['orderno'];
-		      	$find_data=$this->CustomerOrderDetail->find('all',array('conditions'=>array('CustomerOrderDetail.order_id'=>$oid)));
-		      	$this->set('returnO',$find_data);
+		      	$db_data=$this->CustomerOrderDetail->find('all',array('conditions'=>array('CustomerOrderDetail.order_id'=>$oid)));
+		      	$this->set('db_data',$db_data);
+		      	/*if($db_data[0]['CustomerOrderDetail']['item_retun_quantity'] != 0) {
+		      		$this->set('flag', 'false');
+		      	}*/
      		}
   		}
 

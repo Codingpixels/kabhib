@@ -166,14 +166,18 @@
 				$item_array = $this->request->data['item_chart'];
 				$x_axis = array();
 				$y_axis = array();
+				$new_array = array(array('Item', 'Quantity', array('role' => 'style')));
 				$i = 0;
 				foreach ($item_array as $key => $value) {
+					$new_array = array_merge($new_array, array(array($key, intval($value), '#b87333')));
 					$x_axis[$i] = intval($value);
 					$y_axis[$i] = $key;
 					$i++;
 				}
-				$this->set('X',json_encode($x_axis));
-				$this->set('Y',json_encode($y_axis));
+				// echo '<pre>'; print_r(json_encode($new_array)); exit;
+				$this->set('new_item_array',json_encode($new_array));
+
+				// $this->set('Y',json_encode($y_axis));
 				// print_r(json_encode($x_axis)) ."</br>";
 				// print_r(json_encode($y_axis));exit;
 				// $this->set('title',$this->request->data['item_chart']['item_string'][$i]);
@@ -186,68 +190,9 @@
 			if(!empty($this->request->data)){
 				$month = $this->request->data['EmployeeDetail']['month'];
 				$branch = $this->request->data['EmployeeDetail']['branch'];
-				$date = date('Y-m-d');
-				$year = substr($date,0,4) ;
-				switch ($this->request->data['EmployeeDetail']['month']) {
-					case 'January':
-						$date1 = $year.'-01-01';
-						$date2 = $year.'-01-31';
-						break;
-					
-					case 'February':
-						$date1 = $year.'-02-01';
-						$date2 = $year.'-02-29';
-						break;
-					
-					case 'March':
-						$date1 = $year.'-03-01';
-						$date2 = $year.'-03-31';
-						break;
-
-					case 'April':
-						$date1 = $year.'-04-01';
-						$date2 = $year.'-04-30';
-						break;
-
-					case 'May':
-						$date1 = $year.'-05-01';
-						$date2 = $year.'-05-31';
-						break;
-
-					case 'June':
-						$date1 = $year.'-06-01';
-						$date2 = $year.'-06-30';
-						break;
-
-					case 'July':
-						$date1 = $year.'-07-01';
-						$date2 = $year.'-07-31';
-						break;
-
-					case 'August':
-						$date1 = $year.'-08-01';
-						$date2 = $year.'-08-31';
-						break;
-
-					case 'September':
-						$date1 = $year.'-09-01';
-						$date2 = $year.'-09-30';
-						break;
-
-					case 'October':
-						$date1 = $year.'-10-01';
-						$date2 = $year.'-10-31';
-						break;
-
-					case 'November':
-						$date1 = $year.'-11-01';
-						$date2 = $year.'-11-30';
-
-					default:
-						$date1 = $year.'-12-01';
-						$date2 = $year.'-12-31';
-						break;
-				}
+				echo '<pre>'; print_r($month); 
+				$date1 = date('Y-m-01',strtotime($month));
+				$date2 = date('Y-m-t',strtotime($month)) ;
 				$this->redirect(array('controller'=>'Admins','action'=>'generate_damage',$date1,$date2,$month,$branch));
 			}
 
@@ -259,23 +204,23 @@
 			$damage_data = array();
 			$i = 1;
 			$total = 0;
-
+			echo '<pre>'; print_r($date1); echo '<pre>'; print_r($date2); 
 			while($i <= $j) {
 				$data = $this->CustomerReturn->find('all',array('conditions'=>array(
-													'CustomerReturn.return_date >='=>date('Y-m-d', strtotime($date1)),
-													'CustomerReturn.return_date <='=>date('Y-m-d', strtotime($date2)),
+													'CustomerReturn.return_date  BETWEEN ? AND ?' =>array(date('Y-m-d',strtotime($date1)).'%', date('Y-m-d', strtotime($date2)).'%'),
 													'CustomerReturn.note'=>'Damage','CustomerReturn.branch'=>$branch,
 													),
-													'fields'=>array('CustomerReturn.item_quantity')));
+													'fields'=>array('CustomerReturn.item_return', 'CustomerReturn.return_date', 'CustomerReturn.id')));
+				echo '<pre>'; print_r($data);
 				$temp =  0;
 				foreach ($data as $key => $value) {
-					$temp = $temp + $value['CustomerReturn']['item_quantity'];
+					$temp = $temp + $value['CustomerReturn']['item_return'];
 				}
 				$sold = $this->CustomerOrderDetail->find('all',array('conditions'=>array(
-														'CustomerOrderDetail.order_date >='=>date('Y-m-d', strtotime($date1)),
-														'CustomerOrderDetail.order_date <='=>date('Y-m-d', strtotime($date2)),
+														'CustomerOrderDetail.order_date  BETWEEN ? AND ?' =>array(date('Y-m-d',strtotime($date1)).'%', date('Y-m-d', strtotime($date2)).'%'),
 														'CustomerOrderDetail.branch'=>$branch),
-														'fields'=>array('CustomerOrderDetail.item_quantity')));
+														'fields'=>array('CustomerOrderDetail.item_quantity', 'CustomerOrderDetail.order_date')));
+				echo '<pre>'; print_r($sold); exit;
 				$temp1 = 0;
 				foreach ($sold as $key1 => $value1) {
 					$temp1 = $temp1 + $value1['CustomerOrderDetail']['item_quantity'];

@@ -169,9 +169,10 @@ div fieldset div div{
 }
 .input{
 	margin-top: 0px;
-	width: 504px;
+	width: 372px;
 	height: 32px;
 	margin-left: 2px;
+	/*margin-left: 140px;*/
 }
 
 .main_content fieldset{

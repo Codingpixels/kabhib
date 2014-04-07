@@ -6,6 +6,9 @@
   });
   $.validate();
 </script>
+<?php
+      $note_array=array('Damage'=>'Damage', 'Expire'=>'Expire');
+    ?>
 <?php  if(!empty($db_data)) {
   echo "<h1><b>Take Return :</b></h1>";
 ?>
@@ -14,8 +17,13 @@
                                         'action'=>'select_return')));
               $i=0;
               echo "<table class='table table-hover'>";
-              echo "<tr class='info'><th>OrderID</th><th>Item</th><th style='width: 150px;'>Received quantity</th>
-              <th style='width: 200px;'>Return Quantity</th><th>Remark</th></tr>";
+              echo "<tr class='info'>
+                      <th>Item</th>
+                      <th style='width: 150px;'>Received quantity</th>
+                      <th style='width: 200px;'>Return Quantity</th>
+                      <th>Remark</th>
+                      <th>Reason</th>
+                    </tr>";
               foreach ($db_data as $key => $value) {
                 $v1=$order_id;
                 $v2=$value['DeliveryDetail']['item_name'];
@@ -23,24 +31,26 @@
                 $v4=$value['DeliveryDetail']['type'];
                 ?>
                 <tr>
+                  <td>
+                    <label><?php echo $value['DeliveryDetail']['item_name'];  ?></label>
+                  </td>
+                  <td>
+                    <label><?php echo $value['DeliveryDetail']['quantity'];  ?></label>
+                  </td>
+                  <td>
+                  <?php echo $this->Form->input($i.'.return_qty', array('type' => 'text', 'label'=>false,
+                                      'class'=>'required rqtyinput','data-validation'=>'number'));?>
+                  </td>
+                  <td>
+                  <?php echo $this->Form->textarea($i.'.note', array('type' => 'textarea', 'label'=>false,
+                                                            'class'=>'required rqtyinput txtbox',
+                                                            'rows' =>'1',
+                                                            'cols' => '160'));?>
+                  </td>
                 <td>
-                  <label><?php echo $order_id;  ?></label>
-                </td>
-                <td>
-                  <label><?php echo $value['DeliveryDetail']['item_name'];  ?></label>
-                </td>
-                <td>
-                  <label><?php echo $value['DeliveryDetail']['quantity'];  ?></label>
-                </td>
-                <td>
-                <?php echo $this->Form->input($i.'.return_qty', array('type' => 'text', 'label'=>false,
-                                    'class'=>'required rqtyinput','data-validation'=>'number'));?>
-                </td>
-                <td>
-                <?php echo $this->Form->textarea($i.'.note', array('type' => 'textarea', 'label'=>false,
-                                                          'class'=>'required rqtyinput txtbox',
-                                                          'rows' =>'1',
-                                                          'cols' => '160'));?>
+                <?php echo $this->Form->input($i.'.reason', array('type' => 'select','class' => 'required', 
+                    'options' => $note_array,'label'=>false)); ?>
+
                 </td>
               <?php echo $this->Form->input($i.'.order_id',array('type'=>'hidden','value'=>$v1)); ?>
               <?php echo $this->Form->input($i.'.item_name',array('type'=>'hidden','value'=>$v2)); ?>
