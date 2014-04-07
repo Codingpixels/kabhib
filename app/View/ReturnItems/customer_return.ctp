@@ -1,12 +1,12 @@
 <div class="main_content">
     <?php
-      $note_array=array('select'=>'select','Reuse'=>'Reuse','Demage'=>'Demage');
+      $note_array=array('select'=>'select','Reuse'=>'Reuse','Bad taste'=>'Bad taste');
     ?>
     <div class='inner_content'>
         <fieldset class='stockorder'>
             <div class='subinner'>
                 <?php echo $this->Form->create();?>
-                <label class='order-label'>Order ID:</label>
+                <label class='order-label'>Enter Customer Order ID:</label>
                 <div class='return-form'>
                     <?php echo $this->Form->input('order_id', array('type' => 'text','label'=>false,
                                                 'class' => 'required','id'=>'orderid'));?>
@@ -49,8 +49,7 @@
             document.getElementById("error").innerHTML=x;
           }
         });
-      });
-     
+      });    
 </script>
 <style type="text/css">
 #error{

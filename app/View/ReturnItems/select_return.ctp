@@ -1,7 +1,3 @@
-<?php
-	$note_array=array('select'=>'select','Reuse'=>'Reuse','Damage'=>'Damage');
-?>
-  
 <div class="main_content"> 
   <div class='inner_content'>
     <fieldset  class='stockorder'>

@@ -12,7 +12,7 @@
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'EmployeeOrders', 'action' => 'order')); ?>" class="current">Order Stock</button>
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'Deliveries', 'action' => 'order_select')); ?>" class="current">Delivery</button>
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'ReturnItems', 'action' => 'customer_return')); ?>" class="current">Customer Return</button>
-							<button formaction="<?php echo $this->Html->url(array('controller' => 'ReturnItems', 'action' => 'damage_return')); ?>" class="current">Damage Return</button>
+							<button formaction="<?php echo $this->Html->url(array('controller' => 'ReturnItems', 'action' => 'select_return')); ?>" class="current">Fresh Return</button>
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'EmployeeDetails', 'action' => 'stock_check')); ?>" class="current">Stock Check</button>
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'EmployeeDetails', 'action' => 'logout')); ?>" class="current">Logout</button>
 					</form>

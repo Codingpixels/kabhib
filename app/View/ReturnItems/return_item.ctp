@@ -1,5 +1,13 @@
+<?php /*if(empty($db_data)) {
+   echo "Sorry, No data found!!!";
+  }
+  else { 
+    echo $flag;exit;
+    //if(!empty($flag)) {
+*/
+?>
 <?php
-  $note_array=array('Reuse'=>'Reuse','Damage'=>'Damage');
+  $note_array=array('Reuse'=>'Reuse','Damage'=>'Damage', 'Bad taste'=>'Bad taste');
 ?>
 <?php 
   echo $this->Form->create('Customer',array('url'=>array('controller'=>'ReturnItems','action'=>'customer_return')));
@@ -8,13 +16,13 @@
   <table class='table table-hover '>
     <tr class="info">
       <th width=''>Item Name</th>
-      <th width=''>Quantity</th>
+      <th width=''>Purchase Quantity</th>
       <th width=''>Return Quantity</th>
       <th width=''>Remark</th>
       <th width=''>Reason</th>
     </tr>
 <?php
-    foreach ($returnO as $key => $value) {
+    foreach ($db_data as $key => $value) {
       $v1=$value['CustomerOrderDetail']['order_id'];
       $v2=$value['CustomerOrderDetail']['item_name'];
       $v3=$value['CustomerOrderDetail']['type'];
@@ -52,6 +60,12 @@
   <input type="submit" value="RETURN" class="btn-success btn submitbtn btn2" style="margin-bottom: 0px; padding-bottom: 4px; margin-left: 10px; margin-top: -10px;">
   <br>
   <?php echo $this->Form->end(); ?>
+  <?php /*}
+        else {
+          echo "Sorry, item has already been returned!!";
+        }
+      }*/
+  ?>
 
  <style type="text/css">
   .add_list .text {
