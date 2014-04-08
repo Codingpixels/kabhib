@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 01, 2014 at 01:25 PM
+-- Generation Time: Apr 08, 2014 at 01:29 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.4.3
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `breads` (
-  `item_id` int(11) NOT NULL DEFAULT '0',
+  `item_id` int(11) NOT NULL AUTO_INCREMENT,
   `item_code` varchar(50) DEFAULT NULL,
   `item_name` varchar(50) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
@@ -37,35 +37,39 @@ CREATE TABLE IF NOT EXISTS `breads` (
   `shelf_life` varchar(50) DEFAULT NULL,
   `unit` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=55 ;
 
 --
 -- Dumping data for table `breads`
 --
 
 INSERT INTO `breads` (`item_id`, `item_code`, `item_name`, `quantity`, `price`, `path`, `category_id`, `shelf_life`, `unit`) VALUES
-(29, 'KB89', 'ATTA PIZZA BASE BIG (3PC) ', 10, 30, 'img/bread6.png', '24', '10 DAYS', '200g'),
+(29, 'KB89', 'ATTA PIZZA BASE BIG (3PC) ', 9, 30, 'img/bread6.png', '24', '10 DAYS', '200g'),
 (30, 'KB258', 'TRIANGLE PIZZA BASE(3PC)', 10, 30, 'img/bread6.png', '24', '6 DAYS', '250g'),
-(31, 'KB624', 'FRENCH LOAF', 10, 30, 'img/bread6.png', '25', '5 DAYS', '300g'),
+(31, 'KB624', 'FRENCH LOAF', 19, 30, 'img/bread6.png', '25', '5 DAYS', '300g'),
 (32, 'BS72', 'MULTI-GRAIN BREAD', 10, 25, 'img/bread6.png', '27', '5 DAYS', '150g'),
 (33, 'BS75', 'FRUIT BREAD ', 10, 25, 'img/bread6.png', '27', '5 DAYS', '150g'),
-(34, 'KB58', 'KB PAV BREAD ( 6 PC )', 10, 25, 'img/bread6.png', '26', '5 DAYS', '350g'),
+(34, 'KB58', 'KB PAV BREAD ( 6 PC )', 5, 25, 'img/bread6.png', '26', '5 DAYS', '350g'),
 (35, 'KB564', 'KB PIZZA BASE ( 4PC )', 10, 25, 'img/bread6.png', '24', '6 DAYS', '200g'),
 (36, 'KB680', 'DP PIZZA BASE  9 Inch (2PC)', 10, 25, 'img/bread6.png', '24', '6 DAYS', '300g'),
 (37, 'KB27', 'KB BREAD SOUP STICKS', 10, 20, 'img/bread6.png', '27', '60 DAYS', '75g'),
 (38, 'KB586', 'KB MINI PIZZA ( 7 PC )', 10, 20, 'img/bread6.png', '24', '6 DAYS', '100g'),
 (39, 'KB257', 'BROWN SUB ROLL(2PC)', 10, 20, 'img/bread6.png', '27', '4 DAYS', '150g'),
-(40, 'KB87', 'KB SESAME BURGER ( 2 PC )', 10, 20, 'img/bread6.png', '26', '4 DAYS', '150g'),
+(40, 'KB87', 'KB SESAME BURGER ( 2 PC )', 0, 20, 'img/bread6.png', '26', '4 DAYS', '150g'),
 (41, 'KB102', 'VADA PAV SPL (4PC)', 10, 20, 'img/bread6.png', '26', '4 DAYS', '150g'),
 (42, 'KB85', 'KB HOT- DOG (2PC) ', 10, 20, 'img/bread6.png', '26', '4 DAYS', '100g'),
 (43, 'KB585', 'KB KULCHA ( 2 PC )', 10, 15, 'img/bread6.png', '26', '4 DAYS', '100g'),
-(44, '2FR', 'ROUND FRENCH LOAF', 10, 15, 'img/bread6.png', '25', '4 DAYS', '220g'),
+(44, '2FR', 'ROUND FRENCH LOAF', 9, 15, 'img/bread6.png', '25', '4 DAYS', '220g'),
 (45, 'KB561', 'KB FRUIT BUN SWEET  ( 1 PC )', 10, 15, 'img/bread6.png', '27', '4 DAYS', '80g'),
 (46, 'KB39', 'BISCUT PIZZA BASE  SMALL (4PC) 200g', 10, 35, 'img/bread6.png', '24', '10 DAYS', 'packet'),
 (47, 'KB26', 'KB GARLIC BREAD ', 10, 35, 'img/bread6.png', '27', '4 DAYS', '300g'),
 (48, 'KB228', 'MEXICAN LOAF ', 10, 40, 'img/bread6.png', '25', '4 DAYS', 'packet'),
 (49, 'BS71', 'ITALIAN FOCCASIA BREAD     ', 10, 40, 'img/bread6.png', '25', '4 DAYS', 'packet'),
-(50, 'KB605', 'KB LAVASH   ', 10, 60, 'img/bread6.png', '27', '4 MONTHS', '200g');
+(50, 'KB605', 'KB LAVASH   ', 10, 60, 'img/bread6.png', '27', '4 MONTHS', '200g'),
+(51, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL),
+(52, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL),
+(53, NULL, NULL, 10, NULL, NULL, NULL, NULL, NULL),
+(54, NULL, NULL, -1, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -84,21 +88,21 @@ CREATE TABLE IF NOT EXISTS `cakes` (
   `shelf_life` varchar(20) NOT NULL,
   `unit` varchar(20) NOT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `cakes`
 --
 
 INSERT INTO `cakes` (`item_id`, `item_code`, `item_name`, `quantity`, `price`, `path`, `category_id`, `shelf_life`, `unit`) VALUES
-(31, 'KB748', 'CHOCOLATE CRUNCHY', 10, 700, 'img/cake4.png', '5', '4 DAYS', 'KG'),
+(31, 'KB748', 'CHOCOLATE CRUNCHY', 10, 700, 'img/cake1.png', '5', '4 DAYS', 'KG'),
 (30, 'KB908', 'TRUFFLE ALMOND', 10, 700, 'img/cake4.png', '5', '4 DAYS', 'KG'),
-(29, 'PK17', 'TRUFFLE WALNUT', 10, 700, 'img/cake4.png', '5', '4 DAYS', 'KG'),
-(28, 'PK87', 'CHEESE CAKES(Lemon,B', 10, 700, 'img/cake4.png', '5', '3 DAYS', 'KG'),
+(29, 'PK17', 'TRUFFLE WALNUT', 9, 700, 'img/cake3.png', '5', '4 DAYS', 'KG'),
+(28, 'PK87', 'CHEESE CAKES(Lemon,B', 9, 700, 'img/cake2.png', '5', '3 DAYS', 'KG'),
 (27, 'KB734', 'BELGIUM MOUSSEE', 10, 650, 'img/cake4.png', '4', '3 DAYS', 'KG'),
 (26, 'KB247', 'AMERICAN NUT', 10, 650, 'img/cake4.png', '4', '3 DAYS', 'KG'),
 (25, 'KB249', 'STRAWBERRY TWIST', 10, 650, 'img/cake4.png', '4', '3 DAYS', 'KG'),
-(24, 'KB338', 'CHOCOLATE HIDE & SEE', 10, 650, 'img/cake4.png', '4', '3 DAYS', 'KG'),
+(24, 'KB338', 'CHOCOLATE HIDE & SEE', 9, 650, 'img/cake4.png', '4', '3 DAYS', 'KG'),
 (23, 'KB252', 'PHOTO PASTRY', 10, 650, 'img/cake4.png', '4', '3 DAYS', 'KG'),
 (22, 'KB736', 'CHOCOLATE ORANGE', 10, 650, 'img/cake4.png', '4', '3 DAYS', 'KG'),
 (21, 'KB243', 'CHOCOLATE EXCCESS', 10, 650, 'img/cake4.png', '4', '4 DAYS', 'KG'),
@@ -108,12 +112,12 @@ INSERT INTO `cakes` (`item_id`, `item_code`, `item_name`, `quantity`, `price`, `
 (17, 'KB353', 'CHOCOLATE GOOEE', 10, 600, 'img/cake4.png', '3', '4 DAYS', 'KG'),
 (16, 'PK11', 'BUTTER SCOTCH PASTRY', 10, 600, 'img/cake4.png', '3', '3 DAYS', 'KG'),
 (15, 'PK46', 'SEASONAL FRUIT', 10, 600, 'img/cake4.png', '3', '3 DAYS', 'KG'),
-(14, 'PK35', 'PINA ORANGE', 10, 600, 'img/cake4.png', '3', '3 DAYS', 'KG'),
+(14, 'PK35', 'PINA ORANGE', 4, 600, 'img/cake4.png', '3', '3 DAYS', 'KG'),
 (13, 'BS94', 'CHOCOLATE FUDGE', 10, 600, 'img/cake4.png', '3', '4 DAYS', 'KG'),
 (12, 'PK10', 'WHITE FOREST', 10, 540, 'img/cake4.png', '2', '3 DAYS', 'KG'),
-(11, 'KB268', 'TANGO ORANGE', 10, 540, 'img/cake4.png', '2', '3 DAYS', 'KG'),
-(10, 'KB210', 'BOUR-BON PASTRY', 10, 540, 'img/cake4.png', '2', '4 DAYS', 'KG'),
-(9, 'PK08', 'CHOCO CARAMEL', 10, 540, 'img/cake4.png', '2', '4 DAYS', 'KG'),
+(11, 'KB268', 'TANGO ORANGE', 9, 540, 'img/cake4.png', '2', '3 DAYS', 'KG'),
+(10, 'KB210', 'BOUR-BON PASTRY', 9, 540, 'img/cake4.png', '2', '4 DAYS', 'KG'),
+(9, 'PK08', 'CHOCO CARAMEL', 9, 540, 'img/cake4.png', '2', '4 DAYS', 'KG'),
 (8, 'KB724', 'CASSATA SWISS ROLL', 10, 540, 'img/cake4.png', '2', '3 DAYS', 'KG'),
 (7, 'KB363', 'SWISS TRUFFLE', 10, 540, 'img/cake4.png', '2', '4 DAYS', 'KG'),
 (6, 'KB720', 'CHOCOLATE CHIPS', 10, 540, 'img/cake4.png', '2', '4 DAYS', 'KG'),
@@ -126,7 +130,9 @@ INSERT INTO `cakes` (`item_id`, `item_code`, `item_name`, `quantity`, `price`, `
 (33, 'KB802', 'BROWNIE MOUSSEE PAST', 10, 700, 'img/cake4.png', '6', '4 DAYS', 'KG'),
 (34, 'KB759', 'XOTIC FRUITS', 10, 700, 'img/cake4.png', '6', '4 DAYS', 'KG'),
 (35, 'KB340', 'FERRERO ROCHER 100g', 10, 750, 'img/cake4.png', '6', '4 DAYS', 'KG'),
-(36, 'KB755', 'OREO MOUSSEE 100g', 10, 750, 'img/cake4.png', '6', '4 DAYS', 'KG');
+(36, 'KB755', 'OREO MOUSSEE 100g', 10, 750, 'img/cake4.png', '6', '4 DAYS', 'KG'),
+(38, '', '', 10, 0, '', '', '', ''),
+(39, '', '', 10, 0, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -158,10 +164,10 @@ INSERT INTO `categories` (`id`, `item_type`, `category`) VALUES
 (10, 'Pastry', 'SUPREME '),
 (11, 'Pastry', 'MAESTRO '),
 (12, 'Pastry', 'CHEF''S SPECIAL'),
-(13, 'Drycakes', 'DOUGHNUT'),
-(14, 'Drycakes', 'MUFFIN'),
-(15, 'Drycakes', 'BROWNIEE'),
-(16, 'Drycakes', 'DRY CAKE'),
+(13, 'DryCake', 'DOUGHNUT'),
+(14, 'DryCake', 'MUFFIN'),
+(15, 'DryCake', 'BROWNIEE'),
+(16, 'DryCake', 'DRY CAKE'),
 (18, 'Pudding', 'ONE PIECE'),
 (19, 'Pudding', 'BULK'),
 (20, 'Chocolate', 'FRUITS'),
@@ -224,7 +230,7 @@ INSERT INTO `chocolates` (`item_id`, `item_code`, `item_name`, `quantity`, `pric
 (13, 'KB855', 'TOFFEE DELITE', 10, 20, 'img/choco.jpg', '21', '3 MONTHS', '30g'),
 (14, 'KB856', 'ORANGE LOG', 10, 20, 'img/choco.jpg', '20', '3 MONTHS', '25g'),
 (15, 'KB857', 'CHOCOLATE PACK (LARGE) 35PC', 10, 220, 'img/choco.jpg', '22', '6 MONTHS', '250g'),
-(16, 'KB858', ' ASSORTED ROCK CHOCOLATE', 10, 400, 'img/choco.jpg', '23', '6 MONTHS', '500g');
+(16, 'KB858', ' ASSORTED ROCK CHOCOLATE', 9, 400, 'img/choco.jpg', '23', '6 MONTHS', '500g');
 
 -- --------------------------------------------------------
 
@@ -260,7 +266,7 @@ INSERT INTO `cookies` (`item_id`, `item_code`, `item_name`, `quantity`, `price`,
 (8, 'KB568', 'KB CHOCOLATE CHIP COOKIES', 10, 70, 'img/khari2.jpg', '33', '4 MONTHS', '250g'),
 (9, 'KB567', 'KB PISTA BADAM COOKIES', 10, 70, 'img/khari2.jpg', '32', '4 MONTHS', '200g'),
 (10, 'KB715', 'DARK CHOCOLATE CHIP COOKIES', 10, 120, 'img/khari2.jpg', '33', '4 MONTHS', '250g'),
-(11, 'KB703', 'GEMS COOKIES', 10, 120, 'img/khari2.jpg', '33', '4 MONTHS', '250g');
+(11, 'KB703', 'GEMS COOKIES', 0, 120, 'img/khari2.jpg', '33', '4 MONTHS', '250g');
 
 -- --------------------------------------------------------
 
@@ -310,17 +316,17 @@ CREATE TABLE IF NOT EXISTS `cup_cakes` (
   `shelfe_life` varchar(20) NOT NULL,
   `unit` varchar(20) NOT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `cup_cakes`
 --
 
 INSERT INTO `cup_cakes` (`item_id`, `item_code`, `item_name`, `quantity`, `price`, `path`, `category_id`, `shelfe_life`, `unit`) VALUES
-(1, 'KB223', 'STRAWBERRY', 10, 40, 'img/khari2.jpg', '0', '10 DAYS', '75g'),
-(2, 'KB224', 'PINEAPPLE', 10, 40, 'img/khari2.jpg', '0', '10 DAYS', '75g'),
-(3, 'KB225', 'CHOCOLATE CHIPS', 10, 40, 'img/khari2.jpg', '0', '10 DAYS', '75g'),
-(4, 'KB227', 'DOUBLE DIP', 10, 40, 'img/khari2.jpg', '0', '10 DAYS', '75g');
+(1, 'KB223', 'STRAWBERRY', 29, 40, 'img/s1.jpg', '0', '10 DAYS', '75g'),
+(2, 'KB224', 'PINEAPPLE', 29, 40, 'img/p2.jpg', '0', '10 DAYS', '75g'),
+(3, 'KB225', 'CHOCOLATE CHIPS', 25, 40, 'img/c4.jpg', '0', '10 DAYS', '75g'),
+(4, 'KB227', 'DOUBLE DIP', 31, 40, 'img/d3.jpg', '0', '10 DAYS', '75g');
 
 -- --------------------------------------------------------
 
@@ -333,7 +339,7 @@ CREATE TABLE IF NOT EXISTS `customer_details` (
   `name` varchar(20) NOT NULL,
   `number` varchar(15) NOT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=117 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=120 ;
 
 --
 -- Dumping data for table `customer_details`
@@ -356,7 +362,10 @@ INSERT INTO `customer_details` (`customer_id`, `name`, `number`) VALUES
 (113, 'neel', '1'),
 (114, 'neel', '9010101010'),
 (115, '', '9726732371'),
-(116, 'rinkal', '9974400433');
+(116, 'rinkal', '9974400433'),
+(117, 'test', 'test'),
+(118, 'B', '997440433'),
+(119, 'ankur', 'pandit');
 
 -- --------------------------------------------------------
 
@@ -378,53 +387,52 @@ CREATE TABLE IF NOT EXISTS `customer_order_details` (
   `advance` int(11) NOT NULL DEFAULT '0',
   `delivery_date` date DEFAULT NULL,
   `branch` varchar(20) NOT NULL DEFAULT 'Baroda',
+  `item_return_quantity` int(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=288 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=329 ;
 
 --
 -- Dumping data for table `customer_order_details`
 --
 
-INSERT INTO `customer_order_details` (`id`, `order_id`, `customer_id`, `item_name`, `item_quantity`, `order_date`, `employee_id`, `total_bill`, `type`, `ordertype`, `advance`, `delivery_date`, `branch`) VALUES
-(265, 9, 104, 'vanilla', '1', '2014-03-19 18:30:00', '6', 1000, 'cake', 'special', 500, '2013-12-03', 'Baroda'),
-(264, 8, 104, 'vanilla', '1', '2014-03-19 18:30:00', '6', 1000, 'cake', 'special', 100, '2013-12-03', 'Baroda'),
-(263, 7, 104, 'plainKhari', '1', '2014-03-19 18:30:00', '6', 30, 'Khari', 'takeaway', 0, NULL, 'Baroda'),
-(262, 7, 104, 'cap', '1', '2014-03-19 18:30:00', '6', 35, 'Extra', 'takeaway', 0, NULL, 'Baroda'),
-(261, 7, 104, 'WhiteForest1kg', '1', '2014-03-19 18:30:00', '6', 600, 'Cake', 'takeaway', 0, NULL, 'Baroda'),
-(260, 7, 104, 'whitelarge', '1', '2014-03-19 18:30:00', '6', 30, 'Bread', 'takeaway', 0, NULL, 'Baroda'),
-(259, 6, 103, 'WhiteForest500g', '1', '2014-03-19 18:30:00', '7', 300, 'Cake', 'takeaway', 0, NULL, 'Baroda'),
-(258, 5, 100, 'plainKhari', '100', '2014-03-19 18:30:00', '7', 3000, 'Khari', 'takeaway', 0, NULL, 'Baroda'),
-(257, 5, 100, 'jeeraKhari', '100', '2014-03-19 18:30:00', '7', 4000, 'Khari', 'takeaway', 0, NULL, 'Baroda'),
-(256, 4, 100, 'Veg. Roll', '11', '2014-03-19 18:30:00', '7', 220, 'NewArrival', 'advance', 100, '2014-03-20', 'Baroda'),
-(255, 4, 100, 'Veg. Burger', '11', '2014-03-19 18:30:00', '7', 330, 'NewArrival', 'advance', 100, '2014-03-20', 'Baroda'),
-(254, 4, 100, 'brownlarge', '11', '2014-03-19 18:30:00', '7', 440, 'Bread', 'advance', 100, '2014-03-20', 'Baroda'),
-(253, 3, 102, 'vanilla', '1', '2014-03-19 18:30:00', '7', 1600, 'cake', 'special', 200, '2014-03-21', 'Baroda'),
-(252, 2, 100, 'truffle', '1', '2014-03-19 18:30:00', '7', 47, 'Pastry', 'takeaway', 0, NULL, 'Baroda'),
-(251, 2, 100, 'cap', '10', '2014-03-19 18:30:00', '7', 350, 'Extra', 'takeaway', 0, NULL, 'Baroda'),
-(250, 2, 100, 'whitelarge', '3', '2014-03-19 18:30:00', '7', 90, 'Bread', 'takeaway', 0, NULL, 'Baroda'),
-(249, 1, 100, 'whitelarge', '3', '2014-03-19 18:30:00', '7', 90, 'Bread', 'takeaway', 0, NULL, 'Baroda'),
-(266, 10, 106, 'WhiteForest1kg', '1', '2014-03-20 18:30:00', '6', 600, 'Cake', 'takeaway', 0, NULL, 'Baroda'),
-(267, 11, 107, 'vanilla', '1', '2014-03-23 18:30:00', '7', 1000, 'cake', 'special', 600, '0000-00-00', 'Baroda'),
-(268, 12, 109, 'pinapple', '1', '2014-03-23 18:30:00', '7', 1800, 'cake', 'special', 700, '0000-00-00', 'Baroda'),
-(269, 13, 110, 'Orange', '1', '2014-03-23 18:30:00', '7', 1800, 'cake', 'special', 600, '0000-00-00', 'Baroda'),
-(270, 14, 109, 'select', '1', '2014-03-23 18:30:00', '7', 1800, 'cake', 'special', 300, '0000-00-00', 'Baroda'),
-(271, 15, 109, 'select', '1', '2014-03-23 18:30:00', '7', 2000, 'cake', 'special', 400, '0000-00-00', 'Baroda'),
-(272, 16, 111, 'strawberry', '1', '2014-03-23 18:30:00', '7', 1600, 'cake', 'special', 320, '0000-00-00', 'Baroda'),
-(273, 17, 111, 'strawberry', '1', '2014-03-23 18:30:00', '7', 1600, 'cake', 'special', 320, '0000-00-00', 'Baroda'),
-(274, 18, 101, '', '1', '2014-03-23 18:30:00', '7', 1800, 'cake', 'special', 360, NULL, 'Baroda'),
-(275, 19, 112, 'whitelarge', '1', '2014-03-24 18:30:00', '8', 30, 'Bread', 'takeaway', 0, NULL, 'Baroda'),
-(276, 19, 112, 'whitesmall', '1', '2014-03-24 18:30:00', '8', 15, 'Bread', 'takeaway', 0, NULL, 'Baroda'),
-(277, 19, 112, 'brownmedium', '10', '2014-03-24 18:30:00', '8', 300, 'Bread', 'takeaway', 0, NULL, 'Baroda'),
-(278, 20, 113, 'jeeraKhari', '1', '2014-03-24 18:30:00', '9', 40, 'Khari', 'takeaway', 0, NULL, 'Baroda'),
-(279, 21, 114, 'Vanilla', '1', '2014-03-24 18:30:00', '9', 1800, 'cake', 'special', 360, '0000-00-00', 'Baroda'),
-(280, 22, 112, 'plainKhari', '1', '2014-03-24 18:30:00', '9', 30, 'Khari', 'advance', 100, '2014-03-25', 'Baroda'),
-(281, 23, 112, 'WhiteForest1kg', '10', '2014-03-24 18:30:00', '9', 6000, 'Cake', 'advance', 100, '2014-03-25', 'Baroda'),
-(282, 24, 112, 'plainKhari', '1', '2014-03-24 18:30:00', '9', 30, 'Khari', 'advance', 1, '2014-03-25', 'Baroda'),
-(283, 25, 112, 'strawberry', '10', '2014-03-24 18:30:00', '9', 450, 'Pastry', 'advance', 1, '2014-03-25', 'Baroda'),
-(284, 26, 112, 'CHOCOLATE BALL', '10', '2014-03-25 18:30:00', '9', 200, 'Pudding', 'takeaway', 0, NULL, 'Baroda'),
-(285, 27, 112, 'CHOCOLATE WALNUT PUDDING', '10', '2014-03-25 18:30:00', '9', 60, 'Pudding', 'takeaway', 0, NULL, 'Baroda'),
-(286, 28, 115, 'Orange', '1', '2014-03-31 18:30:00', '6', 400, 'Cake', 'special', 180, '0000-00-00', 'Baroda'),
-(287, 29, 115, 'Orange', '1', '2014-03-31 18:30:00', '6', 400, 'Cake', 'special', 180, '0000-00-00', 'Baroda');
+INSERT INTO `customer_order_details` (`id`, `order_id`, `customer_id`, `item_name`, `item_quantity`, `order_date`, `employee_id`, `total_bill`, `type`, `ordertype`, `advance`, `delivery_date`, `branch`, `item_return_quantity`) VALUES
+(314, 11, 116, 'KB JEERA KHARI', '1', '2014-04-02 18:30:00', '6', 60, 'Khari', 'takeaway', 0, NULL, 'Baroda', 0),
+(313, 11, 116, 'TRUFFLE WALNUT', '1', '2014-04-02 18:30:00', '6', 700, 'Cake', 'takeaway', 0, NULL, 'Baroda', 0),
+(312, 11, 116, 'ATTA PIZZA BASE BIG (3PC) ', '1', '2014-04-02 18:30:00', '6', 30, 'Bread', 'takeaway', 0, NULL, 'Baroda', 0),
+(311, 10, 116, 'Vanilla', '1', '2014-04-01 18:30:00', '6', 1000, 'Cake', 'special', 220, '0000-00-00', 'Baroda', 0),
+(310, 9, 116, 'ITALIAN BAKE PIZZA      ', '1', '2014-04-01 18:30:00', '6', 35, 'Savories', 'takeaway', 0, NULL, 'Baroda', 0),
+(309, 9, 116, 'CHEESE CAKES(Lemon,B', '1', '2014-04-01 18:30:00', '6', 700, 'Cake', 'takeaway', 0, NULL, 'Baroda', 0),
+(308, 9, 116, 'PINA ORANGE', '1', '2014-04-01 18:30:00', '6', 600, 'Cake', 'takeaway', 0, NULL, 'Baroda', 0),
+(307, 8, 116, 'VEG. NOODLES PATTIES', '5', '2014-04-01 18:30:00', '6', 100, 'Puff', 'advance', 500, '2014-04-02', 'Baroda', 0),
+(306, 8, 116, 'MUFFIN CHOCO CHIPS 1PC             ', '5', '2014-04-01 18:30:00', '6', 125, 'DryCake', 'advance', 500, '2014-04-02', 'Baroda', 0),
+(305, 8, 116, 'PINA ORANGE', '5', '2014-04-01 18:30:00', '6', 3000, 'Cake', 'advance', 500, '2014-04-02', 'Baroda', 0),
+(304, 7, 116, 'cap', '1', '2014-04-01 18:30:00', '6', 35, 'Extra', 'takeaway', 0, NULL, 'Baroda', 0),
+(303, 7, 116, 'TANGO ORANGE', '1', '2014-04-01 18:30:00', '6', 540, 'Cake', 'takeaway', 0, NULL, 'Baroda', 0),
+(302, 7, 116, 'ATTA PIZZA BASE BIG (3PC) ', '1', '2014-04-01 18:30:00', '6', 30, 'Bread', 'takeaway', 0, NULL, 'Baroda', 0),
+(301, 7, 116, 'PACK PATTIES', '1', '2014-04-01 18:30:00', '6', 15, 'Puff', 'takeaway', 0, NULL, 'Baroda', 0),
+(300, 6, 118, 'ROUND FRENCH LOAF', '1', '2014-04-01 18:30:00', '6', 15, 'Bread', 'takeaway', 0, NULL, 'Baroda', 0),
+(299, 6, 118, ' ASSORTED ROCK CHOCOLATE', '1', '2014-04-01 18:30:00', '6', 400, 'Chocolate', 'takeaway', 0, NULL, 'Baroda', 0),
+(298, 6, 118, 'CHOCOLATE HIDE & SEE', '1', '2014-04-01 18:30:00', '6', 650, 'Cake', 'takeaway', 0, NULL, 'Baroda', 0),
+(297, 5, 101, 'ITALIAN BAKE PIZZA      ', '1', '2014-04-01 18:30:00', '6', 35, 'Savories', 'takeaway', 0, NULL, 'Baroda', 0),
+(296, 5, 101, 'KB JEERA KHARI', '1', '2014-04-01 18:30:00', '6', 60, 'Khari', 'takeaway', 0, NULL, 'Baroda', 0),
+(295, 4, 116, 'CTC SANDWICH   (JAIN)                      ', '1', '2014-04-01 18:30:00', '6', 25, 'Savories', 'takeaway', 0, NULL, 'Baroda', 0),
+(294, 4, 116, 'CHOCO CARAMEL', '1', '2014-04-01 18:30:00', '6', 540, 'Cake', 'takeaway', 0, NULL, 'Baroda', 0),
+(293, 4, 116, 'ITALIAN FOCCASIA SANDWICH     ', '1', '2014-04-01 18:30:00', '6', 30, 'Savories', 'takeaway', 0, NULL, 'Baroda', 0),
+(292, 4, 116, 'BOUR-BON PASTRY', '1', '2014-04-01 18:30:00', '6', 540, 'Cake', 'takeaway', 0, NULL, 'Baroda', 0),
+(291, 3, 116, 'Vanilla', '1', '2014-04-01 18:30:00', '6', 1000, 'Cake', 'special', 240, '0000-00-00', 'Baroda', 0),
+(290, 2, 116, 'ALOO PUFF', '1', '2014-04-01 18:30:00', '6', 10, 'Puff', 'advance', 100, '2014-04-02', 'Baroda', 0),
+(289, 1, 116, 'ALOO PUFF', '1', '2014-04-01 18:30:00', '6', 10, 'Puff', 'takeaway', 0, NULL, 'Baroda', 0),
+(315, 12, 116, 'GEMS COOKIES', '10', '2014-04-02 18:30:00', '6', 1200, 'Cookie', 'takeaway', 0, NULL, 'Baroda', 0),
+(316, 13, 101, 'Vanilla', '1', '2014-04-02 18:30:00', '6', 0, 'Cake', 'special', 0, '0000-00-00', 'Baroda', 0),
+(317, 14, 116, 'DOUBLE DIP', '8', '2014-04-03 18:30:00', '6', 320, 'CupCake', 'takeaway', 0, NULL, 'Baroda', 0),
+(321, 15, 116, 'STRAWBERRY', '10', '2014-04-06 18:30:00', '6', 400, 'CupCake', 'takeaway', 0, NULL, 'Baroda', 0),
+(322, 15, 116, 'PINEAPPLE', '10', '2014-04-06 18:30:00', '6', 400, 'CupCake', 'takeaway', 0, NULL, 'Baroda', 0),
+(323, 15, 116, 'CHOCOLATE CHIPS', '10', '2014-04-06 18:30:00', '6', 400, 'CupCake', 'takeaway', 0, NULL, 'Baroda', 0),
+(324, 16, 119, 'KB PAV BREAD ( 6 PC )', '10', '2014-04-06 18:30:00', '6', 250, 'Bread', 'takeaway', 0, NULL, 'Baroda', 0),
+(325, 16, 119, 'KB SESAME BURGER ( 2 PC )', '10', '2014-04-06 18:30:00', '6', 200, 'Bread', 'takeaway', 0, NULL, 'Baroda', 0),
+(326, 17, 116, 'CHOCOLATE BALL', '10', '2014-04-07 18:30:00', '6', 200, 'Pudding', 'takeaway', 0, NULL, 'Baroda', 0),
+(327, 17, 116, 'CHOCOLATE PUDDING', '10', '2014-04-07 18:30:00', '6', 450, 'Pudding', 'takeaway', 0, NULL, 'Baroda', 0),
+(328, 17, 116, 'PRE. SADA KHAKHARA', '10', '2014-04-07 18:30:00', '6', 450, 'Khakhra', 'takeaway', 0, NULL, 'Baroda', 0);
 
 -- --------------------------------------------------------
 
@@ -435,28 +443,32 @@ INSERT INTO `customer_order_details` (`id`, `order_id`, `customer_id`, `item_nam
 CREATE TABLE IF NOT EXISTS `customer_returns` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
+  `item_type` varchar(225) NOT NULL,
   `item_name` varchar(20) NOT NULL,
-  `item_quantity` int(11) NOT NULL DEFAULT '0',
+  `item_return_quantity` int(11) NOT NULL DEFAULT '0',
   `return_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `remark` varchar(225) NOT NULL,
+  `remark` varchar(225) DEFAULT NULL,
   `note` varchar(20) NOT NULL,
   `branch` varchar(20) NOT NULL DEFAULT 'Baroda',
+  `item_purchase_quantity` int(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=83 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=132 ;
 
 --
 -- Dumping data for table `customer_returns`
 --
 
-INSERT INTO `customer_returns` (`id`, `order_id`, `item_name`, `item_quantity`, `return_date`, `remark`, `note`, `branch`) VALUES
-(81, 4, 'brownlarge', 11, '0000-00-00 00:00:00', '', 'Damage', 'Baroda'),
-(80, 4, 'Veg. Burger', 11, '0000-00-00 00:00:00', '', 'Reuse', 'Baroda'),
-(79, 4, 'Veg. Roll', 1, '0000-00-00 00:00:00', '', 'Reuse', 'Baroda'),
-(75, 1, 'whitelarge', 10, '2014-03-05 18:30:00', '', 'Damage', 'Baroda'),
-(76, 1, 'WhiteForest500g', 10, '2014-03-05 18:30:00', '', 'Damage', 'Baroda'),
-(77, 1, 'WhiteForest1kg', 11, '2014-03-05 18:30:00', '', 'Damage', 'Baroda'),
-(78, 1, 'WhiteForest1kg', 2, '2014-03-05 18:30:00', '', 'Damage', 'Baroda'),
-(82, 9, 'vanilla', 1, '2014-03-25 09:24:03', '', 'Reuse', 'Baroda');
+INSERT INTO `customer_returns` (`id`, `order_id`, `item_type`, `item_name`, `item_return_quantity`, `return_date`, `remark`, `note`, `branch`, `item_purchase_quantity`) VALUES
+(122, 15, 'CupCake', 'PINEAPPLE', 1, '2014-04-07 08:20:25', 'test', 'Reuse', 'Baroda', 5),
+(123, 15, 'CupCake', 'STRAWBERRY', 5, '2014-04-07 09:06:38', 'test', 'Reuse', 'Baroda', 10),
+(124, 15, 'CupCake', 'STRAWBERRY', 5, '2014-04-07 09:07:58', 'test', 'Reuse', 'Baroda', 10),
+(125, 15, 'CupCake', 'PINEAPPLE', 5, '2014-04-07 09:07:58', 'test', 'Reuse', 'Baroda', 10),
+(126, 15, 'CupCake', 'CHOCOLATE CHIPS', 5, '2014-04-07 09:07:58', 'test', 'Reuse', 'Baroda', 10),
+(127, 16, 'Bread', 'KB PAV BREAD ( 6 PC ', 5, '2014-04-07 10:12:03', 'ankur test', 'Reuse', 'Baroda', 10),
+(128, 16, 'Bread', 'KB SESAME BURGER ( 2', 5, '2014-04-01 10:12:03', 'ankur test', 'Damage', 'Baroda', 10),
+(129, 17, 'Pudding', 'CHOCOLATE BALL', 5, '2014-04-08 06:19:46', 'reuse', 'Reuse', 'Baroda', 10),
+(130, 17, 'Pudding', 'CHOCOLATE PUDDING', 5, '2014-04-08 06:19:46', 'damage', 'Damage', 'Baroda', 10),
+(131, 17, 'Khakhra', 'PRE. SADA KHAKHARA', 5, '2014-04-08 06:19:46', 'bad taste', 'Bad taste', 'Baroda', 10);
 
 -- --------------------------------------------------------
 
@@ -471,42 +483,45 @@ CREATE TABLE IF NOT EXISTS `delivery_details` (
   `quantity` int(11) NOT NULL,
   `type` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=313 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=350 ;
 
 --
 -- Dumping data for table `delivery_details`
 --
 
 INSERT INTO `delivery_details` (`id`, `delivery_id`, `item_name`, `quantity`, `type`) VALUES
-(291, 121, 'whitelarge', 1, 'Bread'),
-(290, 121, 'whitemedium', 1, 'Bread'),
-(289, 121, 'whitesmall', 1, 'Bread'),
-(288, 121, 'WhiteForest500g', 1, 'Cake'),
-(287, 121, 'WhiteForest1kg', 1, 'Cake'),
-(286, 121, 'jeeraKhari', 1, 'Khari'),
-(285, 121, 'whiteForest', 1, 'Pastry'),
-(284, 121, 'Cheeze', 1, 'New_arrival'),
-(292, 122, 'truffle', 10, 'Pastry'),
-(293, 122, 'WhiteForest500g', 10, 'Cake'),
-(294, 122, 'whitelarge', 10, 'Bread'),
-(295, 123, 'whitelarge', 5, 'Bread'),
-(296, 124, 'Veg. hot Pizza', 10, 'NewArrival'),
-(297, 125, 'plainKhari', 10, 'Khari'),
-(298, 125, 'whitelarge', 12, 'Bread'),
-(299, 126, 'Puff', 10, 'NewArrival'),
-(300, 127, 'hh', 8, 'NewArrival'),
-(301, 128, 'hh', 12, 'NewArrival'),
-(302, 129, 'jln', 7, 'NewArrival'),
-(303, 130, 'jln', 1, 'NewArrival'),
-(304, 131, 'whitelarge', 1, 'Bread'),
-(305, 131, 'brownmedium', 1, 'Bread'),
-(306, 132, 'nee', 7, 'NewArrival'),
-(307, 133, 'knkn', 1, 'NewArrival'),
-(308, 134, ';lkj', 87, 'NewArrival'),
-(309, 135, 'bjb', 67, 'NewArrival'),
-(310, 136, 'new', 25, 'NewArrival'),
-(311, 137, 'vhv', 524, 'NewArrival'),
-(312, 138, 'ew', 1, 'NewArrival');
+(346, 162, 'FRENCH LOAF', 10, 'Bread'),
+(345, 162, 'TRIANGLE PIZZA BASE(', 10, 'Bread'),
+(344, 161, 'PINEAPPLE', 4, 'CupCake'),
+(343, 161, 'STRAWBERRY', 4, 'CupCake'),
+(342, 160, 'FRENCH LOAF', 1, 'Bread'),
+(341, 159, 'DOUBLE', 2, 'CupCake'),
+(340, 158, 'KB', 1, 'Khari'),
+(339, 157, 'KB', 1, 'Khari'),
+(338, 156, 'KB', 1, 'Khari'),
+(337, 155, 'KB', 1, 'Khari'),
+(336, 154, 'KB', 1, 'Khari'),
+(335, 153, 'KB', 1, 'Khari'),
+(334, 152, 'KB', 1, 'Khari'),
+(333, 151, 'KB', 1, 'Khari'),
+(332, 150, 'ATTA', 1, 'Bread'),
+(331, 150, 'ROUND', 1, 'Bread'),
+(330, 149, 'test', 12, 'NewArrival'),
+(329, 148, 'wewq', 123, 'NewArrival'),
+(328, 146, 'Bread stick', 25, 'NewArrival'),
+(327, 145, 'PISTA', 10, 'Cookie'),
+(326, 145, 'PINEAPPLE', 8, 'CupCake'),
+(325, 145, 'MUFFIN', 10, 'DryCake'),
+(324, 144, 'PISTA', 10, 'Cookie'),
+(323, 144, 'PINEAPPLE', 8, 'CupCake'),
+(322, 144, 'MUFFIN', 10, 'DryCake'),
+(321, 143, 'MUFFIN', 10, 'DryCake'),
+(320, 142, 'FRENCH', 10, 'Bread'),
+(319, 142, 'TRIANGLE', 10, 'Bread'),
+(318, 142, 'ATTA', 10, 'Bread'),
+(347, 163, 'CHOCOLATE PUDDING', 10, 'Pudding'),
+(348, 163, 'CHOCOLATE BALL', 5, 'Pudding'),
+(349, 163, 'PRE. SADA KHAKHARA', 10, 'Khakhra');
 
 -- --------------------------------------------------------
 
@@ -520,31 +535,34 @@ CREATE TABLE IF NOT EXISTS `delivery_masters` (
   `created` date NOT NULL,
   `employee_id` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=139 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=164 ;
 
 --
 -- Dumping data for table `delivery_masters`
 --
 
 INSERT INTO `delivery_masters` (`id`, `order_id`, `created`, `employee_id`) VALUES
-(125, 132, '2014-03-20', '6'),
-(124, 131, '2014-03-20', '7'),
-(123, 130, '2014-03-20', '7'),
-(122, 129, '2014-03-20', '7'),
-(121, 128, '2014-03-20', '6'),
-(126, 136, '2014-03-24', 'admin'),
-(127, 137, '2014-03-24', 'admin'),
-(128, 137, '2014-03-25', '8'),
-(129, 141, '2014-03-25', 'admin'),
-(130, 141, '2014-03-25', '9'),
-(131, 142, '2014-03-25', '9'),
-(132, 143, '2014-03-25', 'admin'),
-(133, 144, '2014-03-25', 'admin'),
-(134, 145, '2014-03-25', 'admin'),
-(135, 146, '2014-03-26', 'admin'),
-(136, 147, '2014-03-27', 'admin'),
-(137, 148, '2014-03-27', 'admin'),
-(138, 149, '2014-03-27', 'admin');
+(163, 165, '2014-04-08', '6'),
+(162, 164, '2014-04-07', '6'),
+(161, 163, '2014-04-07', '6'),
+(160, 162, '2014-04-04', '6'),
+(159, 161, '2014-04-04', '6'),
+(158, 158, '2014-04-03', '6'),
+(157, 158, '2014-04-03', '6'),
+(156, 158, '2014-04-03', '6'),
+(155, 158, '2014-04-03', '6'),
+(154, 158, '2014-04-03', '6'),
+(153, 158, '2014-04-03', '6'),
+(152, 158, '2014-04-03', '6'),
+(151, 158, '2014-04-03', '6'),
+(150, 157, '2014-04-03', '6'),
+(149, 156, '2014-04-03', 'admin'),
+(148, 155, '2014-04-03', 'admin'),
+(146, 154, '2014-04-02', 'admin'),
+(145, 153, '2014-04-02', '6'),
+(144, 153, '2014-04-02', '6'),
+(143, 153, '2014-04-02', '6'),
+(142, 152, '2014-04-02', '6');
 
 -- --------------------------------------------------------
 
@@ -563,7 +581,7 @@ CREATE TABLE IF NOT EXISTS `drycakes` (
   `shelfe_life` varchar(20) NOT NULL,
   `unit` varchar(20) NOT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `drycakes`
@@ -573,7 +591,7 @@ INSERT INTO `drycakes` (`item_id`, `item_code`, `item_name`, `quantity`, `price`
 (1, 'KB653', 'CHOCOLATE DOUGHNUT KB', 10, 20, 'img/khari2.jpg', '13', '3 DAYS', '100g'),
 (2, 'KB264', 'MUFFIN PINEAPPLE 1PC                ', 10, 20, 'img/khari2.jpg', '14', '15 DAYS', '50g'),
 (3, 'BR07', 'MUFFIN  RAISIN ALMOND 1PC        ', 10, 25, 'img/khari2.jpg', '14', '15 DAYS', '50g'),
-(4, 'AL130', 'MUFFIN CHOCO CHIPS 1PC             ', 10, 25, 'img/khari2.jpg', '14', '15 DAYS', '50g'),
+(4, 'AL130', 'MUFFIN CHOCO CHIPS 1PC             ', 5, 25, 'img/khari2.jpg', '14', '15 DAYS', '50g'),
 (5, 'KB266', 'COMBO PC MUFFIN ', 10, 25, 'img/khari2.jpg', '14', '15 DAYS', '50g'),
 (6, 'KB261', 'WALNUT BROWNIEE PACK 1PC ', 10, 45, 'img/khari2.jpg', '15', '15 DAYS', '50g'),
 (7, 'KB160', 'ORANGE SLICED CAKE                    ', 10, 50, 'img/khari2.jpg', '16', '15 DAYS', '100g'),
@@ -581,7 +599,9 @@ INSERT INTO `drycakes` (`item_id`, `item_code`, `item_name`, `quantity`, `price`
 (9, 'AL119', 'WALNUT BROWNIEE KB 1PC', 10, 70, 'img/khari2.jpg', '15', '15 DAYS', '100g'),
 (10, 'KB688', 'KB GOOEE BROWNIEE ', 10, 70, 'img/khari2.jpg', '15', '15 DAYS', '100g'),
 (11, 'KB267', 'RICH CHOCOLATE CAKE (WITH SUGAR)', 10, 120, 'img/khari2.jpg', '16', '15 DAYS', '250g'),
-(12, 'KB53', 'RAJA-RANI CAKE', 10, 120, 'img/khari2.jpg', '16', '15 DAYS', '250g');
+(12, 'KB53', 'RAJA-RANI CAKE', 10, 120, 'img/khari2.jpg', '16', '15 DAYS', '250g'),
+(13, '', '', 10, 0, '', '', '', ''),
+(14, '', '', 10, 0, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -596,7 +616,7 @@ CREATE TABLE IF NOT EXISTS `employee_details` (
   `email` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `employee_details`
@@ -606,7 +626,8 @@ INSERT INTO `employee_details` (`id`, `name`, `number`, `email`, `password`) VAL
 (6, 'test', 2147483647, 'rinkalvictor@gmail.c', 'test'),
 (7, 'bhumika', 2147483647, 'bhumika@yahoo.com', 'bhumika'),
 (8, '1', 2147483647, 'neel@gmail.com', '123456'),
-(9, 'neel', 2147483647, 'test@test.com', '1234');
+(9, 'neel', 2147483647, 'test@test.com', '1234'),
+(10, 'Rinkal', 4546541, 'dsfdsf', 'rinkal');
 
 -- --------------------------------------------------------
 
@@ -621,87 +642,107 @@ CREATE TABLE IF NOT EXISTS `employee_returns` (
   `return_qty` int(11) NOT NULL,
   `note` varchar(50) NOT NULL,
   `type` varchar(20) NOT NULL,
+  `return_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `reason` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=74 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=92 ;
 
 --
 -- Dumping data for table `employee_returns`
 --
 
-INSERT INTO `employee_returns` (`id`, `order_id`, `item_name`, `return_qty`, `note`, `type`) VALUES
-(1, 130, 'whitelarge', 5, '', ''),
-(2, 130, 'whitelarge', 1, '', ''),
-(3, 128, 'whitelarge', 1, '', ''),
-(4, 128, 'whitemedium', 1, '', ''),
-(5, 128, 'whitesmall', 1, '', ''),
-(6, 128, 'WhiteForest500g', 1, '', ''),
-(7, 128, 'WhiteForest1kg', 1, '', ''),
-(8, 128, 'jeeraKhari', 1, '', ''),
-(9, 128, 'whiteForest', 1, '', ''),
-(10, 128, 'Cheeze', 1, '', ''),
-(11, 128, 'whitelarge', 1, '', ''),
-(12, 128, 'whitemedium', 1, '', ''),
-(13, 128, 'whitesmall', 1, '', ''),
-(14, 128, 'WhiteForest500g', 1, '', ''),
-(15, 128, 'WhiteForest1kg', 1, '', ''),
-(16, 128, 'jeeraKhari', 1, '', ''),
-(17, 128, 'whiteForest', 1, '', ''),
-(18, 128, 'Cheeze', 1, '', ''),
-(19, 128, 'whitelarge', 1, '', ''),
-(20, 128, 'whitemedium', 1, '', ''),
-(21, 128, 'whitesmall', 1, '', ''),
-(22, 128, 'WhiteForest500g', 1, '', ''),
-(23, 128, 'WhiteForest1kg', 1, '', ''),
-(24, 128, 'jeeraKhari', 1, '', ''),
-(25, 128, 'whiteForest', 1, '', ''),
-(26, 128, 'Cheeze', 1, '', ''),
-(27, 128, 'whitelarge', 1, '', ''),
-(28, 128, 'whitemedium', 1, '', ''),
-(29, 128, 'whitesmall', 1, '', ''),
-(30, 128, 'WhiteForest500g', 1, '', ''),
-(31, 128, 'WhiteForest1kg', 1, '', ''),
-(32, 128, 'jeeraKhari', 1, '', ''),
-(33, 128, 'whiteForest', 1, '', ''),
-(34, 128, 'Cheeze', 1, '', ''),
-(35, 128, 'whitelarge', 1, '', ''),
-(36, 128, 'whitemedium', 1, '', ''),
-(37, 128, 'whitesmall', 1, '', ''),
-(38, 128, 'WhiteForest500g', 1, '', ''),
-(39, 128, 'whitelarge', 1, '', ''),
-(40, 128, 'whitemedium', 1, '', ''),
-(41, 128, 'whitesmall', 1, '', ''),
-(42, 128, 'WhiteForest500g', 1, '', ''),
-(43, 128, 'WhiteForest1kg', 1, '', ''),
-(44, 128, 'jeeraKhari', 1, '', ''),
-(45, 128, 'whiteForest', 1, '', ''),
-(46, 128, 'Cheeze', 1, '', ''),
-(47, 128, 'whitelarge', 1, '', ''),
-(48, 128, 'whitemedium', 1, '', ''),
-(49, 128, 'whitesmall', 1, '', ''),
-(50, 128, 'WhiteForest500g', 1, '', ''),
-(51, 128, 'WhiteForest1kg', 1, '', ''),
-(52, 128, 'jeeraKhari', 1, '', ''),
-(53, 128, 'whiteForest', 1, '', ''),
-(54, 128, 'Cheeze', 1, '', ''),
-(55, 128, 'whitelarge', 1, '', ''),
-(56, 128, 'whitemedium', 1, '', ''),
-(57, 128, 'whitesmall', 1, '', ''),
-(58, 128, 'WhiteForest500g', 1, '', ''),
-(59, 128, 'WhiteForest1kg', 1, '', ''),
-(60, 128, 'jeeraKhari', 1, '', ''),
-(61, 128, 'whiteForest', 1, '', ''),
-(62, 128, 'Cheeze', 1, '', ''),
-(63, 128, 'whitelarge', 1, '', ''),
-(64, 128, 'whitemedium', 1, '', ''),
-(65, 128, 'whitesmall', 1, '', ''),
-(66, 128, 'WhiteForest500g', 1, '', ''),
-(67, 128, 'WhiteForest1kg', 1, '', ''),
-(68, 128, 'jeeraKhari', 1, '', ''),
-(69, 128, 'whiteForest', 1, '', ''),
-(70, 128, 'Cheeze', 1, '', ''),
-(71, 128, 'whitelarge', 1, '', ''),
-(72, 141, 'jln', 2, '', ''),
-(73, 141, 'jln', 1, 'ln', 'NewArrival');
+INSERT INTO `employee_returns` (`id`, `order_id`, `item_name`, `return_qty`, `note`, `type`, `return_date`, `reason`) VALUES
+(1, 130, 'whitelarge', 5, '', '', '0000-00-00 00:00:00', ''),
+(2, 130, 'whitelarge', 1, '', '', '0000-00-00 00:00:00', ''),
+(3, 128, 'whitelarge', 1, '', '', '0000-00-00 00:00:00', ''),
+(4, 128, 'whitemedium', 1, '', '', '0000-00-00 00:00:00', ''),
+(5, 128, 'whitesmall', 1, '', '', '0000-00-00 00:00:00', ''),
+(6, 128, 'WhiteForest500g', 1, '', '', '0000-00-00 00:00:00', ''),
+(7, 128, 'WhiteForest1kg', 1, '', '', '0000-00-00 00:00:00', ''),
+(8, 128, 'jeeraKhari', 1, '', '', '0000-00-00 00:00:00', ''),
+(9, 128, 'whiteForest', 1, '', '', '0000-00-00 00:00:00', ''),
+(10, 128, 'Cheeze', 1, '', '', '0000-00-00 00:00:00', ''),
+(11, 128, 'whitelarge', 1, '', '', '0000-00-00 00:00:00', ''),
+(12, 128, 'whitemedium', 1, '', '', '0000-00-00 00:00:00', ''),
+(13, 128, 'whitesmall', 1, '', '', '0000-00-00 00:00:00', ''),
+(14, 128, 'WhiteForest500g', 1, '', '', '0000-00-00 00:00:00', ''),
+(15, 128, 'WhiteForest1kg', 1, '', '', '0000-00-00 00:00:00', ''),
+(16, 128, 'jeeraKhari', 1, '', '', '0000-00-00 00:00:00', ''),
+(17, 128, 'whiteForest', 1, '', '', '0000-00-00 00:00:00', ''),
+(18, 128, 'Cheeze', 1, '', '', '0000-00-00 00:00:00', ''),
+(19, 128, 'whitelarge', 1, '', '', '0000-00-00 00:00:00', ''),
+(20, 128, 'whitemedium', 1, '', '', '0000-00-00 00:00:00', ''),
+(21, 128, 'whitesmall', 1, '', '', '0000-00-00 00:00:00', ''),
+(22, 128, 'WhiteForest500g', 1, '', '', '0000-00-00 00:00:00', ''),
+(23, 128, 'WhiteForest1kg', 1, '', '', '0000-00-00 00:00:00', ''),
+(24, 128, 'jeeraKhari', 1, '', '', '0000-00-00 00:00:00', ''),
+(25, 128, 'whiteForest', 1, '', '', '0000-00-00 00:00:00', ''),
+(26, 128, 'Cheeze', 1, '', '', '0000-00-00 00:00:00', ''),
+(27, 128, 'whitelarge', 1, '', '', '0000-00-00 00:00:00', ''),
+(28, 128, 'whitemedium', 1, '', '', '0000-00-00 00:00:00', ''),
+(29, 128, 'whitesmall', 1, '', '', '0000-00-00 00:00:00', ''),
+(30, 128, 'WhiteForest500g', 1, '', '', '0000-00-00 00:00:00', ''),
+(31, 128, 'WhiteForest1kg', 1, '', '', '0000-00-00 00:00:00', ''),
+(32, 128, 'jeeraKhari', 1, '', '', '0000-00-00 00:00:00', ''),
+(33, 128, 'whiteForest', 1, '', '', '0000-00-00 00:00:00', ''),
+(34, 128, 'Cheeze', 1, '', '', '0000-00-00 00:00:00', ''),
+(35, 128, 'whitelarge', 1, '', '', '0000-00-00 00:00:00', ''),
+(36, 128, 'whitemedium', 1, '', '', '0000-00-00 00:00:00', ''),
+(37, 128, 'whitesmall', 1, '', '', '0000-00-00 00:00:00', ''),
+(38, 128, 'WhiteForest500g', 1, '', '', '0000-00-00 00:00:00', ''),
+(39, 128, 'whitelarge', 1, '', '', '0000-00-00 00:00:00', ''),
+(40, 128, 'whitemedium', 1, '', '', '0000-00-00 00:00:00', ''),
+(41, 128, 'whitesmall', 1, '', '', '0000-00-00 00:00:00', ''),
+(42, 128, 'WhiteForest500g', 1, '', '', '0000-00-00 00:00:00', ''),
+(43, 128, 'WhiteForest1kg', 1, '', '', '0000-00-00 00:00:00', ''),
+(44, 128, 'jeeraKhari', 1, '', '', '0000-00-00 00:00:00', ''),
+(45, 128, 'whiteForest', 1, '', '', '0000-00-00 00:00:00', ''),
+(46, 128, 'Cheeze', 1, '', '', '0000-00-00 00:00:00', ''),
+(47, 128, 'whitelarge', 1, '', '', '0000-00-00 00:00:00', ''),
+(48, 128, 'whitemedium', 1, '', '', '0000-00-00 00:00:00', ''),
+(49, 128, 'whitesmall', 1, '', '', '0000-00-00 00:00:00', ''),
+(50, 128, 'WhiteForest500g', 1, '', '', '0000-00-00 00:00:00', ''),
+(51, 128, 'WhiteForest1kg', 1, '', '', '0000-00-00 00:00:00', ''),
+(52, 128, 'jeeraKhari', 1, '', '', '0000-00-00 00:00:00', ''),
+(53, 128, 'whiteForest', 1, '', '', '0000-00-00 00:00:00', ''),
+(54, 128, 'Cheeze', 1, '', '', '0000-00-00 00:00:00', ''),
+(55, 128, 'whitelarge', 1, '', '', '0000-00-00 00:00:00', ''),
+(56, 128, 'whitemedium', 1, '', '', '0000-00-00 00:00:00', ''),
+(57, 128, 'whitesmall', 1, '', '', '0000-00-00 00:00:00', ''),
+(58, 128, 'WhiteForest500g', 1, '', '', '0000-00-00 00:00:00', ''),
+(59, 128, 'WhiteForest1kg', 1, '', '', '0000-00-00 00:00:00', ''),
+(60, 128, 'jeeraKhari', 1, '', '', '0000-00-00 00:00:00', ''),
+(61, 128, 'whiteForest', 1, '', '', '0000-00-00 00:00:00', ''),
+(62, 128, 'Cheeze', 1, '', '', '0000-00-00 00:00:00', ''),
+(63, 128, 'whitelarge', 1, '', '', '0000-00-00 00:00:00', ''),
+(64, 128, 'whitemedium', 1, '', '', '0000-00-00 00:00:00', ''),
+(65, 128, 'whitesmall', 1, '', '', '0000-00-00 00:00:00', ''),
+(66, 128, 'WhiteForest500g', 1, '', '', '0000-00-00 00:00:00', ''),
+(67, 128, 'WhiteForest1kg', 1, '', '', '0000-00-00 00:00:00', ''),
+(68, 128, 'jeeraKhari', 1, '', '', '0000-00-00 00:00:00', ''),
+(69, 128, 'whiteForest', 1, '', '', '0000-00-00 00:00:00', ''),
+(70, 128, 'Cheeze', 1, '', '', '0000-00-00 00:00:00', ''),
+(71, 128, 'whitelarge', 1, '', '', '0000-00-00 00:00:00', ''),
+(72, 141, 'jln', 2, '', '', '0000-00-00 00:00:00', ''),
+(73, 141, 'jln', 1, 'ln', 'NewArrival', '0000-00-00 00:00:00', ''),
+(74, 152, 'FRENCH', 9, 'not fresh', 'Bread', '0000-00-00 00:00:00', ''),
+(75, 152, 'TRIANGLE', 9, 'not fresh', 'Bread', '0000-00-00 00:00:00', ''),
+(76, 152, 'ATTA', 9, 'not fresh', 'Bread', '0000-00-00 00:00:00', ''),
+(77, 153, 'PISTA', 1, '1', 'Cookie', '0000-00-00 00:00:00', ''),
+(78, 153, 'PISTA', 1, 'q', 'Cookie', '0000-00-00 00:00:00', ''),
+(79, 153, 'PISTA', 1, 'q', 'Cookie', '0000-00-00 00:00:00', ''),
+(80, 153, 'PISTA', 1, 'q', 'Cookie', '0000-00-00 00:00:00', ''),
+(81, 162, 'FRENCH LOAF', 1, 'bad', 'Bread', '0000-00-00 00:00:00', ''),
+(82, 165, 'CHOCOLATE PUDDING', 5, 'damage expire', 'Pudding', '0000-00-00 00:00:00', ''),
+(83, 165, 'CHOCOLATE BALL', 5, 'damage expire', 'Pudding', '0000-00-00 00:00:00', ''),
+(84, 165, 'PRE. SADA KHAKHARA', 5, 'damage expire', 'Khakhra', '0000-00-00 00:00:00', ''),
+(85, 165, 'CHOCOLATE PUDDING', 0, 'damage', 'Pudding', '2014-04-08 07:12:56', 'Damage'),
+(86, 165, 'CHOCOLATE BALL', 0, 'damage', 'Pudding', '2014-04-08 07:12:56', 'Damage'),
+(87, 165, 'PRE. SADA KHAKHARA', 0, 'damage', 'Khakhra', '2014-04-08 07:12:56', 'Damage'),
+(88, 163, 'PINEAPPLE', 1, '', 'CupCake', '2014-04-08 07:14:56', 'Damage'),
+(89, 163, 'STRAWBERRY', 1, '', 'CupCake', '2014-04-08 07:14:56', 'Damage'),
+(90, 164, 'FRENCH LOAF', 1, 'as', 'Bread', '2014-04-08 07:16:13', 'Damage'),
+(91, 164, 'TRIANGLE PIZZA BASE(', 1, 'as', 'Bread', '2014-04-08 07:16:13', 'Damage');
 
 -- --------------------------------------------------------
 
@@ -715,20 +756,22 @@ CREATE TABLE IF NOT EXISTS `extras` (
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `path` varchar(50) NOT NULL,
+  `category_id` int(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `extras`
 --
 
-INSERT INTO `extras` (`item_id`, `item_name`, `quantity`, `price`, `path`) VALUES
-(1, 'knief', 0, 20, 'img/knief.png'),
-(2, 'cap', -6, 35, 'img/cap.png'),
-(3, 'balloons', 8, 50, 'img/balloons.png'),
-(4, 'streamers', 70, 30, 'img/strmers.png'),
-(5, 'big ballons', 10, 10, ''),
-(6, 'nak', 10, 10, '');
+INSERT INTO `extras` (`item_id`, `item_name`, `quantity`, `price`, `path`, `category_id`) VALUES
+(1, 'knief', 0, 20, 'img/knief.png', 0),
+(2, 'cap', -7, 35, 'img/cap.png', 0),
+(3, 'balloons', 8, 50, 'img/balloons.png', 0),
+(4, 'streamers', 70, 30, 'img/strmers.png', 0),
+(5, 'big ballons', 10, 10, '', 0),
+(6, 'nak', 10, 10, '', 0),
+(7, '', -1, 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -777,16 +820,18 @@ CREATE TABLE IF NOT EXISTS `khakhras` (
   `shelfe_life` varchar(20) NOT NULL,
   `unit` varchar(20) NOT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `khakhras`
 --
 
 INSERT INTO `khakhras` (`item_id`, `item_code`, `item_name`, `quantity`, `price`, `path`, `category_id`, `shelfe_life`, `unit`) VALUES
-(1, 'KB820 ', 'PRE. SADA KHAKHARA', 10, 45, 'img/khari2.jpg', '0', '2 MONTHS', '250g'),
+(1, 'KB820 ', 'PRE. SADA KHAKHARA', 5, 45, 'img/khari2.jpg', '0', '2 MONTHS', '250g'),
 (2, 'KB821', 'PRE.MASALA KHAKHARA', 10, 45, 'img/khari2.jpg', '0', '2 MONTHS', '250g'),
-(3, 'KB18', 'PRE.METHI KHAKHARA', 10, 45, 'img/khari2.jpg', '0', '2 MONTHS', '250g');
+(3, 'KB18', 'PRE.METHI KHAKHARA', 10, 45, 'img/khari2.jpg', '0', '2 MONTHS', '250g'),
+(4, '', '', -1, 0, '', '', '', ''),
+(5, '1323', 'khakhra test', 21, 21, 'img/itemsPhoto/Khakhra/img5.gif', '0', '', '4 pieces');
 
 -- --------------------------------------------------------
 
@@ -805,7 +850,7 @@ CREATE TABLE IF NOT EXISTS `kharis` (
   `shelf_life` varchar(20) NOT NULL,
   `unit` varchar(20) NOT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `kharis`
@@ -820,7 +865,7 @@ INSERT INTO `kharis` (`item_id`, `item_code`, `item_name`, `quantity`, `price`, 
 (6, 'KB202', 'METHI RUSK', 10, 60, 'img/khari2.jpg', '44', '4 MONTHS', '250g'),
 (7, 'KB572', 'KB CHEESE MASALA KHA', 10, 70, 'img/khari2.jpg', '45', '4 MONTHS', '200g'),
 (8, 'KB582', 'KB BUTTER KHARI', 10, 60, 'img/khari2.jpg', '45', '4 MONTHS', '250g'),
-(9, 'KB91 ', 'KB JEERA KHARI', 10, 60, 'img/khari2.jpg', '45', '4 MONTHS', '250g'),
+(9, 'KB91 ', 'KB JEERA KHARI', 9, 60, 'img/khari2.jpg', '45', '4 MONTHS', '250g'),
 (10, 'JP', 'KALORY JEERA TOAST', 10, 13, 'img/khari2.jpg', '43', '2 MONTHS', '125g'),
 (11, 'MT', 'KALORY MILK TOAST', 10, 13, 'img/khari2.jpg', '43', '2 MONTHS', '125g'),
 (12, 'BT', 'KALORY BUTTER TOAST', 10, 13, 'img/khari2.jpg', '43', '2 MONTHS', '125g'),
@@ -859,23 +904,28 @@ CREATE TABLE IF NOT EXISTS `new_arrivals` (
   `item_id` int(11) NOT NULL AUTO_INCREMENT,
   `item_code` varchar(20) NOT NULL,
   `item_name` varchar(20) NOT NULL,
+  `category_id` int(20) NOT NULL DEFAULT '0',
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `path` varchar(50) NOT NULL,
   `shelf_life` varchar(20) NOT NULL,
   `unit` varchar(20) NOT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `new_arrivals`
 --
 
-INSERT INTO `new_arrivals` (`item_id`, `item_code`, `item_name`, `quantity`, `price`, `path`, `shelf_life`, `unit`) VALUES
-(2, '', 'Cheeze Pizza', 0, 70, '', '', ''),
-(5, '', 'Veg. Burger', -11, 30, '', '', ''),
-(6, '', 'Veg. Roll', -11, 20, '', '', ''),
-(8, '', 'Veg. hot Pizza', 10, 25, '', '', '');
+INSERT INTO `new_arrivals` (`item_id`, `item_code`, `item_name`, `category_id`, `quantity`, `price`, `path`, `shelf_life`, `unit`) VALUES
+(2, '', 'Cheeze Pizza', 0, 0, 70, '', '', ''),
+(5, '', 'Veg. Burger', 0, -11, 30, '', '', ''),
+(6, '', 'Veg. Roll', 0, -11, 20, '', '', ''),
+(8, '', 'Veg. hot Pizza', 0, 10, 25, '', '', ''),
+(9, '54', 'rinkal', 0, 10, 10, 'img/itemsPhoto/NewArrival/img9.jpg', '45', 'Kg'),
+(10, 'KB14', 'Bread stick', 0, 25, 40, '', '3 months', '4 pieces'),
+(11, 'Des', 'wewq', 0, 123, 123, 'img/itemsPhoto/NewArrival/img11.gif', 'Dsad', 'Dsaa'),
+(12, '12', 'test', 0, 12, 132, '', '113', '13213');
 
 -- --------------------------------------------------------
 
@@ -890,7 +940,7 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   `quantity` int(11) NOT NULL,
   `type` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=214 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=240 ;
 
 --
 -- Dumping data for table `order_details`
@@ -934,7 +984,33 @@ INSERT INTO `order_details` (`id`, `order_id`, `item_id`, `quantity`, `type`) VA
 (210, 146, 'bjb', 67, 'NewArrival'),
 (211, 147, 'new', 25, 'NewArrival'),
 (212, 148, 'vhv', 524, 'NewArrival'),
-(213, 149, 'ew', 1, 'NewArrival');
+(213, 149, 'ew', 1, 'NewArrival'),
+(214, 150, 'rinkal', 10, 'NewArrival'),
+(215, 151, 'CHOCOLATE', 10, 'Cake'),
+(216, 151, 'ATTA', 10, 'Bread'),
+(217, 152, 'ATTA', 10, 'Bread'),
+(218, 152, 'TRIANGLE', 10, 'Bread'),
+(219, 152, 'FRENCH', 10, 'Bread'),
+(220, 153, 'MUFFIN', 10, 'DryCake'),
+(221, 153, 'PINEAPPLE', 10, 'CupCake'),
+(222, 153, 'PISTA', 10, 'Cookie'),
+(223, 154, 'Bread stick', 25, 'NewArrival'),
+(224, 155, 'wewq', 123, 'NewArrival'),
+(225, 156, 'test', 12, 'NewArrival'),
+(226, 157, 'ROUND', 1, 'Bread'),
+(227, 157, 'ATTA', 1, 'Bread'),
+(228, 158, 'KB', 1, 'Khari'),
+(229, 159, 'ATTA', 1, 'Bread'),
+(230, 160, 'ITALIAN', 3, 'Savories'),
+(231, 161, 'DOUBLE', 2, 'CupCake'),
+(232, 162, 'FRENCH LOAF', 1, 'Bread'),
+(233, 163, 'STRAWBERRY', 4, 'CupCake'),
+(234, 163, 'PINEAPPLE', 4, 'CupCake'),
+(235, 164, 'TRIANGLE PIZZA BASE(', 10, 'Bread'),
+(236, 164, 'FRENCH LOAF', 10, 'Bread'),
+(237, 165, 'CHOCOLATE PUDDING', 10, 'Pudding'),
+(238, 165, 'CHOCOLATE BALL', 5, 'Pudding'),
+(239, 165, 'PRE. SADA KHAKHARA', 10, 'Khakhra');
 
 -- --------------------------------------------------------
 
@@ -948,7 +1024,7 @@ CREATE TABLE IF NOT EXISTS `order_masters` (
   `employee_id` int(11) NOT NULL,
   `flag` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=150 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=166 ;
 
 --
 -- Dumping data for table `order_masters`
@@ -976,7 +1052,23 @@ INSERT INTO `order_masters` (`id`, `order_date`, `employee_id`, `flag`) VALUES
 (146, '2014-03-26', 0, 0),
 (147, '2014-03-27', 0, 0),
 (148, '2014-03-27', 0, 0),
-(149, '2014-03-27', 0, 0);
+(149, '2014-03-27', 0, 0),
+(150, '2014-04-02', 0, 0),
+(151, '2014-04-02', 6, 1),
+(152, '2014-04-02', 6, 1),
+(153, '2014-04-02', 6, 1),
+(154, '2014-04-02', 0, 1),
+(155, '2014-04-03', 0, 0),
+(156, '2014-04-03', 0, 0),
+(157, '2014-04-03', 6, 1),
+(158, '2014-04-03', 6, 1),
+(159, '2014-04-03', 6, 0),
+(160, '2014-04-04', 6, 0),
+(161, '2014-04-04', 6, 1),
+(162, '2014-04-04', 6, 1),
+(163, '2014-04-07', 6, 1),
+(164, '2014-04-07', 6, 1),
+(165, '2014-04-08', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -1088,8 +1180,8 @@ CREATE TABLE IF NOT EXISTS `puddings` (
 --
 
 INSERT INTO `puddings` (`item_id`, `item_code`, `item_name`, `quantity`, `price`, `path`, `category_id`, `shelf_life`, `unit`) VALUES
-(1, 'KB278', 'CHOCOLATE BALL', 10, 20, 'img/pastry1.jpg', '18', '4 DAYS', '100g (1 PC)'),
-(2, 'KB275', 'CHOCOLATE PUDDING', 10, 45, 'img/pastry1.jpg', '18', '4 DAYS', '100g (1 PC)'),
+(1, 'KB278', 'CHOCOLATE BALL', 5, 20, 'img/pastry1.jpg', '18', '4 DAYS', '100g (1 PC)'),
+(2, 'KB275', 'CHOCOLATE PUDDING', 5, 45, 'img/pastry1.jpg', '18', '4 DAYS', '100g (1 PC)'),
 (3, 'PK03', 'FRUIT PUDDING', 10, 45, 'img/pastry1.jpg', '18', '3 DAYS', '100g (1 PC)'),
 (4, 'KB829', 'CHOCOLATE WALNUT PUDDING', 10, 60, 'img/pastry1.jpg', '18', '4 DAYS', '100g (1 PC)'),
 (5, 'KB806', 'DARK SECRET', 10, 65, 'img/pastry1.jpg', '18', '4 DAYS', '100g (1 PC)'),
@@ -1114,24 +1206,25 @@ CREATE TABLE IF NOT EXISTS `puffs` (
   `shelfe_life` varchar(20) NOT NULL,
   `unit` varchar(20) NOT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `puffs`
 --
 
 INSERT INTO `puffs` (`item_id`, `item_code`, `item_name`, `quantity`, `price`, `path`, `category_id`, `shelfe_life`, `unit`) VALUES
-(1, 'PF', 'ALOO PUFF', 10, 10, 'img/khari2.jpg', '0', '1 DAY', '1 PC'),
+(1, 'PF', 'ALOO PUFF', 8, 10, 'img/khari2.jpg', '0', '1 DAY', '1 PC'),
 (2, 'KB801', 'KACHORI PUFF', 10, 15, 'img/khari2.jpg', '0', '1 DAY', '2 PC'),
-(3, 'PPF', 'PACK PATTIES', 10, 15, 'img/khari2.jpg', '0', '1 DAY', '3 PC'),
+(3, 'PPF', 'PACK PATTIES', 9, 15, 'img/khari2.jpg', '0', '1 DAY', '3 PC'),
 (4, 'KB21', 'VEG. PATTIES SPL', 10, 20, 'img/khari2.jpg', '0', '1 DAY', '4 PC'),
-(5, 'KB139', 'VEG. NOODLES PATTIES', 10, 20, 'img/khari2.jpg', '0', '1 DAY', '5 PC'),
+(5, 'KB139', 'VEG. NOODLES PATTIES', 5, 20, 'img/khari2.jpg', '0', '1 DAY', '5 PC'),
 (6, 'KB140', 'VEG.MANCHURIAN PATTIES', 10, 20, 'img/khari2.jpg', '0', '1 DAY', '6 PC'),
 (7, 'KB142', 'LACHEDAR PATTIES', 10, 20, 'img/khari2.jpg', '0', '1 DAY', '7 PC'),
 (8, 'BS138', 'KOLHAPURI PUFF', 10, 20, 'img/khari2.jpg', '0', '1 DAY', '8 PC'),
 (9, 'BS137', 'CHATPATTA JAIN PUFF(Garnished with popey seeds )', 10, 30, 'img/khari2.jpg', '0', '1 DAY', '9 PC'),
 (10, 'KB141', 'CHEESE CAPSICUM TOMATO PATTIES  (JAIN)', 10, 30, 'img/khari2.jpg', '0', '1 DAY', '10 PC'),
-(11, 'KB830', 'PANEER CHILLY PUFF  (Garnished with Til)', 10, 30, 'img/khari2.jpg', '0', '1 DAY', '11 PC');
+(11, 'KB830', 'PANEER CHILLY PUFF  (Garnished with Til)', 10, 30, 'img/khari2.jpg', '0', '1 DAY', '11 PC'),
+(15, '', '', -1, 0, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -1150,7 +1243,7 @@ CREATE TABLE IF NOT EXISTS `savories` (
   `shelfe_life` varchar(20) NOT NULL,
   `unit` varchar(20) NOT NULL,
   PRIMARY KEY (`item_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `savories`
@@ -1164,10 +1257,11 @@ INSERT INTO `savories` (`item_id`, `item_code`, `item_name`, `quantity`, `price`
 (5, 'KB72', 'SCHEZWAN ROLL', 10, 20, 'img/khari2.jpg', '35', '2 DAYS', '1 PC'),
 (6, 'KB900', 'ALOO TIKKI PANINI                 ', 10, 25, 'img/khari2.jpg', '36', '2 DAYS', '1 PC'),
 (7, 'KB84', 'VEG DELITE SANDWICH          ', 10, 25, 'img/khari2.jpg', '37', '2 DAYS', '1 PC'),
-(8, 'EP14', 'CTC SANDWICH   (JAIN)                      ', 10, 25, 'img/khari2.jpg', '37', '2 DAYS', '1 PC'),
+(8, 'EP14', 'CTC SANDWICH   (JAIN)                      ', 9, 25, 'img/khari2.jpg', '37', '2 DAYS', '1 PC'),
 (9, 'KB811', 'VEG.BURGER                           ', 10, 30, 'img/khari2.jpg', '36', '2 DAYS', '1 PC'),
-(10, 'BS139', 'ITALIAN FOCCASIA SANDWICH     ', 10, 30, 'img/khari2.jpg', '37', '2 DAYS', '1 PC'),
-(11, 'KB101', 'ITALIAN BAKE PIZZA      ', 10, 35, 'img/khari2.jpg', '38', '2 DAYS', '1 PC');
+(10, 'BS139', 'ITALIAN FOCCASIA SANDWICH     ', 9, 30, 'img/khari2.jpg', '37', '2 DAYS', '1 PC'),
+(11, 'KB101', 'ITALIAN BAKE PIZZA      ', 7, 35, 'img/pizza.jpg', '38', '2 DAYS', '1 PC'),
+(12, '', '', -1, 0, '', '', '', '');
 
 -- --------------------------------------------------------
 

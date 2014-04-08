@@ -16,9 +16,8 @@
               echo "<table class='table table-hover'>";
               echo "<tr class='info'><th>OrderID</th><th>Item</th><th style='width: 150px;'>Received quantity</th>
               <th style='width: 200px;'>Return Quantity</th></tr>";
-             // echo "<pre>";print_r($db_data);exit;
               foreach ($db_data as $key => $value) {
-             // echo "<pre>";  print_r($value);exit;
+              //echo "<pre>";  print_r($value);exit;
                 $nm=$name;
                 $v1=$order_id;
                 $v2=$value[$name]['item_name'];
