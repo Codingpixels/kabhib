@@ -75,6 +75,7 @@
 					$list['EmployeeReturn']['order_id'] = $value['order_id'];
 					$list['EmployeeReturn']['return_qty'] = $value['return_qty'];
 					$list['EmployeeReturn']['note'] = $value['note'];
+					$list['EmployeeReturn']['reason'] = $value['reason'];
 					$list['EmployeeReturn']['item_name'] = $value['item_name'];
 					$list['EmployeeReturn']['type'] = $value['type'];
 					$type = $value['type'];
