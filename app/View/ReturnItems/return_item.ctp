@@ -19,7 +19,7 @@
       <th width=''>Purchase Quantity</th>
       <th width=''>Return Quantity</th>
       <th width=''>Remark</th>
-      <th width=''>Reason</th>
+
     </tr>
 <?php
     foreach ($db_data as $key => $value) {
@@ -45,11 +45,7 @@
                                                           'rows' =>'1',
                                                           'cols' => '160'));?>
         </td>
-        <td width=''>
-          <?php echo $this->Form->input($i.'.note', array('type' => 'select','class' => 'required', 
-                    'options' => $note_array,'label'=>false)); ?>
-
-        </td>
+        </tr>
     <?php echo $this->Form->input($i.'.v1',array('type'=>'hidden','value'=>$v1)); ?>
     <?php echo $this->Form->input($i.'.v2',array('type'=>'hidden','value'=>$v2)); ?>
     <?php echo $this->Form->input($i.'.v3',array('type'=>'hidden','value'=>$v3)); ?>

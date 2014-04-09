@@ -204,39 +204,54 @@
 													 				'CustomerReturn.item_name',
 													 				'CustomerReturn.id',
 													 				'CustomerReturn.note')));
-				$total_return_quantity =  0;
-				$total_purchase_quantity =  0;
-				$item_return_quantity = array();
-				$item_purchase_quantity = array();
-				$actual_sale_array = array();
-				$actual_return_array = array();
+				
+				$total_purchase_quantity =  0; //total of all purchase quantities  irrespective of return type
+				$total_return_quantity =  0; //total of all return quantities irrespective of return type
+				$actual_sale_array = array(); //total sale array having return type as damage or bad taste bt with no repeated key value
+				$actual_return_array = array();//total return array having return type as damage or bad taste bt with no repeated key value
+				$datewise_return_array = array();//key value pair of distinct date with corresponding total sale on tht particular date having return type as bad taste or damage
 				$difference_array = array();
 
 				foreach ($total_quantity as $key => $value) {
 					$total_purchase_quantity = $total_purchase_quantity + intval($value['CustomerReturn']['item_purchase_quantity']);
+					$total_return_quantity = $total_return_quantity + intval($value['CustomerReturn']['item_return_quantity']);
 					if(($value['CustomerReturn']['note'] == 'Damage') ||($value['CustomerReturn']['note'] == 'Bad taste')){
-						$total_return_quantity = $total_return_quantity + $value['CustomerReturn']['item_return_quantity'];
-					}
-					if(array_key_exists($value['CustomerReturn']['item_name'], $actual_sale_array)){
-						$actual_sale_array[$value['CustomerReturn']['item_name']] = $actual_sale_array[$value['CustomerReturn']['item_name']] + $value['CustomerReturn']['item_purchase_quantity'];
-						$actual_return_array[$value['CustomerReturn']['item_name']] = $actual_return_array[$value['CustomerReturn']['item_name']] + $value['CustomerReturn']['item_return_quantity'];
-					} else {
-						$actual_sale_array = array_merge($actual_sale_array, array($value['CustomerReturn']['item_name'] => $value['CustomerReturn']['item_purchase_quantity']));
-						$actual_return_array = array_merge($actual_return_array, array($value['CustomerReturn']['item_name'] => $value['CustomerReturn']['item_return_quantity']));
+
+						if(array_key_exists($value['CustomerReturn']['item_name'], $actual_sale_array)){
+							$actual_sale_array[$value['CustomerReturn']['item_name']] = $actual_sale_array[$value['CustomerReturn']['item_name']] + $value['CustomerReturn']['item_purchase_quantity'];
+							$actual_return_array[$value['CustomerReturn']['item_name']] = $actual_return_array[$value['CustomerReturn']['item_name']] + $value['CustomerReturn']['item_return_quantity'];
+						} else {
+							$actual_sale_array = array_merge($actual_sale_array, array($value['CustomerReturn']['item_name'] => $value['CustomerReturn']['item_purchase_quantity']));
+							$actual_return_array = array_merge($actual_return_array, array($value['CustomerReturn']['item_name'] => $value['CustomerReturn']['item_return_quantity']));
+						}
+
+						$temp_dateTime = $value['CustomerReturn']['return_date'];
+						$date = date('Y-m-d',strtotime($temp_dateTime));
+
+						if (array_key_exists($date, $datewise_return_array)) {
+							$datewise_return_array[$date] = $datewise_return_array[$date] + $value['CustomerReturn']['item_return_quantity'];
+						}
+						else {
+							$datewise_return_array[$date] = $value['CustomerReturn']['item_return_quantity'];
+						}
 					}
 				}
-				foreach ($actual_sale_array as $key => $value) {
-					$difference_array[$key] =$value - $actual_return_array[$key];
-				}
+				echo '<pre>';echo "datewise_return_array: "; print_r($datewise_return_array);
+				echo '<pre>';echo "total_return_quantity: "; print_r($total_return_quantity);
+				echo '<pre>';echo "total_purchase_quantity: "; print_r($total_purchase_quantity);
+				echo '<pre>';echo "actual_sale_quantity: "; print_r($actual_sale_array);
+				echo '<pre>';echo "actual_return_quantity: "; print_r($actual_return_array);
+				exit;
 				
-			echo '<pre>'; print_r($total_purchase_quantity);
-			echo '<pre>'; print_r($total_return_quantity); exit;	
-			$this->set('total_purchase_quantity',$total_purchase_quantity);
-			$this->set('total_return|_quantity',$total_return_quantity);
-			$this->set('damage',$damage_data);
-			$this->set('month',$month);
-			$this->set('year',$year);
-			$this->set('branch',$branch);
+				$year = substr($date2,0,4);	
+				$this->set('actual_purchase_quantity',$actual_purchase_quantity);
+				$this->set('actual_return_quantity',$actual_return_quantity);
+				$this->set('total_purchase_quantity',$total_purchase_quantity);
+				$this->set('total_return_quantity',$total_return_quantity);
+				$this->set('month',$month);
+				$this->set('year',$year);
+				$this->set('branch',$branch);
+				$this->set('datewise_return_array', $datewise_return_array);
 		}
 		/*public function generate_damage($date1,$date2,$month,$branch) {
 			$j = substr($date2,8,2);
