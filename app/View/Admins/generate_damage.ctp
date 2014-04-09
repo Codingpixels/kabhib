@@ -16,7 +16,7 @@
 						<?php
 							$tot_damage = 0;
 							$i = 1;
-							foreach ($damage as $key => $value) {
+							foreach ($datewise_return_array		 as $key => $value) {
 								echo "<tr><td>".$i."</td><td>".$key."</td><td>".$value."</td></tr>";
 								$i++;
 								$tot_damage = $tot_damage + $value;
@@ -27,20 +27,16 @@
 				<div class="report-foot">
 					<label style='width: 261px;'>TOTAL  DAMAGE OF <?php echo $month." ".$year ?></label> 
 					<label style="margin-right: 17px;">=</label> 
-					<?php echo $tot_damage; ?>
+					<?php echo $total_return_quantity; ?>
 					<br>
 					<label style='width: 261px;'>TOTAL SALE OF <?php echo $month." ".$year ?></label> 
 					<label style='margin-right: 17px;'>=</label> 
-					<?php echo $total; ?>
+					<?php echo $total_purchase_quantity; ?>
 					<br>
 					<label style='width: 261px;'>TOTAL DAMAGE % <?php echo $month." ".$year ?></label> 
 					<label style='margin-right: 17px;'>=</label> 
 					<?php
-						if($total == 0){
-							echo '0.0';
-						} else {
-							echo $tot_damage * 100/$total;
-						}
+						echo $tot_damage;
 					?>
 					%
 				</div>

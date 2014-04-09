@@ -7,7 +7,7 @@
   $.validate();
 </script>
 <?php
-      $note_array=array('Damage'=>'Damage', 'Expire'=>'Expire');
+      $note_array=array('Damage'=>'Damage', 'Expire'=>'Expire' , 'Customer return' => 'Customer return');
     ?>
 <?php  if(!empty($db_data)) {
   echo "<h1><b>Take Return :</b></h1>";

@@ -62,11 +62,14 @@
 							$type = $value['v1'];
 							if($this->DeliveryDetail->save($data)){
 								$new_data = $this->$type->find('first',array('conditions'=>array($type.'.item_name' => $value['v2']),
-																'fields' => array($type.'.item_id',$type.'.quantity')));
-								//echo '<pre>'; print_r($this->request->data); exit;
-								$new_qty[$type]['quantity'] = $new_data[$type]['quantity'] + $value['qty'] ;
-								$this->$type->id = $new_data[$type]['item_id'];
-								$this->$type->save($new_qty);
+																'fields' => array($type.'.item_name',$type.'.quantity')));
+								
+								$new_qty= $new_data[$type]['quantity'] + $value['qty'] ;
+								//echo '<pre>'; print_r($new_data); exit;
+								 $this->$type->updateAll(array($type.'.quantity'=> $new_qty),
+		            									array($type.'.item_id' => $new_data[$type]['item_name']));
+								/*$this->$type->id = $new_data[$type]['item_id'];
+								$this->$type->save($new_qty);*/
 							}
 
 							$lastinsertid = $this->DeliveryDetail->getlastInsertId();

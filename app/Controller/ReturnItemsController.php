@@ -19,16 +19,15 @@
 		            $data['CustomerReturn']['order_id']=$value['v1'];
 		            $data['CustomerReturn']['item_name']=$value['v2'];
 		            $data['CustomerReturn']['item_type']=$value['v3'];
-		            $data['CustomerReturn']['item_return']=$value['qty']; 
-		            $data['CustomerReturn']['note']=$value['note'];
+		            $data['CustomerReturn']['item_return_quantity']=$value['qty']; 
 		            $data['CustomerReturn']['remark']=$value['remark'];
 		            $data['CustomerReturn']['item_purchase_quantity']=$value['v4'];	            
 		            $item_tab = $value['v3'];
 		            if($this->CustomerReturn->save($data)) {
-		            	if($value['note'] == 'Reuse') {
+		            	
 		            		$db_data = $this->$item_tab->find('first', array('conditions'=>array($item_tab.'.item_name' =>$value['v2']),
 		            													'fields'=>array($item_tab.'.quantity',$item_tab.'.item_id')));
-		            	}
+		            
 		            	$total_quantity = $db_data[$item_tab]['quantity'] + $value['qty'];
 		            	$id = $db_data[$item_tab]['item_id'];
 		            	$this->$item_tab->updateAll(array($item_tab.'.quantity' => $total_quantity),
@@ -42,8 +41,11 @@
 		            														array('CustomerOrderDetail.order_id' =>$value['v1'],
 		            															   'CustomerOrderDetail.item_name' =>$value['v2'],
 		            															   'CustomerOrderDetail.item_quantity'=>$value['v4'])));
-		           	
-		            $this->CustomerOrderDetail->saveField('item_retun_quantity',$value['qty']);
+		           
+		            $this->CustomerOrderDetail->updateAll(array('CustomerOrderDetail.item_return_quantity'=> $value['qty']),
+		            									array('CustomerOrderDetail.order_id' => $db_customer['CustomerOrderDetail']['order_id'],
+		            											'CustomerOrderDetail.item_name'=>$db_customer['CustomerOrderDetail']['item_name']));
+		            //$this->CustomerOrderDetail->saveField('item_retun_quantity',$value['qty']);
 
 	           	}
 	           	$this->redirect(array('controller'=>'EmployeeDetails','action'=>'home'));
