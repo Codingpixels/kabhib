@@ -4,7 +4,7 @@
 
 		public $name = 'Admins';
 		public $uses = array('EmployeeOrder','CustomerOrderDetail','CustomerReturn','DeliveryDetail','DeliveryMaster','Eorderdetail',
-							'Extra','NewArrival','Category','Bread','Cake','Chocolate','Cookie','CreamRoll','CupCake','DryCake',
+							'EmployeeReturn','Extra','NewArrival','Category','Bread','Cake','Chocolate','Cookie','CreamRoll','CupCake','DryCake',
 							'Khakhra','Khari','Pastry','Puff','Pudding','Savouries');
 		public $components = array('Email', 'Cookie');
 		public $helpers= array('Html' , 'Form');
@@ -182,28 +182,32 @@
 			if(!empty($this->request->data)){
 				$month = $this->request->data['EmployeeDetail']['month'];
 				$branch = $this->request->data['EmployeeDetail']['branch'];
+				$report_type = $this->request->data['EmployeeDetail']['report_type'];
 				$date1 = date('Y-m-01',strtotime($month));
 				$date2 = date('Y-m-t',strtotime($month)) ;
-				$this->redirect(array('controller'=>'Admins','action'=>'generate_damage',$date1,$date2,$month,$branch));
+				if($report_type == 'Customer Return') {
+					$this->redirect(array('controller'=>'Admins','action'=>'customer_damage_report',$date1,$date2,$month,$branch));
+				}
+				else {
+					$this->redirect(array('controller'=>'Admins','action'=>'fresh_damage_report',$date1,$date2,$month,$branch));
+				}
 			}
 
 		}
 
-		public function generate_damage($date1,$date2,$month,$branch) {
+		public function fresh_damage_report($date1,$date2,$month,$branch) {
 			
-				$total_quantity = $this->CustomerReturn->find('all',
+				$total_quantity = $this->EmployeeReturn->find('all',
 												array('conditions'=>array(
-																	'CustomerReturn.return_date  BETWEEN ? AND ?' =>array(
+																	'EmployeeReturn.return_date  BETWEEN ? AND ?' =>array(
 																						date('Y-m-d',strtotime($date1)).'%',
-													 									date('Y-m-d', strtotime($date2)).'%'),
-																	'CustomerReturn.branch'=>$branch),
+													 									date('Y-m-d', strtotime($date2)).'%')),
 													  'fields'=>array(
-													  				'CustomerReturn.item_return_quantity',
-													  				'CustomerReturn.item_purchase_quantity',
-													 				'CustomerReturn.return_date',
-													 				'CustomerReturn.item_name',
-													 				'CustomerReturn.id',
-													 				'CustomerReturn.note')));
+													  				'EmployeeReturn.return_qty',
+													  				'EmployeeReturn.item_purchase_quantity',
+													 				'EmployeeReturn.return_date',
+													 				'EmployeeReturn.item_name',
+													 				'EmployeeReturn.id')));
 				
 				$total_purchase_quantity =  0; //total of all purchase quantities  irrespective of return type
 				$total_return_quantity =  0; //total of all return quantities irrespective of return type
@@ -331,7 +335,7 @@
 			}
 		}
 
-	public function add_image($lastInsert,$tab_name) {
+		public function add_image($lastInsert,$tab_name) {
 			$this->set('pid',$lastInsert);
 			$this->set('tab_name', $tab_name);
 		}
