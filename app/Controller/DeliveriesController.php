@@ -50,6 +50,7 @@
 					$data_result['DeliveryMaster']['created']=date('Y-m-d');
 					if($this->DeliveryMaster->save($data_result)) {
 					    $data = $this->request->data['EmployeeDetail'];
+					    $new_qty= 0;
 						foreach ($data as $key => $value) {
 							if(!empty($lastinsertid)) {
 						       $this->DeliveryDetail->id = $lastinsertid;
@@ -62,14 +63,11 @@
 							$type = $value['v1'];
 							if($this->DeliveryDetail->save($data)){
 								$new_data = $this->$type->find('first',array('conditions'=>array($type.'.item_name' => $value['v2']),
-																'fields' => array($type.'.item_name',$type.'.quantity')));
-								
+																'fields' => array($type.'.item_name',$type.'.quantity'))); 
 								$new_qty= $new_data[$type]['quantity'] + $value['qty'] ;
-								//echo '<pre>'; print_r($new_data); exit;
-								 $this->$type->updateAll(array($type.'.quantity'=> $new_qty),
-		            									array($type.'.item_id' => $new_data[$type]['item_name']));
-								/*$this->$type->id = $new_data[$type]['item_id'];
-								$this->$type->save($new_qty);*/
+								$this->$type->updateAll(array($type.'.quantity'=> $new_qty),
+		            									array($type.'.item_name' => $new_data[$type]['item_name']));
+
 							}
 
 							$lastinsertid = $this->DeliveryDetail->getlastInsertId();

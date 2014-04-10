@@ -7,7 +7,7 @@
 			<div class='subinner'>
 				<div class="report-head">
 					<label>
-						<h1><b>FINAL DATE WISE <?php echo $month."-".$year; ?> DAMAGE REPORT OF <?php echo $branch; ?>:-</b></h1>
+						<h1><b>FINAL DATE WISE <?php echo $month."-".$year; ?> FRESH RETURN DAMAGE REPORT OF <?php echo $branch; ?>:-</b></h1>
 					</label>
 				</div>
 				<div class="damage">

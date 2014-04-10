@@ -108,7 +108,7 @@
 			}
 		}
 
-		public function fresh_return() {
+		/*public function fresh_return() {
 			if($this->request->is('post')) {
 				$data = $this->request->data['stock_return'];
 				foreach ($data as $key => $value) {
@@ -118,7 +118,6 @@
 					    }
 						$list['FreshReturn']['order_id'] = $value['order_id'];
 						$list['FreshReturn']['return_qty'] = $value['return_qty'];
-						//$list['FreshReturn']['note'] = $value['note'];
 						$list['FreshReturn']['item_name'] = $value['item_name'];
 						$list['FreshReturn']['return_type'] = $value['type1'];
 						$list['FreshReturn']['item_type'] = $value['type'];
@@ -165,7 +164,7 @@
 			$this->set('order_id',$order_id);
 			$this->set('return_type',$return_type);			
 		}
-
+*/
   	}
 
 ?>
