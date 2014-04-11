@@ -22,22 +22,4 @@
 		<div class="b5"><a href="" class="next">Next</a></div>
 	<?php //endif; ?>
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
- 
- 	$('.next').click(function(e){
-		e.preventDefault();
- 		url='customer_item';
- 		$.ajax({
- 			url:url,
- 			data:data,
- 			dataType:"html",
- 			type:'post',
- 			success:function(response){
- 				$('.order-form').append(response);
- 			},
- 			error:function(response){}
- 		});
-	});	
-});
-</script>
+<?php echo $this->Html->script('EmployeeDetails/customerajax.js') ?>
