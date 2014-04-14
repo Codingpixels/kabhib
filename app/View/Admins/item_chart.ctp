@@ -9,8 +9,8 @@
       chartType: 'BarChart',
       dataTable: data,
       options: {
-        'vAxis': {title: "No of quantities"},
-        'hAxis': {title: "Items"},
+        'vAxis': {title: "Items"},
+        'hAxis': {title: "No of Quantities"},
       },
       containerId: 'visualization',
      

@@ -80,6 +80,7 @@
 					$list['EmployeeReturn']['reason'] = $value['reason'];
 					$list['EmployeeReturn']['item_name'] = $value['item_name'];
 					$list['EmployeeReturn']['type'] = $value['type'];
+					$list['EmployeeReturn']['item_purchase_quantity'] = $value['item_purchase_quantity'];
 					$type = $value['type'];
 					if($this->EmployeeReturn->save($list)){
 						$new_data = $this->$type->find('first',array('conditions'=>array($type.'.item_name' => $value['item_name']),

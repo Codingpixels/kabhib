@@ -66,6 +66,22 @@
 							?>
 						</div>
 					</div>
+					<?php 
+					/*echo $this->Form->create('item_chart', array('url' => array('controller' => 'Admins', 'action' => 'view__chart')));
+								       		$index = 0;
+								       				for($i=0;$i<$j;$i++){
+									       				if($item_type[$i] == $type){
+									       				
+									       				echo $this->Form->hidden($item_name[$i], array('value' => $string_dem));
+								       		
+									       				}
+								       				}
+								       		?>
+								       		<input type="submit" value="View Demand Chart">
+								       		<?php
+
+								       		echo $this->Form->end();*/
+								       		?>	        
 					<a href="/kabhib/Admins/view_chart/<?php echo $string_dem.'Demand Chart'; ?>" 
 						style="margin-left: 430px; margin-right: 20px;">
 						View Demand Charts > > >

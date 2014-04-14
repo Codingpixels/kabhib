@@ -46,20 +46,20 @@
 						?>
 				</div>
 				<div class="total_amt">
-						<table>
-							<tr>
-								<td><b>Amount:</b></td>
-								<td id="amt"></td>
-							</tr>
-							<tr>
-								<td><b>VAT:</b></td>
-								<td>15%</td>
-							</tr>
-							<tr>
-								<td><b>Total:</b></td>
-								<td id="totamt"></td>
-							</tr>
-						</table>
+					<table>
+						<tr>
+							<td><b>Amount:</b></td>
+							<td id="amt"></td>
+						</tr>
+						<tr>
+							<td><b>VAT:</b></td>
+							<td>15%</td>
+						</tr>
+						<tr>
+							<td><b>Total:</b></td>
+							<td id="totamt"></td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</fieldset>
@@ -74,3 +74,4 @@
 	margin-left: 178px !important;
 }
 </style>
+<?php echo $this->Html->script('EmployeeOrders/sell'); ?>

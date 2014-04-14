@@ -1,6 +1,3 @@
-<?php
-
-?>
 <div class="main_content">
 	<div class="inner_content">
 		<fieldset class='stockorder'>
@@ -27,7 +24,7 @@
 				<div class="report-foot">
 					<label style='width: 261px;'>TOTAL  DAMAGE OF <?php echo $month." ".$year ?></label> 
 					<label style="margin-right: 17px;">=</label> 
-					<?php echo $total_return_quantity; ?>
+					<?php echo $tot_damage; ?>
 					<br>
 					<label style='width: 261px;'>TOTAL SALE OF <?php echo $month." ".$year ?></label> 
 					<label style='margin-right: 17px;'>=</label> 
@@ -36,16 +33,31 @@
 					<label style='width: 261px;'>TOTAL DAMAGE % <?php echo $month." ".$year ?></label> 
 					<label style='margin-right: 17px;'>=</label> 
 					<?php
-						echo $tot_damage;
+						echo ($total_return_quantity/$total_purchase_quantity)* 100;
 					?>
 					%
 				</div>
 				<div style="margin-top: -27px; margin-left: 1076px;">
-					<form>
-						<a href="<?php echo $this->Html->url(array('controller' => 'Admins','action' => 'view_chart','Total Sell',
+					<?php 
+						echo $this->Form->create('fresh_return_chart', array('url'=> array('controller' =>'Admins','action'=>'fresh_return_chart')));
+						foreach($actual_purchase_array as $key => $value){
+						  echo '<input type="hidden" name="result_purchase['.$key.']" value="'. $value. '">';
+						}
+						foreach($actual_return_array as $key => $value){
+						  echo '<input type="hidden" name="result_damage['.$key.']" value="'. $value. '">';
+						}
+						// echo $this->Form->hidden($actual_purchase_array, array('value' => $actual_purchase_array));
+						// echo $this->Form->hidden($actual_damage_array, array('value' => $actual_damage_array));
+					?>
+						<input type="submit" value="View">
+					<?php
+						echo $this->form->end();
+					?>
+					<form action=>
+						<!-- <a href="<?php echo $this->Html->url(array('controller' => 'Admins','action' => 'fresh_return_chart','Total Sell',
 						$total,'Total Damage',$tot_damage,'Damage Chart')); ?>">
 							View Charts > > >
-						</a>
+						</a> -->
 					</form>
 				</div>
 			</div>

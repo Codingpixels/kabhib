@@ -4,7 +4,7 @@
   google.setOnLoadCallback(drawChart);
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
-      ['Task', 'percentage'],
+      ['month', 'purchase', 'damage'],
       <?php
         foreach ($item as $key => $value) {
       ?>

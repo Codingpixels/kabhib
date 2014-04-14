@@ -50,9 +50,7 @@
 	</div>
 </div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
-<script type="text/javascript">
-	$.validate();
-</script>
+<?php echo $this->Html->script('Admins/new_arrival'); ?>
 <style type="text/css">
 	.inp
 	{

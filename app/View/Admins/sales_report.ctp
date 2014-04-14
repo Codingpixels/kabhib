@@ -92,7 +92,6 @@
 								       		
 									       				}
 								       				}
-								       		//$this->Form->input("View ".$type."s Chart > > >", array('type' => 'submit'));
 								       		?>
 								       		<input type="submit" value="View">
 								       		<?php
