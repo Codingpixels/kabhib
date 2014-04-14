@@ -56,6 +56,7 @@
               <?php echo $this->Form->input($i.'.item_name',array('type'=>'hidden','value'=>$v2)); ?>
               <?php echo $this->Form->input($i.'.delivered_qty',array('type'=>'hidden','value'=>$v3)); ?>
               <?php echo $this->Form->input($i.'.type',array('type'=>'hidden','value'=>$v4)); ?>
+              <?php echo $this->Form->input($i.'.item_purchase_quantity',array('type'=>'hidden','value'=>$value['DeliveryDetail']['quantity'])); ?>
 
          
 

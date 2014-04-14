@@ -46,59 +46,25 @@
 						?>
 				</div>
 				<div class="total_amt">
-						<table>
-							<tr>
-								<td><b>Amount:</b></td>
-								<td id="amt"></td>
-							</tr>
-							<tr>
-								<td><b>VAT:</b></td>
-								<td>15%</td>
-							</tr>
-							<tr>
-								<td><b>Total:</b></td>
-								<td id="totamt"></td>
-							</tr>
-						</table>
+					<table>
+						<tr>
+							<td><b>Amount:</b></td>
+							<td id="amt"></td>
+						</tr>
+						<tr>
+							<td><b>VAT:</b></td>
+							<td>15%</td>
+						</tr>
+						<tr>
+							<td><b>Total:</b></td>
+							<td id="totamt"></td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</fieldset>
 	</div>
 </div>
-
-<script type="text/javascript">
-$().ready(function() {
-	$('.submitbtn').click(function(){
-	    $('#CustomerSellForm').submit();
-	});
-    $("#CustomerSellForm").validate();
-  });
-$(".brd").click(function (event) { 
-    event.preventDefault();
-    $('.brd').prop('disabled', false);
-    $(this).prop('disabled', true);
-});
-
-$('.order-item').click(function(){
-	$('.order-category').empty();
-	$('.order-form').empty();
-	item_name = $(this).val();
-	order_number = $('#order_number').val();
-	data = "item_name="+item_name+"&order_number="+order_number;
-	url='sell_category';
-	$.ajax({
-		url:url,
-		data:data,
-		dataType:"html",
-		type:'post',
-		success:function(response){
-			order_number++;
-			$('.order-category').append(response);
-		},
-		error:function(response){}
-	});
- });
-</script>
 <style type="text/css">
 .indata{
 	height: 301px;
@@ -108,3 +74,4 @@ $('.order-item').click(function(){
 	margin-left: 178px !important;
 }
 </style>
+<?php echo $this->Html->script('EmployeeOrders/sell'); ?>

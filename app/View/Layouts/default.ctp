@@ -17,23 +17,27 @@
  */
 
 $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
-$jsFiles=array('jquery-1.9.1','jquery-ui','jquery.validate','bootstrap.min');
+
+$jsFiles=array('jquery-1.9.1','jquery-ui','jquery.validate','bootstrap.min','googlechart');
 $cssFiles=array('cake.generic','custom','bootstrap','style');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
 	<?php echo $this->Html->charset(); ?>
+
 	<title>
 		<?php //echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
+
 	<?php
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css($cssFiles);
-		 echo $this->Html->script($jsFiles);
+		echo $this->Html->script($jsFiles);
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
