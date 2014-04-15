@@ -20,7 +20,7 @@
 									'action' => 'supply_demand')); ?>" class="current">Supply / Demand Report
 							</button>
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins',
-									'action' => 'damage_report')); ?>" class="current">Damage Report
+									'action' => 'select_interval')); ?>" class="current">Damage Report
 							</button>
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins',
 									'action' => 'new_arrival')); ?>" class="current">Add New Arrivals

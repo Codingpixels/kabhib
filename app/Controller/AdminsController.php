@@ -11,7 +11,12 @@
 
 		public function admin() {
 		}
+		public function select_interval() {
 
+		}
+		public function fresh_return() {
+			
+		}
 		public function sales_report() {
 			$date = date('Y-m-d');
 			$date=date_create($date);
@@ -186,15 +191,14 @@
 				$date1 = date('Y-m-01',strtotime($month));
 				$date2 = date('Y-m-t',strtotime($month)) ;
 				if($report_type == 'Customer Return') {
-					$this->redirect(array('controller'=>'Admins','action'=>'customer_damage_report',$date1,$date2,$month,$branch));
+					$this->redirect(array('controller'=>'Admins','action'=>'customer_return_report',$date1,$date2,$month,$branch));
 				}
 				else {
 					$this->redirect(array('controller'=>'Admins','action'=>'fresh_return_report',$date1,$date2,$month,$branch));
 				}
 			}
 
-		}
-
+		} 
 		public function fresh_return_report($date1,$date2,$month,$branch) {
 			
 				$total_quantity = $this->EmployeeReturn->find('all',
@@ -257,54 +261,17 @@
 				$this->set('datewise_return_array', $datewise_return_array);
 		}
 		public function fresh_return_chart() {
-			echo"<pre>";print_r(json_encode($this->request->data['result_purchase']));exit;
-			foreach ($this->request->data['result_purchase'] as $key => $value) {
-			}
-
-		}
-		/*public function generate_damage($date1,$date2,$month,$branch) {
-			$j = substr($date2,8,2);
-			$year = substr($date2,0,4);
-			$damage_data = array();
+			$chart_data_array = array();
 			$i = 1;
-			$total = 0;echo '<pre>'; print_r($j); exit;
-			while($i <= $j) {
-				$data = $this->CustomerReturn->find('all',array('conditions'=>array(
-													'CustomerReturn.return_date  BETWEEN ? AND ?' =>array(date('Y-m-d',strtotime($date1)).'%', date('Y-m-d', strtotime($date2)).'%'),
-													'CustomerReturn.note'=>'Damage','CustomerReturn.branch'=>$branch,
-													),
-													'fields'=>array('CustomerReturn.item_return', 'CustomerReturn.return_date', 'CustomerReturn.id')));
-				$temp =  0;
-				foreach ($data as $key => $value) {
-					$temp = $temp + $value['CustomerReturn']['item_return'];
-				}
-				$sold = $this->CustomerOrderDetail->find('all',array('conditions'=>array(
-														'CustomerOrderDetail.order_date  BETWEEN ? AND ?' =>array(date('Y-m-d',strtotime($date1)).'%', date('Y-m-d', strtotime($date2)).'%'),
-														'CustomerOrderDetail.branch'=>$branch),
-														'fields'=>array('CustomerOrderDetail.item_quantity', 'CustomerOrderDetail.order_date')));
-				$temp1 = 0;
-				foreach ($sold as $key1 => $value1) {
-					$temp1 = $temp1 + $value1['CustomerOrderDetail']['item_quantity'];
-				}
-				$total = $total + $temp1;
-				if($temp == 0){
-					$damage_data[$date1] = 0.0;
-				} else {
-					$damage_data[$date1] = $temp1 * 100/$temp;
-				}
-				$date = date_create($date1);
-				date_add($date,date_interval_create_from_date_string("+1 days"));
-				$date1 = date_format($date,"Y-m-d");
+			$chart_data_array[0] = array('Item', 'Purchase', 'Return');
+			foreach ($this->request->data['result_purchase'] as $key => $value) {
+				$chart_data_array[$i] = array($key, intval($value), intval($this->request->data['result_damage'][$key]));
 				$i++;
 			}
-				
-			$this->set('total',$total);
-			$this->set('damage',$damage_data);
-			$this->set('month',$month);
-			$this->set('year',$year);
-			$this->set('branch',$branch);
-		}*/
-
+			$chart_data_json = json_encode($chart_data_array);
+			$this->set('chart_data_json', $chart_data_json);
+		}
+		
 		public function new_arrival() {
 			if($this->request->data){
 				$data['NewArrival']['item_name'] = $this->request->data['item_name'];
