@@ -19,8 +19,8 @@
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins',
 									'action' => 'supply_demand')); ?>" class="current">Supply / Demand Report
 							</button>
-							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins',
-									'action' => 'select_interval')); ?>" class="current">Damage Report
+							<button formaction="<?php echo $this->Html->url(array('controller' => 'Reports',
+									'action' => 'index')); ?>" class="current">Report
 							</button>
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins',
 									'action' => 'new_arrival')); ?>" class="current">Add New Arrivals
