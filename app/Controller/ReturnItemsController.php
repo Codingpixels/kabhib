@@ -74,14 +74,19 @@
 					if(!empty($lastinsertid)) {
 				       $this->EmployeeReturn->id = $lastinsertid;
 				    }
-					$list['EmployeeReturn']['order_id'] = $value['order_id'];
+				    $type = $value['type'];
+				    $price = $this->$type->find('first',array(
+				    										'conditions'=>array($type.'.item_name' => $value['item_name']),
+														    'fields' => array($type.'.price',$type.'.item_name')));
+				    $new_price = $price[$type]['price'] * $value['return_qty'];
+				    $list['EmployeeReturn']['order_id'] = $value['order_id'];
+					$list['EmployeeReturn']['total_price'] = $new_price;
 					$list['EmployeeReturn']['return_qty'] = $value['return_qty'];
 					$list['EmployeeReturn']['note'] = $value['note'];
 					$list['EmployeeReturn']['reason'] = $value['reason'];
 					$list['EmployeeReturn']['item_name'] = $value['item_name'];
 					$list['EmployeeReturn']['type'] = $value['type'];
 					$list['EmployeeReturn']['item_purchase_quantity'] = $value['item_purchase_quantity'];
-					$type = $value['type'];
 					if($this->EmployeeReturn->save($list)){
 						$new_data = $this->$type->find('first',array('conditions'=>array($type.'.item_name' => $value['item_name']),
 														'fields' => array($type.'.item_id',$type.'.quantity')));
