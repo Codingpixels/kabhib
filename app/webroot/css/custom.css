@@ -372,3 +372,14 @@
     color: #FFFFFF;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
 }
+.btn-cat {
+	margin-left: 159px;
+    margin-top: -52px;
+}
+input select {
+	float: left;
+}
+/*#piechart {
+	position: relative;
+	top: 0px !important;
+}*/
