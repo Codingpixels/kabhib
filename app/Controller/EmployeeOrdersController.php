@@ -44,10 +44,13 @@
 														              'type'=> $this->request->data[$i.'type']
 														              )));
 			      		$type = $this->request->data[$i.'type'];
-						$old_qty = $this->$type->find('first',array('conditions'=>array($type.'.item_name' =>
-														$item_array[$i]['Customer']['item_name']),'fields'=>
-														array($type.'.quantity',$type.'.item_id')
-														));
+						$old_qty = $this->$type->find('first',array('conditions'=>
+																	array($type.'.item_name' =>
+																				$item_array[$i]['Customer']['item_name']),
+																		'fields'=>array($type.'.quantity',
+																						$type.'.item_id',
+																						$type.'.price')));
+						$each_qty_price = $old_qty[$type]['price'];
 						$new_qty[$type]['quantity'] = $old_qty[$type]['quantity'] - $item_array[$i]['Customer']['quantity'];
 						$this->$type->id = $old_qty[$type]['item_id'];
 						$this->$type->save($new_qty);          
@@ -62,6 +65,7 @@
 						$order['CustomerOrderDetail']['employee_id']=$this->Session->read('eid');
 						$order['CustomerOrderDetail']['total_bill']=$item_array[$i]['Customer']['total_bill'];
 						$order['CustomerOrderDetail']['type']=$item_array[$i]['Customer']['type'];
+						$order['CustomerOrderDetail']['each_qty_price'] =$each_qty_price;
 
 						$this->CustomerOrderDetail->save($order);
 						$lastinserid = $this->CustomerOrderDetail->getlastInsertId();

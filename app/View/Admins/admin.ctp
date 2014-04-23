@@ -8,17 +8,6 @@
 						if($this->Session->check('eid')):
 					?>
 					<form>
-							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins', 
-									'action' => 'sales_report','current')); ?>" class="current">Today's Report
-							</button>
-							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins',
-									'action' => 'sales_report','week')); ?>" class="current">Weekly Report</button>
-							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins', 
-									'action' => 'sales_report','month')); ?>" class="current">monthly Report
-							</button>
-							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins',
-									'action' => 'supply_demand')); ?>" class="current">Supply / Demand Report
-							</button>
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'Reports',
 									'action' => 'index')); ?>" class="current">Report
 							</button>
