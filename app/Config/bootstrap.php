@@ -86,6 +86,7 @@ Cache::config('default', array('engine' => 'File'));
  *
  * ));
  */
+CakePlugin::load('Cakedesktop');
 Configure::write('Dispatcher.filters', array(
 	'AssetDispatcher',
 	'CacheDispatcher'
