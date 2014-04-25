@@ -180,7 +180,8 @@
     		$order_id = $order_id_temp['CustomerOrderDetail']['order_id'] + 1; 
     		$billno=$order_id_temp['CustomerOrderDetail']['id'];
 			$total_price= $weight*200;
-			$a= $total_price +($total_price*0.15);
+			$vat_amt = Configure::read('vat_amt');
+			$a= $total_price +($total_price*$vat_amt);
 			$left_amt =$a - $advance + $deposite;
 			
 			$order['CustomerOrderDetail']['order_id'] = $order_id;

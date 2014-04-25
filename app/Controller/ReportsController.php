@@ -124,6 +124,7 @@
 					$i = 2;
 					$total_damage = 0;
 					$other_category_damage = 0;
+					
 					$damage_list = array();
 					$chart_data_array = array();
 					foreach ($total_return_quantity as $key => $value) {

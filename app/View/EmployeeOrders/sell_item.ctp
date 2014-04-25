@@ -53,7 +53,7 @@ $(document).ready(function(){
               $('.order_amount').each(function(){
                 var value = $(this).find('input').val()
                 total += parseInt(value);
-                totamt=total+ parseInt(total*0.15);
+                totamt=total+ parseInt(total*<?php echo Configure::read('vat_amt'); ?>);
               });
               $('#amt').html(total);
               $('#totamt').html(totamt);

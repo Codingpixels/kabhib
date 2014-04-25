@@ -3,6 +3,13 @@
 						'Pudding'=>'Pudding','Khakhra'=>'Khakhra','CupCake'=>'CupCake','DryCake'=>'DryCake','Cookie'=>'Cookie','Puff'=>'Puff','Savories'=>'Savories','CreamRoll'=>'CreamRoll','NewArrival'=>'New Arrival','Extra'=>'Extra');
 
 ?>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $("#EmployeeOrderSpecialForm").validate();
+ 
+  });
+
+</script>
 <div class="main_content">
 	<div class="inner_content sel">
 		<fieldset class='stockorder'>

@@ -18,7 +18,7 @@
 
 $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
 
-$jsFiles=array('jquery-1.9.1','jquery-ui','jquery.validate','bootstrap.min','googlechart');
+$jsFiles=array('jquery-1.9.1','jquery-ui','jquery.validate','jquery.form','bootstrap.min','googlechart');
 $cssFiles=array('cake.generic','custom','bootstrap','style');
 ?>
 <!DOCTYPE html>
