@@ -33,6 +33,7 @@
 				$item_array = array();
 				$item_final_array = array();
 				$i=1;
+				$total_amount = 0;
 				while ($i<=$item_count) {
 					if($i==substr($this->request->data[$i.'orderno'],0)) {
 			      		$item_array = array($i => array('Customer' => 
@@ -62,11 +63,16 @@
 						$order['CustomerOrderDetail']['customer_id']=$customer_id;
 						$order['CustomerOrderDetail']['item_name']=$item_array[$i]['Customer']['item_name'];
 						$order['CustomerOrderDetail']['item_quantity']=$item_array[$i]['Customer']['quantity'];
-						$order['CustomerOrderDetail']['employee_id']=$this->Session->read('eid');
+						$order['CustomerOrderDetail']['employee_id']=$this->Session->read('Employee.id');
 						$order['CustomerOrderDetail']['total_bill']=$item_array[$i]['Customer']['total_bill'];
 						$order['CustomerOrderDetail']['type']=$item_array[$i]['Customer']['type'];
+<<<<<<< HEAD
+						$print_order_detail[$i] = $order;
+						$total_amount = $total_amount + $item_array[$i]['Customer']['total_bill'];
+=======
 						$order['CustomerOrderDetail']['each_qty_price'] =$each_qty_price;
 
+>>>>>>> rkabhib/master
 						$this->CustomerOrderDetail->save($order);
 						$lastinserid = $this->CustomerOrderDetail->getlastInsertId();
 						$lastinserid++;
@@ -75,7 +81,16 @@
 			   		}
 			    	$i++;
 			    }
-				$this->redirect(array('controller' => 'EmployeeDetails','action' => 'home'));
+			    $vat_amount = intval($total_amount)*Configure::read('vat_amt')/100;
+				$actual_amount = $total_amount + $vat_amount;
+				$this->autoRender = false;
+	            $this->layout = 'print';
+	            $this->set('order_details', $print_order_detail);
+	            $this->set('total_amount', $total_amount);
+	            $this->set('actual_amount', $actual_amount);
+	            $this->set('customer_details', $this->request->data);
+	            $this->render('/EmployeeOrders/bill_print');
+	        	$this->redirect(array('controller' => 'EmployeeOrders','action' => 'takeaway'));
 			}
 		}
 
@@ -191,7 +206,7 @@
 			$order['CustomerOrderDetail']['type'] = 'Cake';
 			$order['CustomerOrderDetail']['order_date'] = $current_date;
 			$order['CustomerOrderDetail']['delivery_date'] = $delivery_date;
-			$order['CustomerOrderDetail']['employee_id'] = $this->Session->read('eid');
+			$order['CustomerOrderDetail']['employee_id'] = $this->Session->read('Employee.id');
 			$order['CustomerOrderDetail']['total_bill']= $total_price;
 			$order['CustomerOrderDetail']['ordertype']='special';
 			$order['CustomerOrderDetail']['advance']=$advance;
@@ -227,7 +242,7 @@
 			                	'fields' => array('CustomerOrderDetail.order_id')
 			                  	));
 			        $order_id = $order_id_temp['CustomerOrderDetail']['order_id'] + 1;
-				    $data['CustomerOrderDetail']['employee_id'] = $this->Session->read('eid');
+				    $data['CustomerOrderDetail']['employee_id'] = $this->Session->read('Employee.id');
 				    $data['CustomerOrderDetail']['customer_id'] = $customer_id;
 				    $data['CustomerOrderDetail']['order_date'] = date('Y-m-d');
 			      	$i=1;
@@ -280,7 +295,7 @@
 			    $item_final_array = array();
 			    if($item_count > 0){
 				    $data_result['EmployeeOrder']['order_date'] = date('Y-m-d');
-				    $data_result['EmployeeOrder']['employee_id'] = $this->Session->read('eid');
+				    $data_result['EmployeeOrder']['employee_id'] = $this->Session->read('Employee.id');
 				    if($this->EmployeeOrder->save($data_result)) {
 					    $order_id = $this->EmployeeOrder->getLastInsertId();
 					    $i  = 1;

@@ -4,9 +4,6 @@
 			<div class='subinner'>
 				<?php echo $this->Session->flash(); ?>
 				<div class="hmediv">
-					<?php
-						if($this->Session->check('eid')):
-					?>
 					<form>
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'Reports',
 									'action' => 'index')); ?>" class="current">Report
@@ -21,9 +18,6 @@
 									'action' => 'logout')); ?>" class="current">Logout
 							</button>
 					</form>
-					<?php
-    					endif;
-					?>
 				</div>	
 			</div>
 		</fieldset>

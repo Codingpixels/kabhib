@@ -9,36 +9,43 @@
 		public $helpers= array('Html' , 'Form');
 
 		public function index() {
-		}
-
-		public function login() {
+			if($this->Session->check('Employee')) {
+				if($this->Session->read('Employee.position') == '0'){
+					$this->redirect(array('controller' => 'EmployeeDetails', 'action' => 'home'));
+				} else {
+					$this->redirect(array('controller' => 'Admins', 'action' => 'admin'));
+				}
+			}
 			if(!empty($this->request->data)) {
-				if($this->request->data['EmployeeDetail']['employee_id'] == 'admin' &&
-		      		$this->request->data['EmployeeDetail']['password'] == 'admin') { 
-				       $this->Session->write('eid','admin');
-				       $this->Session->setFlash(__('You are Logged In.'));
-				       $this->redirect(array('controller'=>'Admins','action'=>'admin'));
-		     	} else {
-						if(!empty($this->request->data['EmployeeDetail']['employee_id']) ||
-							!empty($this->request->data['EmployeeDetail']['password'])) {
-		       					$employee=$this->EmployeeDetail->find('first',array('conditions'=>
-				       					 array('EmployeeDetail.name' => $this->request->data['EmployeeDetail']['employee_id'],
-										        'EmployeeDetail.password' => $this->request->data['EmployeeDetail']['password'])
-										        ));
-							if(!empty($employee)) {
-								$this->Session->write('eid',$employee['EmployeeDetail']['id']);
-								$this->Session->setFlash(__('You are Logged In.'));
+					if(!empty($this->request->data['EmployeeDetail']['employee_id']) ||
+						!empty($this->request->data['EmployeeDetail']['password'])) {
+	       					$employee=$this->EmployeeDetail->find('first',array('conditions'=>
+			       					 array('EmployeeDetail.name' => $this->request->data['EmployeeDetail']['employee_id'],
+									        'EmployeeDetail.password' => $this->request->data['EmployeeDetail']['password'])
+									        ));
+	       				if(!empty($employee)) {
+							$this->Session->write('Employee.id',$employee['EmployeeDetail']['id']);
+							$this->Session->write('Employee.name',$employee['EmployeeDetail']['name']);
+							$this->Session->write('Employee.role',$employee['EmployeeDetail']['position']);
+							$this->Session->setFlash(__('You are Logged In.'));
+							if($employee['EmployeeDetail']['position'] == '0'){
 								$this->redirect(array('controller'=>'EmployeeDetails','action'=>'home'));
 							} else {
-								$this->Session->setFlash(__('Invalid ID and Password!'));
-								$this->redirect(array('controller'=>'EmployeeDetails','action'=>'index'));
+								$this->redirect(array('controller'=>'Admins','action'=>'admin'));
 							}
-		      			} else {
-							$this->Session->setFlash(__('Both fields are mandatory!'));
-							$this->redirect(array('action' => 'index'));
-		      			}
-		     	}
-			}
+						} else {
+							$this->Session->setFlash(__('Invalid ID and Password!'));
+							$this->redirect(array('controller'=>'EmployeeDetails','action'=>'index'));
+						}
+	      			} else {
+						$this->Session->setFlash(__('Both fields are mandatory!'));
+						$this->redirect(array('action' => 'index'));
+	      			}
+		    }
+		}
+
+		public function login() {	
+
  		}
 		
 		public function home() {
@@ -82,7 +89,7 @@
 		}
 
 		public function logout(){
-			$this->Session->delete('eid');
+			$this->Session->delete('Employee');
 			$this->Session->setFlash(__('You are logged out.'));
 			$this->redirect(array('controller' => 'EmployeeDetails','action' => 'index'));
 		}

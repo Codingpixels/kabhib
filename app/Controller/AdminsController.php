@@ -283,7 +283,7 @@
 				if ($this->NewArrival->save($data)) {
 					$pid=$this->NewArrival->getlastInsertId();
 					$tab_name = 'NewArrival';
-					$data['EmployeeOrder']['employee_id'] = $this->Session->read('eid');
+					$data['EmployeeOrder']['employee_id'] = $this->Session->read('Employee.id');
 					$data['EmployeeOrder']['order_date'] = date('Y-m-d');
 					$this->EmployeeOrder->save($data);
 					$order_id = $this->EmployeeOrder->getLastInsertId();
@@ -294,7 +294,7 @@
 					$this->Eorderdetail->save($data);
 					$data['DeliveryMaster']['order_id'] = $order_id;
 					$data['DeliveryMaster']['created'] = date('Y-m-d');
-					$data['DeliveryMaster']['employee_id'] = $this->Session->read('eid');
+					$data['DeliveryMaster']['employee_id'] = $this->Session->read('Employee.id');
 					$this->DeliveryMaster->save($data);
 					$delivery_id = $this->DeliveryMaster->getLastInsertId();
 					$data['DeliveryDetail']['delivery_id'] = $delivery_id;
