@@ -66,13 +66,9 @@
 						$order['CustomerOrderDetail']['employee_id']=$this->Session->read('Employee.id');
 						$order['CustomerOrderDetail']['total_bill']=$item_array[$i]['Customer']['total_bill'];
 						$order['CustomerOrderDetail']['type']=$item_array[$i]['Customer']['type'];
-<<<<<<< HEAD
 						$print_order_detail[$i] = $order;
 						$total_amount = $total_amount + $item_array[$i]['Customer']['total_bill'];
-=======
 						$order['CustomerOrderDetail']['each_qty_price'] =$each_qty_price;
-
->>>>>>> rkabhib/master
 						$this->CustomerOrderDetail->save($order);
 						$lastinserid = $this->CustomerOrderDetail->getlastInsertId();
 						$lastinserid++;
@@ -90,7 +86,7 @@
 	            $this->set('actual_amount', $actual_amount);
 	            $this->set('customer_details', $this->request->data);
 	            $this->render('/EmployeeOrders/bill_print');
-	        	$this->redirect(array('controller' => 'EmployeeOrders','action' => 'takeaway'));
+	        	// $this->redirect(array('controller' => 'EmployeeOrders','action' => 'takeaway'));
 			}
 		}
 

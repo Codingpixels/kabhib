@@ -28,7 +28,7 @@
 							$this->Session->write('Employee.name',$employee['EmployeeDetail']['name']);
 							$this->Session->write('Employee.role',$employee['EmployeeDetail']['position']);
 							$this->Session->setFlash(__('You are Logged In.'));
-							if($employee['EmployeeDetail']['position'] == '0'){
+							if($employee['EmployeeDetail']['position'] == 'Employee'){
 								$this->redirect(array('controller'=>'EmployeeDetails','action'=>'home'));
 							} else {
 								$this->redirect(array('controller'=>'Admins','action'=>'admin'));
