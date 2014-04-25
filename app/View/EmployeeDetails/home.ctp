@@ -4,9 +4,6 @@
 		<fieldset class='stockorder'>
 			<div class='subinner sell'>
 				<div class="hmediv">
-					<?php
-						if($this->Session->check('eid')):
-					?>
 					<form>
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'EmployeeOrders', 'action' => 'billtypes')); ?>" class="current">Billing</button>
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'EmployeeOrders', 'action' => 'order')); ?>" class="current">Order Stock</button>
@@ -16,9 +13,6 @@
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'EmployeeDetails', 'action' => 'stock_check')); ?>" class="current">Stock Check</button>
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'EmployeeDetails', 'action' => 'logout')); ?>" class="current">Logout</button>
 					</form>
-					<?php
-    					endif;
-					?>
 				</div>	
 			</div>
 		</fieldset>

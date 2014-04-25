@@ -3,16 +3,10 @@
 		<fieldset class='stockorder'>
 			<div class='subinner'>
 				<div class="hmediv">
-					<?php
-						if($this->Session->check('eid')):
-					?>
 					<form>
 						<button formaction="/kabhee B/EmployeeOrder/select_return" class="current">Damage Return</button>
 						<button formaction="/kabhee B/EmployeeOrder/fresh_return" class="current">Damage Return</button>	
 					</form>
-					<?php
-    					endif;
-					?>
 				</div>	
 			</div>
 		</fieldset>

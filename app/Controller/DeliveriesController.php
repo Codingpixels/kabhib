@@ -44,7 +44,7 @@
 					$this->EmployeeOrder->id = $this->request->data['EmployeeDetail']['0']['v3'];
 					$flag['EmployeeOrder']['flag'] = '1';
 					$this->EmployeeOrder->save($flag);
-					$eid=$this->Session->read('eid');
+					$eid=$this->Session->read('Employee.id');
 					$data_result['DeliveryMaster']['employee_id']=$eid;
 					$data_result['DeliveryMaster']['order_id']=$this->request->data['EmployeeDetail']['0']['v3'];
 					$data_result['DeliveryMaster']['created']=date('Y-m-d');

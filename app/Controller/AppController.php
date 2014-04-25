@@ -31,4 +31,18 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	public $components = array('Session', 'DebugKit.Toolbar');
+
+	public function beforeFilter() {
+		Configure::write('vat_amt', '15');
+		$this->_checkLoggedIn();
+	}
+
+	public function _checkLoggedIn() {
+		if(!$this->Session->check('Employee') && ($this->request->params['controller'] != 'EmployeeDetails' && $this->request->params['action'] != 'index')) {
+			$this->Session->setFlash('Login first');
+			$this->redirect(array('controller' => 'EmployeeDetails', 'action' => 'index'));
+		}
+
+	}
 }

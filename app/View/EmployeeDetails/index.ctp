@@ -10,7 +10,7 @@
 			<?php
 				echo "<br><br>";
 				echo $this->Form->create('EmployeeDetail',array(
-		   						'url' => array('controller' => 'EmployeeDetails','action' => 'login'),
+		   						'url' => array('controller' => 'EmployeeDetails','action' => 'index'),
 								'style'=>'margin-left: 43px; margin-top: 0px;'));
 				echo $this->Form->input('employee_id',array('label' => 'Username 	:','type' => 'text',
 										'class' => 'required index inp form-control'));

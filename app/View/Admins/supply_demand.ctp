@@ -3,9 +3,6 @@
 		<fieldset class='stockorder'>
 			<div class='subinner'>
 				<div class="hmediv">
-					<?php
-						if($this->Session->check('eid')):
-					?>
 					<form>
 							<button formaction="<?php echo $this->Html->url(array('controller' => 'Admins', 
 							'action' => 'sd_report','jan')); ?>" class="current">JANUARY
@@ -55,9 +52,6 @@
 							'action' => 'sd_report','dec')); ?>" class="current">DECEMBER
 							</button>
 					</form>
-					<?php
-    					endif;
-					?>
 				</div>	
 			</div>
 		</fieldset>
