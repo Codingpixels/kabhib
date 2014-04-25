@@ -132,18 +132,28 @@
                         }else{
                             remove_class(this);
                           }
-                    }else if ($(this).hasClass('frm_num')){
+                    }else if ($(this).hasClass('only_numbers')){
                         value = $(this).val();
                         if(!just_num(value)){
                             if(!$(this).next().hasClass('error-message')){
-                                $("<div class='error-message'>Please enter a number.</div>").insertAfter($(this));
+                                $("<div class='error-message'>Please enter only nimeric value.</div>").insertAfter($(this));
                                 $(this).css('border','1px solid red');
                             }
                             prev = true;
                         }else{
                             remove_class(this);
                           }
-                    } else if($(this).hasClass('frm_url')){
+                    }else if ($(this).hasClass('only_alphabets')){
+                        value = $(this).val();
+                        if(!just_num(value)){
+                            if(!$(this).next().hasClass('error-message')){
+                                $("<div class='error-message'>Please enter only letters.</div>").insertAfter($(this));
+                                $(this).css('border','1px solid red');
+                            }
+                            prev = true;
+                        }else{
+                            remove_class(this);}
+                    }else if($(this).hasClass('frm_url')){
                         value = $(this).val();
                         if(!url_val(value)){
                             if(!$(this).next().hasClass('error-message')){
@@ -203,6 +213,7 @@ function valid_select(data,frm_sub){
    }
 }
 function valid(data,call_custom,options){
+    alert('here');
     if(call_custom){
         msg = custom_msg(options,$(data).attr('id'));
     }else{
@@ -243,14 +254,11 @@ function val_email(value){
 function val_phone(value){
     return  /^[789]\d{9}$/.test(value);
 }
-function name_nws(value){
+function only_alphabets(value){
     return /^[a-zA-Z]+$/.test(value);
 }
-function name_ws(value){
-    return /^[a-zA-Z ]+$/.test(value);
-}
-function just_num(value){
-    return /^[a-zA-Z ]*$/.test(value);
+function only_numbers(value){
+    return /^[0-9]*$/.test(value);
 }
 function url_val(value){
     return /^((http)(\:)(\/\/))?([a-z0-9_-]+\.)?[a-z0-9_-]+(\.[a-z]{2,6}){1,5}(\/[\w]+)*$/.test(value);

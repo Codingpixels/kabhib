@@ -25,7 +25,7 @@
 		            $item_tab = $value['v3'];
 		            if($this->CustomerReturn->save($data)) {
 		            	
-		            		$db_data = $this->$item_tab->find('first', array('conditions'=>array($item_tab.'.item_name' =>$value['v2']),
+		            	$db_data = $this->$item_tab->find('first', array('conditions'=>array($item_tab.'.item_name' =>$value['v2']),
 		            													'fields'=>array($item_tab.'.quantity',$item_tab.'.item_id')));
 		            
 		            	$total_quantity = $db_data[$item_tab]['quantity'] + $value['qty'];

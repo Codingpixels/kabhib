@@ -4,7 +4,7 @@
 			<div class='subinner'>
 				<form>
 					<button formaction="<?php echo $this->Html->url(array('controller' => 'Reports', 
-							'action' => 'sales_report')); ?>" class="current">Sales Report
+							'action' => 'sales_report_type')); ?>" class="current">Sales Report
 					</button>
 					<button formaction="<?php echo $this->Html->url(array('controller' => 'Reports',
 							'action' => 'fresh_return_type')); ?>" class="current">Fresh Return Report</button>

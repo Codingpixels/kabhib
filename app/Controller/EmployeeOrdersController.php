@@ -45,10 +45,13 @@
 														              'type'=> $this->request->data[$i.'type']
 														              )));
 			      		$type = $this->request->data[$i.'type'];
-						$old_qty = $this->$type->find('first',array('conditions'=>array($type.'.item_name' =>
-														$item_array[$i]['Customer']['item_name']),'fields'=>
-														array($type.'.quantity',$type.'.item_id')
-														));
+						$old_qty = $this->$type->find('first',array('conditions'=>
+																	array($type.'.item_name' =>
+																				$item_array[$i]['Customer']['item_name']),
+																		'fields'=>array($type.'.quantity',
+																						$type.'.item_id',
+																						$type.'.price')));
+						$each_qty_price = $old_qty[$type]['price'];
 						$new_qty[$type]['quantity'] = $old_qty[$type]['quantity'] - $item_array[$i]['Customer']['quantity'];
 						$this->$type->id = $old_qty[$type]['item_id'];
 						$this->$type->save($new_qty);          
@@ -63,8 +66,13 @@
 						$order['CustomerOrderDetail']['employee_id']=$this->Session->read('Employee.id');
 						$order['CustomerOrderDetail']['total_bill']=$item_array[$i]['Customer']['total_bill'];
 						$order['CustomerOrderDetail']['type']=$item_array[$i]['Customer']['type'];
+<<<<<<< HEAD
 						$print_order_detail[$i] = $order;
 						$total_amount = $total_amount + $item_array[$i]['Customer']['total_bill'];
+=======
+						$order['CustomerOrderDetail']['each_qty_price'] =$each_qty_price;
+
+>>>>>>> rkabhib/master
 						$this->CustomerOrderDetail->save($order);
 						$lastinserid = $this->CustomerOrderDetail->getlastInsertId();
 						$lastinserid++;
@@ -187,7 +195,8 @@
     		$order_id = $order_id_temp['CustomerOrderDetail']['order_id'] + 1; 
     		$billno=$order_id_temp['CustomerOrderDetail']['id'];
 			$total_price= $weight*200;
-			$a= $total_price +($total_price*0.15);
+			$vat_amt = Configure::read('vat_amt');
+			$a= $total_price +($total_price*$vat_amt);
 			$left_amt =$a - $advance + $deposite;
 			
 			$order['CustomerOrderDetail']['order_id'] = $order_id;

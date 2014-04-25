@@ -13,7 +13,7 @@ $category_array=array('Bread'=>'Bread','Cake'=>'Cake','Khari'=>'Khari','Pastry'=
 		var data = google.visualization.arrayToDataTable(<?php echo $chart_data_json;?>);
 
 		var options = {
-		  title: "<?php echo 'Fresh Return '.$period.' Report'; ?>"
+		  title: "<?php echo 'Sales '.$period.' Report'; ?>"
 		};
 
 		var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -26,7 +26,7 @@ $category_array=array('Bread'=>'Bread','Cake'=>'Cake','Khari'=>'Khari','Pastry'=
 			<div class="subinner">
 				<div>
 				<?php 
-					echo $this->Form->create('fresh_category_wise_piechart');
+					echo $this->Form->create('sales_category_wise_piechart');
 					echo $this->Form->input('item_category',array('options'=>$category_array,'label' => 'Select category','id'=>'item_code','item_category')); 
 					$span = array('today' => 'today', 'weekly' => 'weekly', 'monthly' => 'monthly', 'yearly' => 'yearly');
 					echo $this->Form->input('report_span',array('options'=>$span,'label' => 'Select span','id'=>'report_span','item_category')); 
