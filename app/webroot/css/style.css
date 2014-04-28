@@ -361,3 +361,9 @@ textarea {
 	margin-left: 5px;
 	font-size: 14px;
 }
+.special-form div {
+	margin-bottom: 0;
+    margin-left: -5px;
+    margin-top: -7px;
+    padding-bottom: 6px;
+}

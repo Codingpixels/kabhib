@@ -85,8 +85,7 @@
 	            $this->set('total_amount', $total_amount);
 	            $this->set('actual_amount', $actual_amount);
 	            $this->set('customer_details', $this->request->data);
-	            $this->render('/EmployeeOrders/bill_print');
-	        	// $this->redirect(array('controller' => 'EmployeeOrders','action' => 'takeaway'));
+	            $this->render('/EmployeeOrders/bill_print_take_away');
 			}
 		}
 
@@ -154,75 +153,82 @@
 		}
 
 		public function special() {
+			if(!empty($this->request->data)) {
+				if($this->request->data['EmployeeOrder']['flavours']=="Others") {
+					$flavour=$this->request->data['EmployeeOrder']['flavours2'];
+				}
+				else {
+					$flavour=$this->request->data['EmployeeOrder']['flavours'];
+				}
+				$customer_name=$this->request->data['name'];
+				$number=$this->request->data['EmployeeOrder']['num'];
+				$weight=$this->request->data['EmployeeOrder']['weight'];
+				$delivery_date=$this->request->data['EmployeeOrder']['date'];
+				$coupon=$this->request->data['EmployeeOrder']['coupon'];
+				$advance=$this->request->data['EmployeeOrder']['advance'];
+				$remark=$this->request->data['EmployeeOrder']['Remark'];
+				$time=$this->request->data['EmployeeOrder']['time'];
+				$deposit=$this->request->data['EmployeeOrder']['deposit'];
+				$current_date=date('Y-m-d');
+
+				$data['Customer']['name']=$customer_name;
+				$data['Customer']['number']=$number;
+
+				$customer = $this->Customer->find('first',array('conditions' => array('Customer.number' =>$number)));
+				if(!empty($customer)){
+					$customer_id = $customer['Customer']['customer_id'];
+				} else {
+					$this->Customer->save($data);
+					$customer_id = $this->Customer->getLastInsertID();
+				}
+				$order_id_temp = $this->CustomerOrderDetail->find('first',array('order' => array('CustomerOrderDetail.order_id DESC'),
+	               'fields' => array('CustomerOrderDetail.order_id','CustomerOrderDetail.id')
+	               ));
+	    		$order_id = $order_id_temp['CustomerOrderDetail']['order_id'] + 1; 
+	    		$billno=$order_id_temp['CustomerOrderDetail']['id'];
+				$total_price= $weight*200;
+				$vat_amt = Configure::read('vat_amt');
+				$a= $total_price +($total_price*$vat_amt);
+				$left_amt =$a - $advance + $deposit;
+				
+				$order['CustomerOrderDetail']['order_id'] = $order_id;
+				$order['CustomerOrderDetail']['customer_id'] = $customer_id;
+				$order['CustomerOrderDetail']['item_name'] = $flavour;
+				$order['CustomerOrderDetail']['item_quantity']='1';
+				$order['CustomerOrderDetail']['type'] = 'Cake';
+				$order['CustomerOrderDetail']['order_date'] = $current_date;
+				$order['CustomerOrderDetail']['delivery_date'] = $delivery_date;
+				$order['CustomerOrderDetail']['employee_id'] = $this->Session->read('Employee.id');
+				$order['CustomerOrderDetail']['total_bill']= $total_price;
+				$order['CustomerOrderDetail']['ordertype']='special';
+				$order['CustomerOrderDetail']['advance']=$advance;
+
+				$this->CustomerOrderDetail->save($order);
+				$this->autoRender = false;
+	   			$this->layout = 'print';
+	   			$this->set('billno', $billno);
+	   			$this->set('order',$order);
+	   			$this->set('time',$time);
+	   			$this->set('weight',$weight);
+	   			$this->set('vat_amt',$vat_amt);
+	   			$this->set('deposit',$deposit);
+	   			$this->set('left_amt',$left_amt);
+	   			$this->set('flavour',$flavour);
+	   			$this->render('/EmployeeOrders/bill_print_special');
+	   		}
 		}
 
-		public function specialajax() {
-			$this->layout='ajax';
-			if($this->request->data['flavour']=="Others") {
-				$flavour=$this->request->data['flavour2'];
-			}
-			else {
-				$flavour=$this->request->data['flavour'];
-			}
-			$customer_name=$this->request->data['customer_name'];
-			$number=$this->request->data['customer_no'];
-			$weight=$this->request->data['weight'];
-			$delivery_date=$this->request->data['date'];
-			$coupon=$this->request->data['coupon'];
-			$advance=$this->request->data['advance'];
-			$remark=$this->request->data['remark'];
-			$time=$this->request->data['time'];
-			$deposite=$this->request->data['deposite'];
-			$current_date=date('Y-m-d');
-
-			$data['Customer']['name']=$customer_name;
-			$data['Customer']['number']=$number;
-
-			$customer = $this->Customer->find('first',array('conditions' => array('Customer.number' =>$number)));
-			if(!empty($customer)){
-				$customer_id = $customer['Customer']['customer_id'];
-			} else {
-				$this->Customer->save($data);
-				$customer_id = $this->Customer->getLastInsertID();
-			}
-			$order_id_temp = $this->CustomerOrderDetail->find('first',array('order' => array('CustomerOrderDetail.order_id DESC'),
-               'fields' => array('CustomerOrderDetail.order_id','CustomerOrderDetail.id')
-               ));
-    		$order_id = $order_id_temp['CustomerOrderDetail']['order_id'] + 1; 
-    		$billno=$order_id_temp['CustomerOrderDetail']['id'];
-			$total_price= $weight*200;
-			$vat_amt = Configure::read('vat_amt');
-			$a= $total_price +($total_price*$vat_amt);
-			$left_amt =$a - $advance + $deposite;
-			
-			$order['CustomerOrderDetail']['order_id'] = $order_id;
-			$order['CustomerOrderDetail']['customer_id'] = $customer_id;
-			$order['CustomerOrderDetail']['item_name'] = $flavour;
-			$order['CustomerOrderDetail']['item_quantity']='1';
-			$order['CustomerOrderDetail']['type'] = 'Cake';
-			$order['CustomerOrderDetail']['order_date'] = $current_date;
-			$order['CustomerOrderDetail']['delivery_date'] = $delivery_date;
-			$order['CustomerOrderDetail']['employee_id'] = $this->Session->read('Employee.id');
-			$order['CustomerOrderDetail']['total_bill']= $total_price;
-			$order['CustomerOrderDetail']['ordertype']='special';
-			$order['CustomerOrderDetail']['advance']=$advance;
-
-			$this->CustomerOrderDetail->save($order);
-			
-			$this->set('delivery_date',$delivery_date);
-			$this->set('current_date',$current_date);
-			$this->set('flavour',$flavour);
-			$this->set('weight',$weight);
-			$this->set('advance',$advance);
-			$this->set('total_amt',$total_price);
-			$this->set('left_amt',$left_amt);
-			$this->set('time',$time);
-			$this->set('billno',$billno);
-			$this->set('deposite',$deposite);
+		public function bill_print_special() {
+			$this->autoRender = false;
+			$this->layout = 'print';
+			$this->set('data', $this->request->data['data']); 
+		    $this->render('/EmployeeOrders/bill_print_special');
+		
 		}
 
 		public function advance() {
 		   	if(!empty($this->request->data)) {
+		   		//echo"<pre>";print_r($this->request->data);exit;
 			    $item_count = (count($this->request->data)-1)/5;
 			    if($item_count > '0') {
 			    	$customer = $this->Customer->find('first',array('conditions' => array('Customer.number' => 
@@ -279,7 +285,14 @@
 			        	}
 			         	$i++;
 			     	}
-			     	$this->redirect(array('controller'=>'EmployeeDetails','action'=>'home'));
+			     	$this->autoRender = false;
+		            $this->layout = 'print';
+		            $this->set('data_details', $data);
+		            $this->set('customer_name', $this->request->data['Customer']['name']);
+		            $this->set('customer_number', $this->request->data['Customer']['number']);
+		            $this->set('delivery_date', $this->request->data['Customer']['date']);
+		            $this->set('advance', $this->request->data['Customer']['advance']);
+		            $this->render('/EmployeeOrders/bill_print_advance');
 			    }
 		   	}
 	  	}

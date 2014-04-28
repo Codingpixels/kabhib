@@ -37,7 +37,7 @@ $item_array=array('Bread'=>'Bread','Cake'=>'Cake','Khari'=>'Khari','Pastry'=>'Pa
 						<label style='margin-left: 8px;'>Delivery Date:</label>
 						<?php
 						echo "<fieldset style='margin-left: 158px; margin-top: -42px; margin-bottom: 11px;'>";
-					   	echo $this->Form->input('date',array('label' => false,'class' => 'form-control1 required','type'=>'date'));
+					   	echo $this->Form->input('date',array('label' => false,'class' => 'form-control1 required','id' =>'date'));
 					   	echo "</fieldset>";
 						echo $this->Form->input('advance',array('label' => 'Advance Payment:','class' =>'required form-control inp'
 												));
@@ -81,6 +81,7 @@ $item_array=array('Bread'=>'Bread','Cake'=>'Cake','Khari'=>'Khari','Pastry'=>'Pa
 </div>
 
 <script type="text/javascript">
+	$("#date").datepicker({dateFormat:'dd-mm-yy', minDate: 0});
  $().ready(function() {
       $("#CustomerAdvanceForm").validate({
       });
